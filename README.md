@@ -18,7 +18,7 @@ The API.it package made by [@RayhanADev](https://repl.it/@RayhanADev) is a wrapp
   - Vote Count
   - Parent Comments
   - Answer to Question
- - **Fetching Repl Data** (such as):
+- **Fetching Repl Data** (such as):
   - Title
   - Embed Url
   - Time Created
