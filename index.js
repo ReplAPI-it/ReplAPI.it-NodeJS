@@ -1,11 +1,11 @@
-const user = require('./src/User.js');
-const post = require('./src/Post.js');
-const comment = require('./src/Comment.js');
-const leaderboard = require('./src/Leaderboard.js');
+let replapi = require('./src')
 
 module.exports = {
-  User: user.User,
-  Post: post.Post,
-  Comment: comment.Comment,
-  Leaderboard: leaderboard.Leaderboard
-}
+	User: replapi.User,
+	Post: replapi.Post,
+	Comment: replapi.Comment,
+	Leaderboard: replapi.Leaderboard,
+	Notifications: replapi.Notifications,
+	Misc: replapi.Misc,
+	Login: replapi.Login
+};
