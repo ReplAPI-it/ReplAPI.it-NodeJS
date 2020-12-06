@@ -91,34 +91,68 @@ If you have not already download npm:
 
 ### Installation
 
-1. Install the latest version
+1. Install the latest version of the package
    ```sh
    $ npm install replapi-it
    ```
-2. Require the package
+2. Require the package in your code
    ```js
    const repl = require('replapi-it');
    ```
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Using ReplAPI.it is very simple! Let's create a simple user and ask for their cycles:
+ ```js
+ const repl = require('replapi-it');
+
+ const myUser = new repl.User("RayhanADev");
+
+ async function getCycles() {
+  let info = await myUser.profileData();
+  let cycles = info.cycles;
+  console.log(`User Cycles: ${cycles}`)
+ }
+ 
+ getCycles()
+ ```
+
+Output:
+ ```sh
+ User Cycles: 1008
+ ```
+
+
+That was fun! Now how about getting a specific post? Let's create a simple post and ask for it's body:
+ ```js
+ const repl = require('replapi-it');
+
+ const myPost = new repl.Post(78043);
+
+ async function getTitle() {
+  let info = await myPost.postData();
+  let title = info.title;
+  console.log(`Post Title: ${title}`)
+ }
+ 
+ getTitle()
+ ```
+Output:
+ ```sh
+ Post Title: Presenting... 🤔 RayhanADev 🤔? (GraphQL Success!)
+ ```
 
 _For more examples, please refer to the [Documentation](https://replapidocs.rayhanadev.repl.co/)_
 
-
-
-<!-- ROADMAP -->
 ## Roadmap
 
 See the [open issues](https://github.com/RayhanADev/REPLAPI.it/issues) for a list of proposed features (and known issues).
 
+I'm considering adding in support for Crosis communications after they distribute developer keys again. Right now I'm experimenting with WSS and eval.repl.it for code execution!
 
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are **much appreciated**, and if you know another query that should be implemented on this package, follow these steps!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -126,30 +160,21 @@ Contributions are what make the open source community such an amazing place to b
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-
-
-<!-- LICENSE -->
 ## License
 
 Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
-
-
-<!-- CONTACT -->
 ## Contact
 
 RayhanADev - [@RayhanADev](https://repl.it/@RayhanADev) - rayhan.arayilakath@wa-students.org
 
 Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/RayhanADev/REPLAPI.it)
 
-
-
-<!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 
-* []()
-* []()
-* []()
+* [cursorweb](https://github.com/cursorweb) aka [mrlapizgithub](https://github.com/mrlapizgithub) for several dozen GraphQL queries
+* [kognise](https://github.com/kognise) for open-sourcing eval.repl.it's usage
+* [mat-1](https://github.com/mat-1) for their original Repl.it API package
 
 
 
