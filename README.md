@@ -62,9 +62,7 @@
 
 [![Code Screenshot](images/screenshot.jpg)](https://repl.it/@RayhanADev/REPLAPIit-Replit-API-Package)
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`RayhanADev`, `REPLAPI.it`, `twitter_handle`, `rayhan.arayilakath@wa-students.org`, `REPLAPI.it`, `project_description`
+
 
 
 ### Built With
