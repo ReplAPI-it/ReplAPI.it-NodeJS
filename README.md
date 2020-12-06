@@ -60,7 +60,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![images/screenshot.jpg][Code]](https://repl.it/@RayhanADev/REPLAPIit-Replit-API-Package)
+[![images/screenshot.jpg](Code)](https://repl.it/@RayhanADev/REPLAPIit-Replit-API-Package)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
