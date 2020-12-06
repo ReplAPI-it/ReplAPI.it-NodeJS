@@ -14,7 +14,7 @@
   <h3 align="center">REPLAPI.it</h3>
 
   <p align="center">
-    project_description
+    A Simple and Complete Repl.it API Package
     <br />
     <a href="https://replapidocs.rayhanadev.repl.co"><strong>Explore the docs »</strong></a>
     <br />
