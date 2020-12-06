@@ -123,7 +123,7 @@ Output:
  ```
 
 
-That was fun! Now how about getting a specific post? Let's create a simple post and ask for it's body:
+That was fun! Now how about getting a specific post? Let's create a simple post and ask for it's title:
  ```js
  const repl = require('replapi-it');
 
