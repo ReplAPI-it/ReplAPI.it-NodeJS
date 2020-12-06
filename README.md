@@ -62,21 +62,28 @@
 
 [![Code Screenshot](images/screenshot.jpg)](https://repl.it/@RayhanADev/REPLAPIit-Replit-API-Package)
 
+The Repl.it GraphQL API is an extraordinary way to make projects unique and special, yet with the numerous packages available few such projects have been made. Why would that be? Most likely due to how complicated writing code can get and the limitations of their queries. My package, **ReplAPI.it**, changes that with a simple to use structure and many queries, some of which are:
 
+* Queries for Data on Users (such as Profile, Posts, Comments)
+* Queries for Data on Posts (such as Upvoters, Content)
+* Queries for Data on Notifications (such as Reply Notifications, Achievement Notifications)
+* Mutations for Commenting, Reporting, and Posting
+* Queries for Data on Leaderboard (with filters such as cycles since)
+* and lots more!
 
+My package is also simple to use with it's **class-based structure**. Simply create a new class for you User, Post, or whatever you heart desires and use built in functions with options to query data **your way**.
 
 ### Built With
 
 * [NodeJS](https://github.com/nodejs/node)
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-To get a local copy up and running follow these simple steps.
+I suggest requiring the ReplAPI.it module until ES imports in NodeJS are stabilized.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+If you have not already download npm:
 * npm
   ```sh
   npm install npm@latest -g
@@ -84,18 +91,15 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Clone the repo
+1. Install the latest version
    ```sh
-   git clone https://github.com/RayhanADev/REPLAPI.it.git
+   $ npm install replapi-it
    ```
-2. Install NPM packages
-   ```sh
-   npm install
+2. Require the package
+   ```js
+   const repl = require('replapi-it');
    ```
 
-
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
