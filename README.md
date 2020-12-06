@@ -16,10 +16,10 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/RayhanADev/REPLAPI.it"><strong>Explore the docs »</strong></a>
+    <a href="https://replapidocs.rayhanadev.repl.co"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/RayhanADev/REPLAPI.it">View Demo</a>
+    <a href="https://www.npmjs.com/package/replapi-it">View Package on NPM</a>
     ·
     <a href="https://github.com/RayhanADev/REPLAPI.it/issues">Report Bug</a>
     ·
