@@ -1,39 +1,14 @@
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Thanks again! Now go create something AMAZING! :D
-***
-***
-***
-*** To avoid retyping too much info. Do a search and replace for the following:
-*** RayhanADev, REPLAPI.it, twitter_handle, rayhan.arayilakath@wa-students.org, REPLAPI.it, project_description
--->
-
-
-
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
-
 
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
   <a href="https://github.com/RayhanADev/REPLAPI.it">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">REPLAPI.it</h3>
@@ -85,7 +60,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Code][code-screenshot]](images/screenshot.jpg)
 
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
@@ -94,11 +69,7 @@ Here's a blank template to get started:
 
 ### Built With
 
-* []()
-* []()
-* []()
-
-
+* [NodeJS](https://github.com/nodejs/node)
 
 <!-- GETTING STARTED -->
 ## Getting Started
@@ -131,7 +102,7 @@ This is an example of how to list things you need to use the software and how to
 
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://replapidocs.rayhanadev.repl.co/)_
 
 
 
@@ -165,7 +136,7 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-RayhanADev - [@twitter_handle](https://twitter.com/twitter_handle) - rayhan.arayilakath@wa-students.org
+RayhanADev - [@RayhanADev](https://repl.it/@RayhanADev) - rayhan.arayilakath@wa-students.org
 
 Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/RayhanADev/REPLAPI.it)
 
@@ -184,13 +155,13 @@ Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/Rayh
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/RayhanADev/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/RayhanADev/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/RayhanADev/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/RayhanADev/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/RayhanADev/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/RayhanADev/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/RayhanADev/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/RayhanADev/repo/issues
-[license-shield]: https://img.shields.io/github/license/RayhanADev/repo.svg?style=for-the-badge
-[license-url]: https://github.com/RayhanADev/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/RayhanADev/REPLAPI.it.svg?style=for-the-badge
+[contributors-url]: https://github.com/RayhanADev/REPLAPI.it/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/RayhanADev/REPLAPI.it.svg?style=for-the-badge
+[forks-url]: https://github.com/RayhanADev/REPLAPI.it/network/members
+[stars-shield]: https://img.shields.io/github/stars/RayhanADev/REPLAPI.it.svg?style=for-the-badge
+[stars-url]: https://github.com/RayhanADev/REPLAPI.it/stargazers
+[issues-shield]: https://img.shields.io/github/issues/RayhanADev/REPLAPI.it.svg?style=for-the-badge
+[issues-url]: https://github.com/RayhanADev/REPLAPI.it/issues
+[license-shield]: https://img.shields.io/github/license/RayhanADev/REPLAPI.it.svg?style=for-the-badge
+[license-url]: https://github.com/RayhanADev/REPLAPI.it/blob/master/LICENSE.txt
