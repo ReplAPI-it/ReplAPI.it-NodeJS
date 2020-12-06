@@ -1,6 +1,6 @@
 {
   "name": "replapi-it",
-  "version": "0.0.11",
+  "version": "1.0.3",
   "description": "A wrapper for Repl.it's GraphQL (and soon REST and even Crosis) API. Designed to be easy to use!",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RayhanADev/API.it.git"
+    "url": "git+https://github.com/RayhanADev/REPLAPI.it.git"
   },
   "keywords": [
     "Replit",
@@ -19,9 +19,9 @@
   "author": "RayhanADev",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/RayhanADev/API.it/issues"
+    "url": "https://github.com/RayhanADev/REPLAPI.it/issues"
   },
-  "homepage": "https://github.com/RayhanADev/API.it#readme",
+  "homepage": "https://github.com/RayhanADev/REPLAPI.it#readme",
   "dependencies": {
     "node-fetch": "^2.6.1"
   }
