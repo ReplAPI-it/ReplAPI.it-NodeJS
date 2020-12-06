@@ -8,7 +8,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/RayhanADev/REPLAPI.it">
-    <img src="images/logo.jpg" alt="Logo" width="80" height="80">
+    <img src="images/logo.jpg" alt="Logo" width="600" height="200">
   </a>
 
   <h3 align="center">REPLAPI.it</h3>
