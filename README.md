@@ -110,7 +110,7 @@ Using ReplAPI.it is very simple! Let's create a simple user and ask for their cy
 
  async function getCycles() {
   let info = await myUser.profileData();
-  let cycles = info.cycles;
+  let cycles = info.karma; // Yep, it's karma!
   console.log(`User Cycles: ${cycles}`)
  }
  
