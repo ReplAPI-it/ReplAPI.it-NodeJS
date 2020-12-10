@@ -13,7 +13,7 @@ class Post {
 		}
 
 		let info = await variables
-			.fetch('https://repl.it/graphql', {
+			.fetch('https://staging.repl.it/graphql', {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -44,7 +44,7 @@ class Post {
 		}
 
 		let info = await variables
-			.fetch('https://repl.it/graphql', {
+			.fetch('https://staging.repl.it/graphql', {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -89,16 +89,16 @@ class Post {
 
 				headers.Cookie = global.cookies;
 				let info = await variables
-					.fetch('https://repl.it/graphql', {
+					.fetch('https://staging.repl.it/graphql', {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
 							query: `
-				  mutation createComment($id: Int!, $message: String!) {
-            createComment(input: { body: $message, postId: $id }) {
-              comment { ${variables.commentAttributes} }
-            }
-          }`,
+      				  mutation createComment($id: Int!, $message: String!) {
+                  createComment(input: { body: $message, postId: $id }) {
+                    comment { ${variables.commentAttributes} }
+                  }
+                }`,
 							variables: {
 								id,
 								message
