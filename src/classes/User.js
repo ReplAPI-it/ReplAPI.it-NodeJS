@@ -9,16 +9,16 @@ class User {
 	async profileData() {
 		let user = this.username;
 		let info = await variables
-			.fetch('https://repl.it/graphql', {
+			.fetch('https://staging.repl.it/graphql', {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
 					query: `
-				  query User($user: String!) {
-					  userByUsername(username: $user) {
-              ${variables.userAttributes}
-					  }
-					}`,
+    			  query User($user: String!) {
+    				  userByUsername(username: $user) {
+                ${variables.userAttributes}
+    				  }
+    				}`,
 					variables: {
 						user
 					}
@@ -45,7 +45,7 @@ class User {
 			if (after === null) return;
 
 			let info = await variables
-				.fetch('https://repl.it/graphql', {
+				.fetch('https://staging.repl.it/graphql', {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -100,7 +100,7 @@ class User {
 			if (after === null) return;
 
 			let info = await variables
-				.fetch('https://repl.it/graphql', {
+				.fetch('https://staging.repl.it/graphql', {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
