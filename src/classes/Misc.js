@@ -14,23 +14,22 @@ class Misc {
 
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://repl.it/graphql', {
+				.fetch('https://staging.repl.it/graphql', {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
 						query: `
-				  query UserSearch($query: String!, $limit: Int!) {
-          	usernameSearch(query: $query, limit: $limit) {
-              ${variables.userAttributes}
-            }
-          }`,
+      			  query UserSearch($query: String!, $limit: Int!) {
+              	usernameSearch(query: $query, limit: $limit) {
+                  ${variables.userAttributes}
+                }
+              }`,
 						variables: {
 							query,
 							limit
 						}
 					})
-				})
-				.then(res => res.json());
+				}).then(res => res.json());
 
 			if (!info.data.usernameSearch) {
 				throw new Error(`Cannot fetch users.`);
