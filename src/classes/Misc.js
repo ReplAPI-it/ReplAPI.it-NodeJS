@@ -46,26 +46,14 @@ class Misc {
 			headers.Cookie = global.cookies;
 			let info = await variables
 				.fetch('https://staging.repl.it/is_authenticated', {
-					method: 'POST',
-					headers,
-					body: JSON.stringify({
-						query: `
-      			  query UserSearch($query: String!, $limit: Int!) {
-              	usernameSearch(query: $query, limit: $limit) {
-                  ${variables.userAttributes}
-                }
-              }`,
-						variables: {
-							query,
-							limit
-						}
-					})
+					method: 'GET',
+					headers
 				}).then(res => res.json());
 
-			if (!info.data.usernameSearch) {
-				throw new Error(`Cannot fetch users.`);
+			if (!info) {
+				throw new Error(`Cannot fetch authentication data.`);
 			} else {
-				return info.data.usernameSearch;
+				return info;
 			}
 		}
 	}
