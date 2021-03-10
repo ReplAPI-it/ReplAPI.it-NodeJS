@@ -38,6 +38,25 @@ class Misc {
 			}
 		}
 	}
+
+	async isAuthenticated() {
+		if (!global.cookies) {
+			throw new Error('Not logged in.');
+		} else {
+			headers.Cookie = global.cookies;
+			let info = await variables
+				.fetch('https://staging.repl.it/is_authenticated', {
+					method: 'GET',
+					headers
+				}).then(res => res.json());
+
+			if (!info) {
+				throw new Error(`Cannot fetch authentication data.`);
+			} else {
+				return info;
+			}
+		}
+	}
 }
 
 module.exports = {
