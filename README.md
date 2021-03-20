@@ -14,7 +14,7 @@
   <h3 align="center">REPLAPI.it</h3>
 
   <p align="center">
-    A Simple and Complete Repl.it API Package
+    A Simple and Complete Replit API Package
     <br />
     <a href="https://replapidocs.rayhanadev.repl.co"><strong>Explore the docs »</strong></a>
     <br />
@@ -60,9 +60,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Code Screenshot](images/screenshot.jpg)](https://repl.it/@RayhanADev/REPLAPIit-Replit-API-Package)
+[![Code Screenshot](images/screenshot.jpg)](https://replit.com/@RayhanADev/REPLAPIit-Replit-API-Package)
 
-The Repl.it GraphQL API is an extraordinary way to make projects unique and special, yet with the numerous packages available few such projects have been made. Why would that be? Most likely due to how complicated writing code can get and the limitations of their queries. My package, **ReplAPI.it**, changes that with a simple to use structure and many queries, some of which are:
+The Replit GraphQL API is an extraordinary way to make projects unique and special, yet with the numerous packages available few such projects have been made. Why would that be? Most likely due to how complicated writing code can get and the limitations of their queries. My package, **ReplAPI.it**, changes that with a simple to use structure and many queries, some of which are:
 
 * Queries for Data on Users (such as Profile, Posts, Comments)
 * Queries for Data on Posts (such as Upvoters, Content)
@@ -166,7 +166,7 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 ## Contact
 
-RayhanADev - [@RayhanADev](https://repl.it/@RayhanADev) - rayhan.arayilakath@wa-students.org
+RayhanADev - [@RayhanADev](https://replit.com/@RayhanADev) - rayhan.arayilakath@wa-students.org
 
 Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/RayhanADev/REPLAPI.it)
 
@@ -174,7 +174,7 @@ Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/Rayh
 
 * [cursorweb](https://github.com/cursorweb) aka [mrlapizgithub](https://github.com/mrlapizgithub) for several dozen GraphQL queries
 * [kognise](https://github.com/kognise) for open-sourcing eval.repl.it's usage
-* [mat-1](https://github.com/mat-1) for their original Repl.it API package
+* [mat-1](https://github.com/mat-1) for their original Replit API package
 
 
 
