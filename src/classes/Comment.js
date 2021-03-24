@@ -15,7 +15,7 @@ class Comment {
 		}
 
 		let info = await variables
-			.fetch('https://staging.repl.it/graphql', {
+			.fetch(variables.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -60,7 +60,7 @@ class Comment {
 
 				headers.Cookie = global.cookies;
 				let info = await variables
-					.fetch('https://staging.repl.it/graphql', {
+					.fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -107,7 +107,7 @@ class Comment {
 
 				headers.Cookie = global.cookies;
 				let info = await variables
-					.fetch('https://staging.repl.it/graphql', {
+					.fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -158,7 +158,7 @@ class Comment {
 
 				headers.Cookie = global.cookies;
 				let info = await variables
-					.fetch('https://repl.it/graphql', {
+					.fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
