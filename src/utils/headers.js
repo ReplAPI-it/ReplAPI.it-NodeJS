@@ -4,6 +4,6 @@ module.exports = {
 	'Accept-Encoding': 'gzip, deflate, br',
 	Connection: 'keep-alive',
 	'X-Requested-With': 'REPLAPIit',
-	Referrer: 'https://repl.it',
-	Origin: 'https://repl.it'
+	Referrer: 'https://replit.com',
+	Origin: 'https://replit.com'
 };
