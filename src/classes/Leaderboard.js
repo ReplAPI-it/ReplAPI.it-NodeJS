@@ -12,7 +12,7 @@ class Leaderboard {
 				if (after === null) return;
 
 				let info = await variables
-					.fetch('https://staging.repl.it/graphql', {
+					.fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -54,7 +54,7 @@ class Leaderboard {
 				if (after === null) return;
 
 				let info = await variables
-					.fetch('https://staging.repl.it/graphql', {
+					.fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({

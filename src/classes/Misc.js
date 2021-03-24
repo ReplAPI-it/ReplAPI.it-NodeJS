@@ -14,7 +14,7 @@ class Misc {
 
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -45,7 +45,7 @@ class Misc {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/is_authenticated', {
+				.fetch(variables.is_authenticated, {
 					method: 'GET',
 					headers
 				}).then(res => res.json());

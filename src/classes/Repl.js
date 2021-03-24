@@ -3,7 +3,7 @@ let variables = require('../utils/variables.js');
 
 async function _getReplId(username, slug) {
 	let info = await variables
-		.fetch(`https://staging.repl.it/data/repls/@${username}/${slug}`, {
+		.fetch(`https://replit.com/data/repls/@${username}/${slug}`, {
 			method: 'GET',
 			headers
 		})
@@ -24,7 +24,7 @@ class Repl {
 
 		let id = await _getReplId(username, slug);
 		let info = await variables
-			.fetch('https://staging.repl.it/graphql', {
+			.fetch(variables.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -55,7 +55,7 @@ class Repl {
 	  let slug = this.slug;
 	  
 		let info = await variables
-			.fetch(`https://staging.repl.it/data/repls/@${username}/${slug}`, {
+			.fetch(`https://replit.com/data/repls/@${username}/${slug}`, {
 				method: 'GET',
 				headers
 			})

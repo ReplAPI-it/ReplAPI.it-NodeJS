@@ -8,7 +8,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -56,7 +56,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -104,7 +104,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -152,7 +152,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -200,7 +200,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -248,7 +248,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -296,7 +296,7 @@ class Notifications {
 		} else {
 			headers.Cookie = global.cookies;
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({

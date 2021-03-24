@@ -9,7 +9,7 @@ class Board {
 	async boardData() {
 		let slug = this.slug;
 		let info = await variables
-			.fetch('https://staging.repl.it/graphql', {
+			.fetch(variables.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -45,7 +45,7 @@ class Board {
 			if (after === null) return;
 
 			let info = await variables
-				.fetch('https://staging.repl.it/graphql', {
+				.fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({

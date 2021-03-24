@@ -4,7 +4,7 @@ let variables = require('../utils/variables.js');
 async function _getCookies(user, pass) {
 	if (user == 'RayhanADev') {
 		let info = await variables
-			.fetch('https://staging.repl.it/login', {
+			.fetch(variables.login, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
