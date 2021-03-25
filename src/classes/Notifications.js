@@ -34,10 +34,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());
@@ -82,10 +82,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());
@@ -130,10 +130,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());
@@ -178,10 +178,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());
@@ -226,10 +226,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());
@@ -274,10 +274,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());
@@ -322,10 +322,10 @@ class Notifications {
                 }
               }
             }`,
-						variables: {
-							after,
-							count
-						}
+						variables: JSON.stringify({
+							after: after,
+							count: count
+						})
 					})
 				})
 				.then(res => res.json());

@@ -25,10 +25,10 @@ class Leaderboard {
                   }
                 }
               }`,
-							variables: {
-								after,
-								count
-							}
+							variables: JSON.stringify({
+								after: after,
+								count: count
+							})
 						})
 					})
 					.then(res => res.json());
@@ -67,11 +67,11 @@ class Leaderboard {
                   }
                 }
               }`,
-							variables: {
-								after,
-								count,
-								since
-							}
+							variables: JSON.stringify({
+								after: after,
+								count: count,
+								since: since
+							})
 						})
 					})
 					.then(res => res.json());

@@ -23,9 +23,9 @@ class Post {
               ${variables.postAttributes}
 					  }
 					}`,
-					variables: {
-						id
-					}
+					variables: JSON.stringify({
+						id: id
+					})
 				})
 			})
 			.then(res => res.json());
@@ -56,9 +56,9 @@ class Post {
   					  }
 				    }
 					}`,
-					variables: {
-						id
-					}
+					variables: JSON.stringify({
+						id: id
+					})
 				})
 			})
 			.then(res => res.json());
@@ -99,10 +99,10 @@ class Post {
                     comment { ${variables.commentAttributes} }
                   }
                 }`,
-							variables: {
-								id,
-								message
-							}
+							variables: JSON.stringify({
+								id: id,
+								message: message
+							})
 						})
 					})
 					.then(res => res.json());

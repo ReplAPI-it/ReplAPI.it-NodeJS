@@ -19,9 +19,9 @@ class Board {
                 ${variables.boardAttributes}
     				  }
     				}`,
-					variables: {
-						slug
-					}
+					variables: JSON.stringify({
+						slug: slug
+					})
 				})
 			})
 			.then(res => res.json());
@@ -60,12 +60,12 @@ class Board {
                 }
               }
             }`,
-						variables: {
-							slug,
-							after,
-							count,
-							order
-						}
+						variables: JSON.stringify({
+							slug: slug,
+							after: after,
+							count: count,
+							order: order
+						})
 					})
 				}).then(res => res.json());
 

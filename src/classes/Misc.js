@@ -24,10 +24,10 @@ class Misc {
                   ${variables.userAttributes}
                 }
               }`,
-						variables: {
-							query,
-							limit
-						}
+						variables: JSON.stringify({
+							query: query,
+							limit: limit
+						})
 					})
 				}).then(res => res.json());
 

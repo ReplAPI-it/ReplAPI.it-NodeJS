@@ -19,9 +19,9 @@ class User {
                 ${variables.userAttributes}
     				  }
     				}`,
-					variables: {
-						user
-					}
+					variables: JSON.stringify({
+						user: user
+					})
 				})
 			})
 			.then(res => res.json());
@@ -60,12 +60,12 @@ class User {
                 }
               }
             }`,
-						variables: {
-							user,
-							after,
-							count,
-							order
-						}
+						variables: JSON.stringify({
+							user: user,
+							after: after,
+							count: count,
+							order: order
+						})
 					})
 				})
 				.then(res => res.json());
@@ -115,12 +115,12 @@ class User {
                 }
               }
             }`,
-						variables: {
-							user,
-							after,
-							count,
-							order
-						}
+						variables: JSON.stringify({
+							user: user,
+							after: after,
+							counter: count,
+							order: order
+						})
 					})
 				})
 				.then(res => res.json());

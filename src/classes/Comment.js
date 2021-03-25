@@ -25,9 +25,9 @@ class Comment {
               ${variables.commentAttributes}
 					  }
 					}`,
-					variables: {
-						id
-					}
+					variables: JSON.stringify({
+						id: id
+					})
 				})
 			})
 			.then(res => res.json());
@@ -70,10 +70,10 @@ class Comment {
               comment { ${variables.commentAttributes} }
             }
           }`,
-							variables: {
-								id,
-								message
-							}
+							variables: JSON.stringify({
+								id: id,
+								message: message
+							})
 						})
 					})
 					.then(res => res.json());
@@ -117,9 +117,9 @@ class Comment {
               ${variables.commentAttributes}
             }
           }`,
-							variables: {
-								id
-							}
+							variables: JSON.stringify({
+								id: id
+							})
 						})
 					})
 					.then(res => res.json());
@@ -168,10 +168,10 @@ class Comment {
               comment { ${variables.commentAttributes} }
             }
           }`,
-							variables: {
-								id,
-								message
-							}
+							variables: JSON.stringify({
+								id: id,
+								message: message
+							})
 						})
 					})
 					.then(res => res.json());

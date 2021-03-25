@@ -36,9 +36,9 @@ class Repl {
     				    }
     				  }
     				}`,
-					variables: {
-						id
-					}
+					variables: JSON.stringify({
+						id: id
+					})
 				})
 			})
 			.then(res => res.json());
