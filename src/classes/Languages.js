@@ -1,6 +1,6 @@
 const atob = require('atob');
 
-class Language {
+class Languages {
   constructor(lang) {
     this.lang = lang;
   }
