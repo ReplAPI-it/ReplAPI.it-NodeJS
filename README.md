@@ -166,7 +166,7 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 ## Contact
 
-RayhanADev - [@RayhanADev](https://replit.com/@RayhanADev) - rayhan.arayilakath@wa-students.org
+RayhanADev - [@RayhanADev](https://replit.com/@RayhanADev) - rayhanadev@protonmail.com
 
 Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/RayhanADev/REPLAPI.it)
 
