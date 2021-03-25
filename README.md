@@ -71,7 +71,7 @@ The Replit GraphQL API is an extraordinary way to make projects unique and speci
 * Queries for Data on Leaderboard (with filters such as cycles since)
 * and lots more!
 
-My package is also simple to use with it's **class-based structure**. Simply create a new class for you User, Post, or whatever you heart desires and use built in functions with options to query data **your way**.
+My package is also simple to use with it's **class-based structure**. Simply create a new class for your User, Post, or whatever your heart desires and use built in functions with options to query data **your way**.
 
 ### Built With
 
