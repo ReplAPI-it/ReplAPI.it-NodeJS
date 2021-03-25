@@ -17,5 +17,5 @@ class Language {
 }
 
 module.exports = {
-  Language: Language
+  Languages: Languages
 };
