@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/RayhanADev/REPLAPI.it#readme",
   "dependencies": {
+    "atob": "^2.1.2",
     "node-fetch": "^2.6.1"
   }
 }
