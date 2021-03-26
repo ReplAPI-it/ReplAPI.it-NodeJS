@@ -118,7 +118,7 @@ class User {
 						variables: JSON.stringify({
 							user: user,
 							after: after,
-							counter: count,
+							count: count,
 							order: order
 						})
 					})
