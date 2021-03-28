@@ -15,7 +15,7 @@ async function _getReplId(username, slug) {
 class Repl {
 	constructor(username, slug) {
 		this.username = username;
-		this.slug = slug.replaceAll(' ', '-');
+		this.slug = slug.replace(/ /g, '-');
 	}
 
 	async replGraphQLData() {
