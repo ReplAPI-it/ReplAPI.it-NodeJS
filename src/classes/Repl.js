@@ -7,7 +7,7 @@ async function _getReplId(username, slug) {
 			method: 'GET',
 			headers
 		})
-		.then(res => res.json());
+		.then(res => res.text());
 
 	return info.id;
 }
@@ -15,7 +15,7 @@ async function _getReplId(username, slug) {
 class Repl {
 	constructor(username, slug) {
 		this.username = username;
-		this.slug = slug;
+		this.slug = slug.replaceAll(' ', '-');
 	}
 
 	async replGraphQLData() {
