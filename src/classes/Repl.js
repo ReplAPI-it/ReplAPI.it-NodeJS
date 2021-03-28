@@ -3,11 +3,11 @@ let variables = require('../utils/variables.js');
 
 async function _getReplId(username, slug) {
 	let info = await variables
-		.fetch(`https://replit.com/data/repls/@${username}/${slug}`, {
+		.fetch(`https://staging.replit.com/data/repls/@${username}/${slug}`, {
 			method: 'GET',
 			headers
 		})
-		.then(res => res.text());
+		.then(res => res.json());
 
 	return info.id;
 }
@@ -55,7 +55,7 @@ class Repl {
 	  let slug = this.slug;
 	  
 		let info = await variables
-			.fetch(`https://replit.com/data/repls/@${username}/${slug}`, {
+			.fetch(`https://staging.replit.com/data/repls/@${username}/${slug}`, {
 				method: 'GET',
 				headers
 			})
