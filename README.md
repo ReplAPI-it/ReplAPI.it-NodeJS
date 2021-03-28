@@ -16,7 +16,7 @@
   <p align="center">
     A Simple and Complete Replit API Package
     <br />
-    <a href="https://replapidocs.rayhanadev.repl.co"><strong>Explore the docs »</strong></a>
+    <a href="https://replapi-it-docs.vercel.app/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://www.npmjs.com/package/replapi-it">View Package on NPM</a>
@@ -142,7 +142,7 @@ Output:
  Post Title: Presenting... 🤔 RayhanADev 🤔? (GraphQL Success!)
  ```
 
-_For more examples, please refer to the [Documentation](https://replapidocs.rayhanadev.repl.co/)_
+_For more examples, please refer to the [Documentation](https://replapi-it-docs.vercel.app/)_
 
 ## Roadmap
 
