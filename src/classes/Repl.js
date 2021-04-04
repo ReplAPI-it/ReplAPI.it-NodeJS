@@ -67,6 +67,24 @@ class Repl {
 			return info;
 		}
 	}
+	
+	async replLangs() {
+	  let username = this.username;
+	  let slug = this.slug;
+	  
+		let info = await variables
+			.fetch(`https://replangs.rayhanadev.repl.co/${username}/${slug}`, {
+				method: 'GET',
+				headers
+			})
+			.then(res => res.json());
+
+		if (info.error) {
+			throw new Error(`REPLangs Error: ${info.error}.`);
+		} else {
+			return info;
+		}
+	}
 }
 
 module.exports = {
