@@ -41,7 +41,7 @@ class User {
 		let user = this.username;
 		let output = [];
 
-		async function recurse(after) {
+	 	async function recurse(after) {
 			if (after === null) return;
 
 			let info = await variables
