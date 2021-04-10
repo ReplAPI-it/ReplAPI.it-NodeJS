@@ -1,7 +1,12 @@
-let replapi = require('./src')
+let replapi = require('./src');
 
 module.exports = function(initVariables) {
-  global.initVariables = initVariables
+  if(initVariables) {
+    global.initVariables = initVariables;
+  } else {
+    console.warn('[WARN]: ReplAPI.it Initilization Variables not found!')
+  }
+  
   return {
     	User: replapi.User,
     	Post: replapi.Post,
