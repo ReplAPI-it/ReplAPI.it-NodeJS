@@ -8,6 +8,7 @@ const languages = require('./classes/Languages.js');
 const board = require('./classes/Board.js');
 const notifications = require('./classes/Notifications.js');
 const misc = require('./classes/Misc.js')
+const custom = require('./classes/Custom.js')
 
 if (!login) throw new Error('Login class not found');
 if (!user) throw new Error('User class not found');
@@ -19,6 +20,7 @@ if (!languages) throw new Error('Languages class not found');
 if (!board) throw new Error('Board class not found');
 if (!notifications) throw new Error('Notifications class not found');
 if (!misc) throw new Error('Miscellaneous class not found');
+if (!custom) throw new Error('Custom class not found');
 
 module.exports = {
   Login: login.Login,
@@ -30,5 +32,7 @@ module.exports = {
   Languages: languages.Languages,
   Board: board.Board,
   Notifications: notifications.Notifications,
-  Misc: misc.Misc
+  Misc: misc.Misc,
+  CustomDataQuery: custom.CustomDataQuery,
+  CustomRecursiveQuery: custom.CustomRecursiveQuery
 }

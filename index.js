@@ -10,5 +10,7 @@ module.exports = {
 	Board: replapi.Board,
 	Notifications: replapi.Notifications,
 	Misc: replapi.Misc,
-	Login: replapi.Login
+	Login: replapi.Login,
+	CustomDataQuery: replapi.CustomDataQuery,
+	CustomRecursiveQuery: replapi.CustomRecursiveQuery
 };
