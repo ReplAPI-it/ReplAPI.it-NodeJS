@@ -1,4 +1,9 @@
+# packages
 node_modules
-test
-.replit
 package-lock.json
+
+# testing
+test
+
+# replit
+.replit
