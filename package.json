@@ -1,6 +1,6 @@
 {
   "name": "replapi-it",
-  "version": "1.2.12",
+  "version": "1.2.13",
   "description": "A wrapper for Repl.it's GraphQL (and soon REST and even Crosis) API. Designed to be easy to use!",
   "main": "index.js",
   "scripts": {
