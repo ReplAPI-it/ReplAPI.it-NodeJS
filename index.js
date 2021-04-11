@@ -1,10 +1,19 @@
 let replapi = require('./src');
+let defaultInitVariables = {
+  username: undefined,
+  endpoints: {
+    gql: undefined,
+    restful: undefined,
+    login: undefined
+  }
+}
 
 module.exports = function(initVariables) {
   if(initVariables) {
     global.initVariables = initVariables;
   } else {
     console.warn('[WARN]: ReplAPI.it Initilization Variables not found!')
+    global.initVariables = defaultInitVariables;
   }
   
   return {
