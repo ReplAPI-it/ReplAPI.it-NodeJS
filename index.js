@@ -8,7 +8,7 @@ let _defaultInitVariables = {
   markdown: {
     length: undefined,
     removeMarkdown: undefined
-  }
+  },
   previewCount: {
     comments: undefined
   }

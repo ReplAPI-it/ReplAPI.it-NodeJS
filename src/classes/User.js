@@ -27,8 +27,7 @@ class User {
 						user: user
 					})
 				})
-			})
-			.then(res => res.json());
+			}).then(res => res.json());
 
     if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
     
@@ -37,6 +36,66 @@ class User {
 		} else {
 			return info.data.userByUsername;
 		}
+	}
+
+	async postDataAbridged(after, count, order) {
+		if (!after) after = '';
+		if (!count) count = 50;
+		if (!order) order = '';
+
+		let user = this.username;
+		let output = [];
+
+	 	async function recurse(after) {
+			if (after === null) return;
+
+			let info = await constants
+				.fetch(constants.graphql, {
+					method: 'POST',
+					headers,
+					body: JSON.stringify({
+						query: `
+              query UserPost($user: String!, $after: String!, $count: Int!, $order: String!) {
+                userByUsername(username: $user) {
+                  posts(count: $count, after: $after, order: $order) {
+                    items { 
+                      id, 
+                      title,  
+                      preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    }
+                    pageInfo {
+                      nextCursor
+                    }
+                  }
+                }
+              }`,
+						variables: JSON.stringify({
+							user: user,
+							after: after,
+							count: count,
+							order: order
+						})
+					})
+				}).then(res => res.json());
+
+      if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
+      
+			if (!info.data.userByUsername) {
+				throw new Error(
+					`${user} is not a user. Please query users on Replit.`
+				);
+			} else {
+				info.data.userByUsername.posts.items.forEach(post => {
+					output.push(post);
+				});
+				if (output.length != count) {
+					await recurse(info.data.userByUsername.posts.pageInfo.nextCursor);
+				}
+			}
+		}
+
+		await recurse(after);
+		return output;
 	}
 
 	async postDataFull(after, count, order) {
@@ -50,7 +109,7 @@ class User {
 	 	async function recurse(after) {
 			if (after === null) return;
 
-			let info = await variables
+			let info = await constants
 				.fetch(constants.graphql, {
 					method: 'POST',
 					headers,
@@ -82,8 +141,7 @@ class User {
 							order: order
 						})
 					})
-				})
-				.then(res => res.json());
+				}).then(res => res.json());
 
       if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
       
@@ -105,7 +163,7 @@ class User {
 		return output;
 	}
 
-	async commentData(after, count, order) {
+	async commentDataAbridged(after, count, order) {
 		if (!after) after = '';
 		if (!count) count = 50;
 		if (!order) order = '';
@@ -116,8 +174,67 @@ class User {
 		async function recurse(after) {
 			if (after === null) return;
 
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await constants
+				.fetch(constants.graphql, {
+					method: 'POST',
+					headers,
+					body: JSON.stringify({
+						query: `
+            query UserComment($user: String!, $after: String!, $count: Int!, $order: String!) {
+              userByUsername(username: $user) {
+                comments(count: $count, after: $after, order: $order) {
+                  items { 
+                    id,
+                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  }
+                  pageInfo {
+                    nextCursor
+                  }
+                }
+              }
+            }`,
+						variables: JSON.stringify({
+							user: user,
+							after: after,
+							count: count,
+							order: order
+						})
+					})
+				}).then(res => res.json());
+
+      if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
+			
+			if (!info.data.userByUsername) {
+				throw new Error(
+					`${user} is not a user. Please query users on Replit.`
+				);
+			} else {
+				info.data.userByUsername.comments.items.forEach(comment => {
+					output.push(comment);
+				});
+				if (output.length != count) {
+					await recurse(info.data.userByUsername.comments.pageInfo.nextCursor);
+				}
+			}
+		}
+
+		await recurse(after);
+		return output;
+	}
+
+	async commentDataFull(after, count, order) {
+		if (!after) after = '';
+		if (!count) count = 50;
+		if (!order) order = '';
+
+		let user = this.username;
+		let output = [];
+
+		async function recurse(after) {
+			if (after === null) return;
+
+			let info = await constants
+				.fetch(constants.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -154,8 +271,7 @@ class User {
 							order: order
 						})
 					})
-				})
-				.then(res => res.json());
+				}).then(res => res.json());
 
       if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
 			
