@@ -33,7 +33,7 @@ class User {
     if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
     
 		if (!info.data.userByUsername) {
-			throw new Error(`${user} is not a user. Please query users on Repl.it.`);
+			throw new Error(`${user} is not a user. Please query users on Replit.`);
 		} else {
 			return info.data.userByUsername;
 		}
@@ -64,10 +64,10 @@ class User {
                       user { ${constants.userAttributes} },
                       board { ${constants.boardAttributes} },
                       repl { ${constants.replAttributes} },
-                      comments(count: 10) { ${constants.commentAttributes} },
+                      comments(count: ${global.initVariables.previewCount.comments || 10}) { ${constants.commentAttributes} },
                       votes { id, user { ${constants.userAttributes} } },
                       answeredBy { ${constants.userAttributes} },
-                      answer { ${constants.commentAttributes} }
+                      answer { ${ constants.commentAttributes} }
                     }
                     pageInfo {
                       nextCursor
@@ -85,9 +85,11 @@ class User {
 				})
 				.then(res => res.json());
 
+      if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
+      
 			if (!info.data.userByUsername) {
 				throw new Error(
-					`${user} is not a user. Please query users on Repl.it.`
+					`${user} is not a user. Please query users on Replit.`
 				);
 			} else {
 				info.data.userByUsername.posts.items.forEach(post => {
@@ -123,7 +125,22 @@ class User {
             query UserComment($user: String!, $after: String!, $count: Int!, $order: String!) {
               userByUsername(username: $user) {
                 comments(count: $count, after: $after, order: $order) {
-                  items { ${variables.commentAttributes} }
+                  items { 
+                    ${constants.commentAttributes},
+                    parentComment { ${constants.commentAttributes} },
+                    comments(count: ${global.initVariables.previewCount.comments || 10}) { ${constants.commentAttributes} },
+                    user { ${constants.userAttributes} },
+                    post { 
+                      ${constants.postAttributes},
+                      user { ${constants.userAttributes} },
+                      board { ${constants.boardAttributes} },
+                      repl { ${constants.replAttributes} },
+                      comments(count: ${global.initVariables.previewCount.comments || 10}) { ${constants.commentAttributes} },
+                      votes { id, user { ${constants.userAttributes} } },
+                      answeredBy { ${constants.userAttributes} },
+                      answer { ${ constants.commentAttributes} }
+                    }
+                  }
                   pageInfo {
                     nextCursor
                   }
@@ -140,9 +157,11 @@ class User {
 				})
 				.then(res => res.json());
 
+      if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
+			
 			if (!info.data.userByUsername) {
 				throw new Error(
-					`${user} is not a user. Please query users on Repl.it.`
+					`${user} is not a user. Please query users on Replit.`
 				);
 			} else {
 				info.data.userByUsername.comments.items.forEach(comment => {

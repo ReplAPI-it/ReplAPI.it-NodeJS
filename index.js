@@ -9,6 +9,9 @@ let _defaultInitVariables = {
     length: undefined,
     removeMarkdown: undefined
   }
+  previewCount: {
+    comments: undefined
+  }
 }
 
 module.exports = function(initVariables) {
@@ -17,12 +20,11 @@ module.exports = function(initVariables) {
       if(typeof value == 'object') {
         for([nestedKey, nestedValue] of Object.entries(value)) {
           if(typeof nestedValue != 'string' && typeof nestedValue != 'number') throw new Error(`Invalid type for value of ${nestedKey}.`);
-          else _defaultInitVariables[key][nestedKey] = nestedValue;
+          else if(_defaultInitVariables[key][nestedKey]) _defaultInitVariables[key][nestedKey] = nestedValue;
         }
       } else {
-        console.log(typeof value)
         if(typeof value != 'string' && typeof value != 'number') throw new Error(`Invalid type for value of ${key}.`);
-        else _defaultInitVariables[key] = value;
+        else if(_defaultInitVariables[key]) _defaultInitVariables[key] = value;
       }
     }
     global.initVariables = _defaultInitVariables
