@@ -1,5 +1,5 @@
 let headers = require('../utils/headers.js');
-let variables = require('../utils/variables.js');
+let constants = require('../utils/constants.js');
 
 class Leaderboard {
 	async leaderboardData(after, count, since) {

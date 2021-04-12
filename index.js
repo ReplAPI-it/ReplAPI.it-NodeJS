@@ -4,12 +4,29 @@ let _defaultInitVariables = {
     gql: undefined,
     restful: undefined,
     login: undefined
+  },
+  markdown: {
+    length: undefined,
+    removeMarkdown: undefined
   }
 }
 
 module.exports = function(initVariables) {
   if(initVariables) {
-    global.initVariables = initVariables;
+    for([key, value] of Object.entries(initVariables)) {
+      if(typeof value == 'object') {
+        for([nestedKey, nestedValue] of Object.entries(value)) {
+          if(typeof nestedValue != 'string' && typeof nestedValue != 'number') throw new Error(`Invalid type for value of ${nestedKey}.`);
+          else _defaultInitVariables[key][nestedKey] = nestedValue;
+        }
+      } else {
+        console.log(typeof value)
+        if(typeof value != 'string' && typeof value != 'number') throw new Error(`Invalid type for value of ${key}.`);
+        else _defaultInitVariables[key] = value;
+      }
+    }
+    global.initVariables = _defaultInitVariables
+    console.log(global.initVariables)
   } else {
     global.initVariables = _defaultInitVariables;
   }

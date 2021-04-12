@@ -1,5 +1,5 @@
 let headers = require('../utils/headers.js');
-let variables = require('../utils/variables.js');
+let constants = require('../utils/constants.js');
 
 class User {
 	constructor(username) {
@@ -8,15 +8,19 @@ class User {
 
 	async profileData() {
 		let user = this.username;
-		let info = await variables
-			.fetch(variables.graphql, {
+		let info = await constants
+			.fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
 					query: `
     			  query User($user: String!) {
     				  userByUsername(username: $user) {
-                ${variables.userAttributes}
+                ${constants.userAttributes},
+                roles { ${constants.roleAttributes} },
+                subscription { ${constants.subscriptionAttributes} },
+                organization { ${constants.organizationAttributes} },
+                languages { ${constants.languageAttributes} }
     				  }
     				}`,
 					variables: JSON.stringify({
@@ -26,6 +30,8 @@ class User {
 			})
 			.then(res => res.json());
 
+    if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
+    
 		if (!info.data.userByUsername) {
 			throw new Error(`${user} is not a user. Please query users on Repl.it.`);
 		} else {
@@ -33,7 +39,7 @@ class User {
 		}
 	}
 
-	async postData(after, count, order) {
+	async postDataFull(after, count, order) {
 		if (!after) after = '';
 		if (!count) count = 50;
 		if (!order) order = '';
@@ -45,21 +51,30 @@ class User {
 			if (after === null) return;
 
 			let info = await variables
-				.fetch(variables.graphql, {
+				.fetch(constants.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
 						query: `
-            query UserPost($user: String!, $after: String!, $count: Int!, $order: String!) {
-              userByUsername(username: $user) {
-                posts(count: $count, after: $after, order: $order) {
-                  items { ${variables.postAttributes} }
-                  pageInfo {
-                    nextCursor
+              query UserPost($user: String!, $after: String!, $count: Int!, $order: String!) {
+                userByUsername(username: $user) {
+                  posts(count: $count, after: $after, order: $order) {
+                    items { 
+                      ${constants.postAttributes},
+                      user { ${constants.userAttributes} },
+                      board { ${constants.boardAttributes} },
+                      repl { ${constants.replAttributes} },
+                      comments(count: 10) { ${constants.commentAttributes} },
+                      votes { id, user { ${constants.userAttributes} } },
+                      answeredBy { ${constants.userAttributes} },
+                      answer { ${constants.commentAttributes} }
+                    }
+                    pageInfo {
+                      nextCursor
+                    }
                   }
                 }
-              }
-            }`,
+              }`,
 						variables: JSON.stringify({
 							user: user,
 							after: after,
