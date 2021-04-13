@@ -123,8 +123,8 @@ class User {
                       user { ${constants.userAttributes} },
                       board { ${constants.boardAttributes} },
                       repl { ${constants.replAttributes} },
-                      comments(count: ${global.initVariables.previewCount.comments || 10}) { ${constants.commentAttributes} },
-                      votes { id, user { ${constants.userAttributes} } },
+                      comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } },
+                      votes { items { id, user { ${constants.userAttributes} } } },
                       answeredBy { ${constants.userAttributes} },
                       answer { ${ constants.commentAttributes} }
                     }
@@ -245,15 +245,15 @@ class User {
                   items { 
                     ${constants.commentAttributes},
                     parentComment { ${constants.commentAttributes} },
-                    comments(count: ${global.initVariables.previewCount.comments || 10}) { ${constants.commentAttributes} },
+                    comments { ${constants.commentAttributes} },
                     user { ${constants.userAttributes} },
                     post { 
                       ${constants.postAttributes},
                       user { ${constants.userAttributes} },
                       board { ${constants.boardAttributes} },
                       repl { ${constants.replAttributes} },
-                      comments(count: ${global.initVariables.previewCount.comments || 10}) { ${constants.commentAttributes} },
-                      votes { id, user { ${constants.userAttributes} } },
+                      comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } },
+                      votes { items { id, user { ${constants.userAttributes} } } },
                       answeredBy { ${constants.userAttributes} },
                       answer { ${ constants.commentAttributes} }
                     }
