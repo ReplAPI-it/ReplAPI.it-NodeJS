@@ -92,7 +92,7 @@ class Repl {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
-					query: `query ReplTitle() { replTitle }`
+					query: `{ replTitle }`
 				})
 			}).then(res => res.json());
 

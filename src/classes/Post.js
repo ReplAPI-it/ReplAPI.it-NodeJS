@@ -9,7 +9,7 @@ class Post {
 	async postDataAbridged() {
 		let id = this.id;
 		if (typeof id != 'number') {
-			throw new Error(`${id} is not a post. Please query posts on Repl.it.`);
+			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		}
 
 		let info = await constants
@@ -34,7 +34,7 @@ class Post {
     if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
     
 		if (!info.data.post) {
-			throw new Error(`${id} is not a post. Please query posts on Repl.it.`);
+			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		} else {
 			return info.data.post;
 		}
@@ -43,7 +43,7 @@ class Post {
 	async postDataFull() {
 		let id = this.id;
 		if (typeof id != 'number') {
-			throw new Error(`${id} is not a post. Please query posts on Repl.it.`);
+			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		}
 
 		let info = await constants
@@ -73,7 +73,7 @@ class Post {
     if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
     
 		if (!info.data.post) {
-			throw new Error(`${id} is not a post. Please query posts on Repl.it.`);
+			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		} else {
 			return info.data.post;
 		}
@@ -82,7 +82,7 @@ class Post {
 	async recentComments() {
 		let id = this.id;
 		if (typeof id != 'number') {
-			throw new Error(`${id} is not a post. Please query posts on Repl.it.`);
+			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		}
 
 		let info = await constants
@@ -120,7 +120,7 @@ class Post {
     if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
     
 		if (!info.data.post) {
-			throw new Error(`${id} is not a post. Please query posts on Repl.it.`);
+			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		} else {
 			return info.data.post.recentComments;
 		}
@@ -249,7 +249,7 @@ class Post {
 						headers,
 						body: JSON.stringify({
 							query: `
-      				  mutation UpdatePost($input: CreatePostInput!) {
+      				  mutation UpdatePost($input: UpdatePostInput!) {
                   updatePost(input: $input) {
                     post {
                       id, 
@@ -318,6 +318,98 @@ class Post {
 
         if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
         else return info.data.post;
+			} else {
+				throw new Error(
+					`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				);
+			}
+		}
+	}
+	
+	async createPostVote(id) {
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else {
+			if (['RayhanADev'].contains(global.initVariables.username)) {
+        if (typeof id != 'number') {
+					throw new Error(
+						`Id must be of type number. Got type ${typeof title}.`
+					);
+				}
+
+				headers['Set-Cookie'] = global.cookies;
+				let info = await constants
+					.fetch(constants.graphql, {
+						method: 'POST',
+						headers,
+						body: JSON.stringify({
+							query: `
+      				  mutation CreatePostVote($id: Int!) {
+                  createPostVote(id: $id) {
+                    id,
+                    user { username },  
+                    post { 
+                      id, 
+                      title, 
+                      preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    }
+                  }
+                }`,
+							variables: JSON.stringify({
+								id: id
+							})
+						})
+					})
+					.then(res => res.json());
+
+        if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+        else return info.data.createPostVote;
+			} else {
+				throw new Error(
+					`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				);
+			}
+		}
+	}
+	
+	async deletePostVote(id) {
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else {
+			if (['RayhanADev'].contains(global.initVariables.username)) {
+        if (typeof id != 'number') {
+					throw new Error(
+						`Id must be of type number. Got type ${typeof title}.`
+					);
+				}
+
+				headers['Set-Cookie'] = global.cookies;
+				let info = await constants
+					.fetch(constants.graphql, {
+						method: 'POST',
+						headers,
+						body: JSON.stringify({
+							query: `
+      				  mutation DeletePostVote($id: Int!) {
+                  deletePostVote(id: $id) {
+                    id,
+                    user { username },  
+                    post { 
+                      id, 
+                      title, 
+                      preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    }
+                  }
+                }`,
+							variables: JSON.stringify({
+								id: id
+							})
+						})
+					})
+					.then(res => res.json());
+
+        if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+        else return info.data.createPostVote;
 			} else {
 				throw new Error(
 					`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
