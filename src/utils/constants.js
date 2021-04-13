@@ -11,5 +11,5 @@ module.exports = {
   postAttributes: `id, title, body, showHosted, voteCount, commentCount, isPinned, isLocked, timeCreated, timeUpdated, url, isAnnouncement, isAuthor, canEdit, canComment, canVote, canPin, canSetType, canChangeBoard, canLock, hasVoted, canReport, hasReported, isAnswerable, tutorialPages, preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})`,
   graphql: `${global.initVariables.endpoints.gql || 'https://staging.replit.com/graphql'}`,
   login: `${global.initVariables.endpoints.login || 'https://staging.replit.com/login'}`,
-  restful: `${global.initVariables.endpoints.restful || 'https://staging.replit.com/'}`
+  restful: `${global.initVariables.endpoints.restful || 'https://staging.replit.com'}`
 }
