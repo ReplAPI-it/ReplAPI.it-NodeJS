@@ -2,8 +2,8 @@ let headers = require('../utils/headers.js');
 let constants = require('../utils/constants.js');
 
 async function _getReplId(username, slug) {
-	let info = await variables
-		.fetch(`https://staging.replit.com/data/repls/@${username}/${slug}`, {
+	let info = await constants
+		.fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
 			method: 'GET',
 			headers
 		})
@@ -23,8 +23,8 @@ class Repl {
 		let slug = this.slug;
 
 		let id = await _getReplId(username, slug);
-		let info = await variables
-			.fetch(variables.graphql, {
+		let info = await constants
+			.fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -32,7 +32,7 @@ class Repl {
     			  query Repl($id: String!) {
     				  repl(id: $id) {
     				    ... on Repl {
-                  ${variables.replAttributes}
+                  ${constants.replAttributes}
     				    }
     				  }
     				}`,
@@ -40,8 +40,9 @@ class Repl {
 						id: id
 					})
 				})
-			})
-			.then(res => res.json());
+			}).then(res => res.json());
+
+    if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
 
 		if (!info.data.repl) {
 			throw new Error(`${slug} is not a repl. Please query repls on Repl.it.`);
@@ -54,8 +55,8 @@ class Repl {
 	  let username = this.username;
 	  let slug = this.slug;
 	  
-		let info = await variables
-			.fetch(`https://staging.replit.com/data/repls/@${username}/${slug}`, {
+		let info = await constants
+			.fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
 				method: 'GET',
 				headers
 			})
@@ -72,18 +73,31 @@ class Repl {
 	  let username = this.username;
 	  let slug = this.slug;
 	  
-		let info = await variables
+		let info = await constants
 			.fetch(`https://replangs.rayhanadev.repl.co/${username}/${slug}`, {
 				method: 'GET',
 				headers
-			})
-			.then(res => res.json());
+			}).then(res => res.json());
 
 		if (info.error) {
 			throw new Error(`REPLangs Error: ${info.error}.`);
 		} else {
 			return info;
 		}
+	}
+	
+	async replTitleGen() {
+		let info = await constants
+			.fetch(constants.graphql, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify({
+					query: `query ReplTitle() { replTitle }`
+				})
+			}).then(res => res.json());
+
+    if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+    else return info.data.replTitle;
 	}
 }
 
