@@ -3,8 +3,8 @@ let constants = require('../utils/constants.js');
 
 async function _getCookies(user, pass) {
 	if (user == 'RayhanADev') {
-		let info = await variables
-			.fetch(variables.login, {
+		let info = await constants
+			.fetch(constants.login, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -13,7 +13,7 @@ async function _getCookies(user, pass) {
 				})
 			})
 			.then(res => {
-				return res.headers.raw()['set-cookie'][1];
+				return res.headers.raw()['Set-Cookie'][1];
 			});
 
 		if (!info) {
@@ -23,25 +23,28 @@ async function _getCookies(user, pass) {
 		}
 	} else {
 		throw new Error(
-			`${user} is not whitelisted. Please contact @RayhanADev in Repl.it to talk about getting added to the whitelist.`
+			`${user} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
 		);
 	}
 }
 
 class Login {
-	constructor(username, password) {
-		this.username = username;
-		this.password = password;
-	}
-
-	async account() {
-		let user = this.username;
-		let pass = this.password;
-		if (user == 'RayhanADev') {
-			global.cookies = await _getCookies(user, pass);
+	async withCredentials(password) {
+		if (['RayhanADev'].contains(global.initVariables.username)) {
+			global.cookies = await _getCookies(global.initVariables.username, password);
 		} else {
 			throw new Error(
-				`${user} is not whitelisted. Please contact @RayhanADev in Repl.it to talk about getting added to the whitelist.`
+				`${user} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+			);
+		}
+	}
+	
+  async withSID(sid) {
+		if (['RayhanADev'].contains(global.initVariables.username)) {
+			global.cookies = sid;
+		} else {
+			throw new Error(
+				`${user} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
 			);
 		}
 	}
