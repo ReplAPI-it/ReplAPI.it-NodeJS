@@ -6,7 +6,35 @@ class User {
 		this.username = username;
 	}
 
-	async profileData() {
+	async userGraphQLDataAbridged() {
+		let user = this.username;
+		let info = await constants
+			.fetch(constants.graphql, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify({
+					query: `
+    			  query User($user: String!) {
+    				  userByUsername(username: $user) {
+                ${constants.userAttributes}
+    				  }
+    				}`,
+					variables: JSON.stringify({
+						user: user
+					})
+				})
+			}).then(res => res.json());
+
+    if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`)
+    
+		if (!info.data.userByUsername) {
+			throw new Error(`${user} is not a user. Please query users on Replit.`);
+		} else {
+			return info.data.userByUsername;
+		}
+	}
+
+	async userGraphQLDataFull() {
 		let user = this.username;
 		let info = await constants
 			.fetch(constants.graphql, {
@@ -38,7 +66,23 @@ class User {
 		}
 	}
 
-	async postDataAbridged(after, count, order) {
+	async userRestfulData() {
+	  let username = this.username;
+	  
+		let info = await constants
+			.fetch(`${constants.restful}/data/profiles/${username}`, {
+				method: 'GET',
+				headers
+			}).then(res => res.json());
+
+		if (!info) {
+			throw new Error(`${username} is not a user. Please query users on Replit.`);
+		} else {
+			return info;
+		}
+	}
+
+	async postsDataAbridged(after, count, order) {
 		if (!after) after = '';
 		if (!count) count = 50;
 		if (!order) order = '';
@@ -98,7 +142,7 @@ class User {
 		return output;
 	}
 
-	async postDataFull(after, count, order) {
+	async postsDataFull(after, count, order) {
 		if (!after) after = '';
 		if (!count) count = 50;
 		if (!order) order = '';
@@ -163,7 +207,7 @@ class User {
 		return output;
 	}
 
-	async commentDataAbridged(after, count, order) {
+	async commentsDataAbridged(after, count, order) {
 		if (!after) after = '';
 		if (!count) count = 50;
 		if (!order) order = '';
@@ -222,7 +266,7 @@ class User {
 		return output;
 	}
 
-	async commentDataFull(after, count, order) {
+	async commentsDataFull(after, count, order) {
 		if (!after) after = '';
 		if (!count) count = 50;
 		if (!order) order = '';
@@ -291,6 +335,47 @@ class User {
 
 		await recurse(after);
 		return output;
+	}
+
+	async userSearch(query, limit) {
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else {
+			if (['RayhanADev'].contains(global.initVariables.username)) {
+  			if (!query)
+  				throw new Error(
+  					'User Search needs a query to search. Please supply a query.'
+  				);
+  			if (!limit) limit = 10;
+  
+				headers['Set-Cookie'] = global.cookies;
+  			let info = await constants
+  				.fetch(constants.graphql, {
+  					method: 'POST',
+  					headers,
+  					body: JSON.stringify({
+  						query: `
+        			  query UserSearch($query: String!, $limit: Int!) {
+                	usernameSearch(query: $query, limit: $limit) {
+                    id,
+                    username
+                  }
+                }`,
+  						variables: JSON.stringify({
+  							query: query,
+  							limit: limit
+  						})
+  					})
+  				}).then(res => res.json());
+  
+  			if(info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+        else return info.data.usernameSearch;
+			} else {
+				throw new Error(
+					`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				);
+			}
+		}
 	}
 }
 
