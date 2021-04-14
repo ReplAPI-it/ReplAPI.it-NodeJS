@@ -1,5 +1,8 @@
 let _defaultInitVariables = {
   username: undefined,
+  captcha: {
+    token: undefined
+  },
   endpoints: {
     gql: undefined,
     restful: undefined,
@@ -20,15 +23,14 @@ module.exports = function(initVariables) {
       if(typeof value == 'object') {
         for([nestedKey, nestedValue] of Object.entries(value)) {
           if(typeof nestedValue != 'string' && typeof nestedValue != 'number') throw new Error(`Invalid type for value of ${nestedKey}.`);
-          else if(_defaultInitVariables[key][nestedKey]) _defaultInitVariables[key][nestedKey] = nestedValue;
+          else if(_defaultInitVariables[key][nestedKey] === undefined) _defaultInitVariables[key][nestedKey] = nestedValue;
         }
       } else {
         if(typeof value != 'string' && typeof value != 'number') throw new Error(`Invalid type for value of ${key}.`);
-        else if(_defaultInitVariables[key]) _defaultInitVariables[key] = value;
+        else if(_defaultInitVariables[key] === undefined) _defaultInitVariables[key] = value;
       }
     }
     global.initVariables = _defaultInitVariables
-    console.log(global.initVariables)
   } else {
     global.initVariables = _defaultInitVariables;
   }
