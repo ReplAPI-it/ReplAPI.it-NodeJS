@@ -1,5 +1,7 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
+
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
 
 async function _getReplId(username, slug) {
 	let info = await constants
@@ -12,7 +14,7 @@ async function _getReplId(username, slug) {
 	return info.id;
 }
 
-class Repl {
+export default class Repl {
 	constructor(username, slug) {
 		this.username = username;
 		this.slug = slug.replace(/ /g, '-');
@@ -23,8 +25,7 @@ class Repl {
 		let slug = this.slug;
 
 		let id = await _getReplId(username, slug);
-		let info = await constants
-			.fetch(constants.graphql, {
+		let info = await fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -55,8 +56,7 @@ class Repl {
 	  let username = this.username;
 	  let slug = this.slug;
 	  
-		let info = await constants
-			.fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
+		let info = await fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
 				method: 'GET',
 				headers
 			})
@@ -73,8 +73,7 @@ class Repl {
 	  let username = this.username;
 	  let slug = this.slug;
 	  
-		let info = await constants
-			.fetch(`https://replangs.rayhanadev.repl.co/${username}/${slug}`, {
+		let info = await fetch(`https://replangs.rayhanadev.repl.co/${username}/${slug}`, {
 				method: 'GET',
 				headers
 			}).then(res => res.json());
@@ -87,8 +86,7 @@ class Repl {
 	}
 	
 	async replTitleGen() {
-		let info = await constants
-			.fetch(constants.graphql, {
+		let info = await fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -100,7 +98,3 @@ class Repl {
     else return info.data.replTitle;
 	}
 }
-
-module.exports = {
-	Repl: Repl
-};

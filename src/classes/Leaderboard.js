@@ -1,7 +1,9 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
 
-class Leaderboard {
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
+
+export default class Leaderboard {
 	async leaderboardData(after, count, since) {
 		if (!after) after = '';
 		if (!count) count = 10;
@@ -11,8 +13,7 @@ class Leaderboard {
 			async function recurse(after) {
 				if (after === null) return;
 
-				let info = await variables
-					.fetch(variables.graphql, {
+				let info = await fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -53,8 +54,7 @@ class Leaderboard {
 			async function recurse(after) {
 				if (after === null) return;
 
-				let info = await variables
-					.fetch(variables.graphql, {
+				let info = await fetch(variables.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -93,7 +93,3 @@ class Leaderboard {
 		}
 	}
 }
-
-module.exports = {
-	Leaderboard: Leaderboard
-};

@@ -1,7 +1,9 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
 
-class CustomDataQuery {
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
+
+export class CustomDataQuery {
 	constructor(queryName, customQuery, customVariables) {
 		this.queryName = queryName;
 		this.customQuery = customQuery;
@@ -40,8 +42,7 @@ class CustomDataQuery {
 		  }
 		}
 
-		let info = await variables
-			.fetch(variables.graphql, {
+		let info = await fetch(variables.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -62,7 +63,7 @@ class CustomDataQuery {
 	}
 }
 
-class CustomRecursiveQuery {
+export class CustomRecursiveQuery {
 	constructor(queryName, customQuery, customVariables, treePath, customAfter, customCount) {
 		this.queryName = queryName;
 		this.customQuery = customQuery;
@@ -143,8 +144,3 @@ class CustomRecursiveQuery {
 		return output;
 	}
 }
-
-module.exports = {
-	CustomDataQuery: CustomDataQuery,
-	CustomRecursiveQuery: CustomRecursiveQuery
-};

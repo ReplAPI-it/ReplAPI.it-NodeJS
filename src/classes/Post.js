@@ -1,7 +1,9 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
 
-class Post {
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
+
+export default class Post {
 	constructor(id) {
 		this.id = id;
 	}
@@ -12,8 +14,7 @@ class Post {
 			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		}
 
-		let info = await constants
-			.fetch(constants.graphql, {
+		let info = await fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -46,8 +47,7 @@ class Post {
 			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		}
 
-		let info = await constants
-			.fetch(constants.graphql, {
+		let info = await fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -85,8 +85,7 @@ class Post {
 			throw new Error(`${id} is not a post. Please query posts on Replit.`);
 		}
 
-		let info = await constants
-			.fetch(constants.graphql, {
+		let info = await fetch(constants.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -158,8 +157,7 @@ class Post {
 				}
 
 				headers['Set-Cookie'] = global.cookies;
-				let info = await constants
-					.fetch(constants.graphql, {
+				let info = await fetch(constants.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -243,8 +241,7 @@ class Post {
 				}
 
 				headers['Set-Cookie'] = global.cookies;
-				let info = await constants
-					.fetch(constants.graphql, {
+				let info = await fetch(constants.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -296,8 +293,7 @@ class Post {
 				}
 
 				headers['Set-Cookie'] = global.cookies;
-				let info = await constants
-					.fetch(constants.graphql, {
+				let info = await fetch(constants.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -338,8 +334,7 @@ class Post {
 				}
 
 				headers['Set-Cookie'] = global.cookies;
-				let info = await constants
-					.fetch(constants.graphql, {
+				let info = await fetch(constants.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -384,8 +379,7 @@ class Post {
 				}
 
 				headers['Set-Cookie'] = global.cookies;
-				let info = await constants
-					.fetch(constants.graphql, {
+				let info = await fetch(constants.graphql, {
 						method: 'POST',
 						headers,
 						body: JSON.stringify({
@@ -418,7 +412,3 @@ class Post {
 		}
 	}
 }
-
-module.exports = {
-	Post: Post
-};

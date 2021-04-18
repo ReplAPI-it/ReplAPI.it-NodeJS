@@ -1,15 +1,16 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
 
-class Board {
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
+
+export default class Board {
 	constructor(slug) {
 		this.slug = slug;
 	}
 
 	async boardData() {
 		let slug = this.slug;
-		let info = await variables
-			.fetch(variables.graphql, {
+		let info = await fetch(variables.graphql, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -44,8 +45,7 @@ class Board {
 		async function recurse(after) {
 			if (after === null) return;
 
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -87,7 +87,3 @@ class Board {
 		return output;
 	}
 }
-
-module.exports = {
-	Board: Board
-};

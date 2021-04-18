@@ -1,14 +1,15 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
 
-class Notifications {
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
+
+export default class Notifications {
 	async postReplyNotification(after, count) {
 		if (!global.cookies) {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -55,8 +56,7 @@ class Notifications {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -103,8 +103,7 @@ class Notifications {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -151,8 +150,7 @@ class Notifications {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -199,8 +197,7 @@ class Notifications {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -247,8 +244,7 @@ class Notifications {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -295,8 +291,7 @@ class Notifications {
 			throw new Error('Not logged in.');
 		} else {
 			headers.Cookie = global.cookies;
-			let info = await variables
-				.fetch(variables.graphql, {
+			let info = await fetch(variables.graphql, {
 					method: 'POST',
 					headers,
 					body: JSON.stringify({
@@ -338,7 +333,3 @@ class Notifications {
 		}
 	}
 }
-
-module.exports = {
-	Notifications: Notifications
-};

@@ -1,10 +1,11 @@
-let headers = require('../utils/headers.js');
-let constants = require('../utils/constants.js');
+import fetch from 'node-fetch'
+
+import headers from '../utils/headers.js'
+import constants from '../utils/constants.js'
 
 async function _getCookies(username, password) {
 	if (['RayhanADev'].includes(global.initVariables.username)) {
-		let info = await constants
-			.fetch(constants.login, {
+		let info = await fetch(constants.login, {
 				method: 'POST',
 				headers,
 				body: JSON.stringify({
@@ -27,7 +28,7 @@ async function _getCookies(username, password) {
 	}
 }
 
-class Login {
+export default class Login {
 	async withCredentials(password) {
 		if (['RayhanADev'].includes(global.initVariables.username)) {
 			global.cookies = await _getCookies(global.initVariables.username, password);
@@ -48,7 +49,3 @@ class Login {
 		}
 	}
 }
-
-module.exports = {
-	Login: Login
-};
