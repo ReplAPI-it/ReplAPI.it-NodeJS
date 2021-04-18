@@ -50,7 +50,11 @@ export default class Board {
             query BoardPosts($slug: String!, $after: String!, $count: Int!, $order: String!) {
               boardBySlug(slug: $slug) {
                 posts(count: $count, after: $after, order: $order) {
-                  items { ${constants.postAttributes} }
+                  items { 
+                    id
+                    title
+                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  }
                   pageInfo {
                     nextCursor
                   }
