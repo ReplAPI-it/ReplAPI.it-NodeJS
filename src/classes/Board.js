@@ -1,89 +1,88 @@
-import fetch from 'node-fetch'
+import fetch from 'node-fetch';
 
-import headers from '../utils/headers.js'
-import constants from '../utils/constants.js'
+import headers from '../utils/headers.js';
+import constants from '../utils/constants.js';
 
 export default class Board {
-	constructor(slug) {
-		this.slug = slug;
-	}
+  constructor(slug) {
+    this.slug = slug;
+  }
 
-	async boardData() {
-		let slug = this.slug;
-		let info = await fetch(variables.graphql, {
-				method: 'POST',
-				headers,
-				body: JSON.stringify({
-					query: `
-    			  query Board($slug: String!) {
-    				  boardBySlug(slug: $slug) {
-                ${variables.boardAttributes}
-    				  }
-    				}`,
-					variables: JSON.stringify({
-						slug: slug
-					})
-				})
-			})
-			.then(res => res.json());
+  async boardData() {
+    const { slug } = this;
+    const info = await fetch(constants.graphql, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query: `
+          query Board($slug: String!) {
+            boardBySlug(slug: $slug) {
+              ${constants.boardAttributes}
+            }
+          }`,
+        variables: JSON.stringify({
+          slug,
+        }),
+      }),
+    }).then((res) => res.json());
 
-		if (!info.data.boardBySlug) {
-			throw new Error(`${slug} is not a board. Please query boards on Repl.it.`);
-		} else {
-			return info.data.boardBySlug;
-		}
-	}
-	
-	async boardPosts(after, count, order) {
-		if (!after) after = '';
-		if (!count) count = 5;
-		if (!order) order = '';
+    if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
 
-		let slug = this.slug;
-		let output = [];
+    if (!info.data.boardBySlug) {
+      throw new Error(`${slug} is not a board. Please query boards on Replit.`);
+    } else {
+      return info.data.boardBySlug;
+    }
+  }
 
-		async function recurse(after) {
-			if (after === null) return;
+  async boardPosts(after = '', count = 5, order = '') {
+    const { slug } = this;
+    const output = [];
 
-			let info = await fetch(variables.graphql, {
-					method: 'POST',
-					headers,
-					body: JSON.stringify({
-						query: `
+    async function recurse(recurseAfter) {
+      if (recurseAfter === null) return;
+
+      const info = await fetch(constants.graphql, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          query: `
             query BoardPosts($slug: String!, $after: String!, $count: Int!, $order: String!) {
               boardBySlug(slug: $slug) {
                 posts(count: $count, after: $after, order: $order) {
-                  items { ${variables.postAttributes} }
+                  items { ${constants.postAttributes} }
                   pageInfo {
                     nextCursor
                   }
                 }
               }
             }`,
-						variables: JSON.stringify({
-							slug: slug,
-							after: after,
-							count: count,
-							order: order
-						})
-					})
-				}).then(res => res.json());
+          variables: JSON.stringify({
+            slug,
+            recurseAfter,
+            count,
+            order,
+          }),
+        }),
+      }).then((res) => res.json());
 
-			if (!info.data.boardBySlug) {
-				throw new Error(
-					`${slug} is not a board. Please query boards on Repl.it.`
-				);
-			} else {
-				info.data.boardBySlug.posts.items.forEach(post => {
-					output.push(post);
-				});
-				if (output.length != count) {
-					await recurse(info.data.boardBySlug.posts.pageInfo.nextCursor);
-				}
-			}
-		}
+      if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
 
-		await recurse(after);
-		return output;
-	}
+      if (!info.data.boardBySlug) {
+        throw new Error(
+          `${slug} is not a board. Please query boards on Replit.`,
+        );
+      } else {
+        info.data.boardBySlug.posts.items.forEach((post) => {
+          output.push(post);
+        });
+        if (output.length !== count) {
+          await recurse(info.data.boardBySlug.posts.pageInfo.nextCursor);
+        }
+      }
+    }
+
+    await recurse(after);
+    return output;
+  }
 }
