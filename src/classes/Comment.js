@@ -87,7 +87,7 @@ export default class Comment {
   async createCommentOnPost(body, postId) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof body !== 'string') {
         throw new Error(
           `Body must be of type string. Got type ${typeof title}.`,
@@ -134,7 +134,7 @@ export default class Comment {
   async createCommentOnComment(body, commentId) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof body !== 'string') {
         throw new Error(
           `Body must be of type string. Got type ${typeof title}.`,
@@ -181,7 +181,7 @@ export default class Comment {
   async updateComment(id, body) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Title must be of type number. Got type ${typeof title}.`,
@@ -228,7 +228,7 @@ export default class Comment {
   async deleteComment(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -265,7 +265,7 @@ export default class Comment {
   async createCommentVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -306,7 +306,7 @@ export default class Comment {
   async deleteCommentVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,

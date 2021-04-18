@@ -318,7 +318,7 @@ export default class User {
   async userSearch(query, limit = '') {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (!query) {
         throw new Error('User Search needs a query to search. Please supply a query.');
       }

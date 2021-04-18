@@ -1,95 +1,71 @@
-import fetch from 'node-fetch'
+import fetch from 'node-fetch';
 
-import headers from '../utils/headers.js'
-import constants from '../utils/constants.js'
+import headers from '../utils/headers.js';
+import constants from '../utils/constants.js';
 
 export default class Leaderboard {
-	async leaderboardData(after, count, since) {
-		if (!after) after = '';
-		if (!count) count = 10;
-		if (!since) {
-			let output = [];
+  async leaderboardData(after = '', count = 10, since) {
+    let query = '';
+    let variables = {};
+    if (since) {
+      query = `
+        query Leaderboard($after: String!, $count: Int!, $since: KarmaSince!) {
+          leaderboard(after: $after, count: $count, since: $since) {
+            items { ${constants.userAttributes} }
+            pageInfo {
+              nextCursor
+            }
+          }
+        }`;
+      variables = {
+        after,
+        count,
+        since,
+      };
+    } else {
+      query = `
+        query Leaderboard($after: String!, $count: Int!) {
+          leaderboard(after: $after, count: $count) {
+            items { ${constants.userAttributes} }
+            pageInfo {
+              nextCursor
+            }
+          }
+        }`;
+      variables = {
+        after,
+        count,
+      };
+    }
 
-			async function recurse(after) {
-				if (after === null) return;
+    const output = [];
 
-				let info = await fetch(variables.graphql, {
-						method: 'POST',
-						headers,
-						body: JSON.stringify({
-							query: `
-              query Leaderboard($after: String!, $count: Int!) {
-                leaderboard(after: $after, count: $count) {
-                  items { ${variables.userAttributes} }
-                  pageInfo {
-                    nextCursor
-                  }
-                }
-              }`,
-							variables: JSON.stringify({
-								after: after,
-								count: count
-							})
-						})
-					})
-					.then(res => res.json());
+    async function recurse(recurseAfter) {
+      if (recurseAfter === null) return;
 
-				if (!info.data.leaderboard) {
-					throw new Error(`Cannot fetch leaderboard`);
-				} else {
-					info.data.leaderboard.items.forEach(user => {
-						output.push(user);
-					});
-					if (output.length != count) {
-						await recurse(info.data.leaderboard.pageInfo.nextCursor);
-					}
-				}
-			}
+      const info = await fetch(constants.graphql, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          query,
+          variables: JSON.stringify(variables),
+        }),
+      })
+        .then((res) => res.json());
 
-			await recurse(after);
-			return output;
-		} else {
-			let output = [];
+      if (!info.data.leaderboard) {
+        throw new Error('Cannot fetch leaderboard');
+      } else {
+        info.data.leaderboard.items.forEach((user) => {
+          output.push(user);
+        });
+        if (output.length !== count) {
+          await recurse(info.data.leaderboard.pageInfo.nextCursor);
+        }
+      }
+    }
 
-			async function recurse(after) {
-				if (after === null) return;
-
-				let info = await fetch(variables.graphql, {
-						method: 'POST',
-						headers,
-						body: JSON.stringify({
-							query: `
-              query Leaderboard($after: String!, $count: Int!, $since: KarmaSince!) {
-                leaderboard(after: $after, count: $count, since: $since) {
-                  items { ${variables.userAttributes} }
-                  pageInfo {
-                    nextCursor
-                  }
-                }
-              }`,
-							variables: JSON.stringify({
-								after: after,
-								count: count,
-								since: since
-							})
-						})
-					})
-					.then(res => res.json());
-
-				if (!info.data.leaderboard) {
-					throw new Error(`Cannot fetch leaderboard`);
-				} else {
-					info.data.leaderboard.items.forEach(user => {
-						output.push(user);
-					});
-					if (output.length != count) {
-						await recurse(info.data.leaderboard.pageInfo.nextCursor);
-					}
-				}
-			}
-
-			await recurse(after);
-			return output;
-		}
-	}
+    await recurse(after);
+    return output;
+  }
 }

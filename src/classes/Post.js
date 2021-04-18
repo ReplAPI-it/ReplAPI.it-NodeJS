@@ -128,7 +128,7 @@ export default class Post {
   async createPost(title, body, boardId, replId, showHosted) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof title !== 'string') {
         throw new Error(
           `Title must be of type string. Got type ${typeof title}.`,
@@ -194,7 +194,7 @@ export default class Post {
   async updatePost(title, body, isPinned, postType, isLocked, boardId, replId, showHosted) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof title !== 'string' || typeof title !== 'undefined') {
         throw new Error(
           `Title must be of type string. Got type ${typeof title}.`,
@@ -278,7 +278,7 @@ export default class Post {
   async deletePost(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -316,7 +316,7 @@ export default class Post {
   async createPostVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -358,7 +358,7 @@ export default class Post {
   async deletePostVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].contains(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(global.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,

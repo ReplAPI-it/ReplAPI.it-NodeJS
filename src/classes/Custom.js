@@ -11,9 +11,7 @@ export class CustomDataQuery {
   }
 
   async getData() {
-    const { queryName } = this;
-    const { customQuery } = this;
-    const { customVariables } = this;
+    const { queryName, customQuery, customVariables } = this;
 
     const specialQueryVariables = {
       since: 'KarmaSince',
