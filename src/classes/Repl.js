@@ -17,7 +17,7 @@ async function getReplId(username, slug) {
 export default class Repl {
   constructor(username, slug) {
     this.username = username;
-    this.slug = slug.replace(/ /g, '-');
+    if (this.slug) this.slug = slug.replace(/ /g, '-');
   }
 
   async replGraphQLData() {
@@ -29,13 +29,13 @@ export default class Repl {
       headers,
       body: JSON.stringify({
         query: `
-            query Repl($id: String!) {
-              repl(id: $id) {
-                ... on Repl {
-                  ${constants.replAttributes}
-                }
+          query Repl($id: String!) {
+            repl(id: $id) {
+              ... on Repl {
+                ${constants.replAttributes}
               }
-            }`,
+            }
+          }`,
         variables: JSON.stringify({
           id,
         }),
@@ -94,9 +94,29 @@ export default class Repl {
           query: '{ replTitle }',
         }),
       }).then((res) => res.json());
-  
+
       if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
       else return info.data.replTitle;
     }
+  }
+
+  async recentRepls() {
+    const info = await fetch(constants.graphql, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query: `
+          query newRepls {
+            newRepls {
+              items {
+                ${constants.replAttributes}
+              }
+            }
+          }`,
+      }),
+    }).then((res) => res.json());
+
+    if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+    else return info.data.newRepls.items;
   }
 }
