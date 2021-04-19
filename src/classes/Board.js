@@ -1,93 +1,92 @@
-let headers = require('../utils/headers.js');
-let variables = require('../utils/variables.js');
+import fetch from 'node-fetch';
 
-class Board {
-	constructor(slug) {
-		this.slug = slug;
-	}
+import headers from '../utils/headers.js';
+import constants from '../utils/constants.js';
 
-	async boardData() {
-		let slug = this.slug;
-		let info = await variables
-			.fetch(variables.graphql, {
-				method: 'POST',
-				headers,
-				body: JSON.stringify({
-					query: `
-    			  query Board($slug: String!) {
-    				  boardBySlug(slug: $slug) {
-                ${variables.boardAttributes}
-    				  }
-    				}`,
-					variables: JSON.stringify({
-						slug: slug
-					})
-				})
-			})
-			.then(res => res.json());
+export default class Board {
+  constructor(slug) {
+    this.slug = slug;
+  }
 
-		if (!info.data.boardBySlug) {
-			throw new Error(`${slug} is not a board. Please query boards on Repl.it.`);
-		} else {
-			return info.data.boardBySlug;
-		}
-	}
-	
-	async boardPosts(after, count, order) {
-		if (!after) after = '';
-		if (!count) count = 5;
-		if (!order) order = '';
+  async boardData() {
+    const { slug } = this;
+    const info = await fetch(constants.graphql, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query: `
+          query Board($slug: String!) {
+            boardBySlug(slug: $slug) {
+              ${constants.boardAttributes}
+            }
+          }`,
+        variables: JSON.stringify({
+          slug,
+        }),
+      }),
+    }).then((res) => res.json());
 
-		let slug = this.slug;
-		let output = [];
+    if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
 
-		async function recurse(after) {
-			if (after === null) return;
+    if (!info.data.boardBySlug) {
+      throw new Error(`${slug} is not a board. Please query boards on Replit.`);
+    } else {
+      return info.data.boardBySlug;
+    }
+  }
 
-			let info = await variables
-				.fetch(variables.graphql, {
-					method: 'POST',
-					headers,
-					body: JSON.stringify({
-						query: `
+  async boardPosts(after = '', count = 5, order = '') {
+    const { slug } = this;
+    const output = [];
+
+    async function recurse(recurseAfter) {
+      if (recurseAfter === null) return;
+
+      const info = await fetch(constants.graphql, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          query: `
             query BoardPosts($slug: String!, $after: String!, $count: Int!, $order: String!) {
               boardBySlug(slug: $slug) {
                 posts(count: $count, after: $after, order: $order) {
-                  items { ${variables.postAttributes} }
+                  items { 
+                    id
+                    title
+                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  }
                   pageInfo {
                     nextCursor
                   }
                 }
               }
             }`,
-						variables: JSON.stringify({
-							slug: slug,
-							after: after,
-							count: count,
-							order: order
-						})
-					})
-				}).then(res => res.json());
+          variables: JSON.stringify({
+            slug,
+            count,
+            order,
+            after: recurseAfter,
+          }),
+        }),
+      }).then((res) => res.json());
 
-			if (!info.data.boardBySlug) {
-				throw new Error(
-					`${slug} is not a board. Please query boards on Repl.it.`
-				);
-			} else {
-				info.data.boardBySlug.posts.items.forEach(post => {
-					output.push(post);
-				});
-				if (output.length != count) {
-					await recurse(info.data.boardBySlug.posts.pageInfo.nextCursor);
-				}
-			}
-		}
+      if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
 
-		await recurse(after);
-		return output;
-	}
+      if (!info.data.boardBySlug) {
+        throw new Error(
+          `${slug} is not a board. Please query boards on Replit.`,
+        );
+      } else {
+        info.data.boardBySlug.posts.items.forEach((post) => {
+          output.push(post);
+        });
+        if (output.length !== count) {
+          await recurse(info.data.boardBySlug.posts.pageInfo.nextCursor);
+        }
+      }
+    }
+
+    await recurse(after);
+    return output;
+  }
 }
-
-module.exports = {
-	Board: Board
-};
