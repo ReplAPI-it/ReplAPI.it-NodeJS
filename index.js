@@ -17,6 +17,7 @@ const defaultInitVariables = {
   previewCount: {
     comments: undefined,
   },
+  experimentalFeatures: undefined,
 };
 
 export default function ReplAPI(initVariables) {
@@ -43,16 +44,17 @@ export default function ReplAPI(initVariables) {
 
   return {
     defaults: global.initVariables,
-    User: replapi.User,
-    Post: replapi.Post,
-    Repl: replapi.Repl,
-    Comment: replapi.Comment,
-    Leaderboard: replapi.Leaderboard,
-    Languages: replapi.Languages,
     Board: replapi.Board,
-    Notifications: replapi.Notifications,
-    Login: replapi.Login,
+    Comment: replapi.Comment,
     CustomDataQuery: replapi.CustomDataQuery,
     CustomRecursiveQuery: replapi.CustomRecursiveQuery,
+    Database: replapi.Database,
+    Languages: replapi.Languages,
+    Leaderboard: replapi.Leaderboard,
+    Login: replapi.Login,
+    Notifications: replapi.Notifications,
+    Post: replapi.Post,
+    Repl: replapi.Repl,
+    User: replapi.User,
   };
 }

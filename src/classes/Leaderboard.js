@@ -18,7 +18,6 @@ export default class Leaderboard {
           }
         }`;
       variables = {
-        after,
         count,
         since,
       };
@@ -33,7 +32,6 @@ export default class Leaderboard {
           }
         }`;
       variables = {
-        after,
         count,
       };
     }
@@ -48,10 +46,12 @@ export default class Leaderboard {
         headers,
         body: JSON.stringify({
           query,
-          variables: JSON.stringify(variables),
+          variables: JSON.stringify({
+            ...variables,
+            after: recurseAfter,
+          }),
         }),
-      })
-        .then((res) => res.json());
+      }).then((res) => res.json());
 
       if (!info.data.leaderboard) {
         throw new Error('Cannot fetch leaderboard');

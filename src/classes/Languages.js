@@ -30,12 +30,12 @@ export default class Languages {
     this.lang = lang;
   }
 
-  async getLang() {
+  async langData() {
     const langs = await fetchVariable();
     return langs[this.lang];
   }
 
-  async getAllLangs() {
+  async langDataAll() {
     const langs = await fetchVariable();
     return langs;
   }

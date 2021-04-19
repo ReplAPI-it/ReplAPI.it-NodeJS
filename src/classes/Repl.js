@@ -21,8 +21,7 @@ export default class Repl {
   }
 
   async replGraphQLData() {
-    const { username } = this;
-    const { slug } = this;
+    const { username, slug } = this;
 
     const id = await getReplId(username, slug);
     const info = await fetch(constants.graphql, {
@@ -53,8 +52,7 @@ export default class Repl {
   }
 
   async replRESTData() {
-    const { username } = this;
-    const { slug } = this;
+    const { username, slug } = this;
 
     const info = await fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
       method: 'GET',
@@ -70,8 +68,7 @@ export default class Repl {
   }
 
   async replLangs() {
-    const { username } = this;
-    const { slug } = this;
+    const { username, slug } = this;
 
     const info = await fetch(`https://replangs.rayhanadev.repl.co/${username}/${slug}`, {
       method: 'GET',
@@ -86,15 +83,20 @@ export default class Repl {
   }
 
   async replTitleGen() {
-    const info = await fetch(constants.graphql, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({
-        query: '{ replTitle }',
-      }),
-    }).then((res) => res.json());
-
-    if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
-    else return info.data.replTitle;
+    if (!global.cookies) {
+      throw new Error('ReplAPI.it: Not logged in.');
+    } else {
+      headers['Set-Cookie'] = global.cookies;
+      const info = await fetch(constants.graphql, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify({
+          query: '{ replTitle }',
+        }),
+      }).then((res) => res.json());
+  
+      if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+      else return info.data.replTitle;
+    }
   }
 }

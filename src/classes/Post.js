@@ -397,4 +397,39 @@ export default class Post {
       );
     }
   }
+
+  async posts(after = '', count = 10, order = '') {
+    const info = await fetch(constants.graphql, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({
+        query: `
+          query Posts($after: String!, $count: Int!, $order: String!) {
+            posts(after: $after, count: $count, order: $order) {
+              items {
+                id
+                title
+                preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+              }
+              pageInfo {
+                nextCursor
+              }
+            }
+          }`,
+        variables: JSON.stringify({
+          after,
+          count,
+          order,
+        }),
+      }),
+    }).then((res) => res.json());
+
+    if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+
+    if (!info.data.posts) {
+      throw new Error('Could not fetch posts.');
+    } else {
+      return info.data.posts;
+    }
+  }
 }

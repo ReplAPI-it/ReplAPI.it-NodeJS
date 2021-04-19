@@ -63,9 +63,9 @@ export default class Board {
             }`,
           variables: JSON.stringify({
             slug,
-            recurseAfter,
             count,
             order,
+            after: recurseAfter,
           }),
         }),
       }).then((res) => res.json());

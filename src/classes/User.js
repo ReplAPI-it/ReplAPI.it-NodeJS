@@ -80,13 +80,13 @@ export default class User {
     }
   }
 
-  async postsDataAbridged(after = '', count = 50, order = '') {
+  async postsDataAbridged(after = '', count = 10, order = '') {
     const user = this.username;
     const output = [];
 
     async function recurse(recurseAfter) {
       if (recurseAfter === null) return;
-
+      console.log(recurseAfter)
       const info = await fetch(constants.graphql, {
         method: 'POST',
         headers,
@@ -108,9 +108,9 @@ export default class User {
             }`,
           variables: JSON.stringify({
             user,
-            recurseAfter,
             count,
             order,
+            after: recurseAfter,
           }),
         }),
       }).then((res) => res.json());
@@ -135,7 +135,7 @@ export default class User {
     return output;
   }
 
-  async postsDataFull(after = '', count = 50, order = '') {
+  async postsDataFull(after = '', count = 10, order = '') {
     const user = this.username;
     const output = [];
 
@@ -168,9 +168,9 @@ export default class User {
               }`,
           variables: JSON.stringify({
             user,
-            recurseAfter,
             count,
             order,
+            after: recurseAfter,
           }),
         }),
       }).then((res) => res.json());
@@ -195,7 +195,7 @@ export default class User {
     return output;
   }
 
-  async commentsDataAbridged(after = '', count = 50, order = '') {
+  async commentsDataAbridged(after = '', count = 20, order = '') {
     const user = this.username;
     const output = [];
 
@@ -222,9 +222,9 @@ export default class User {
             }`,
           variables: JSON.stringify({
             user,
-            recurseAfter,
             count,
             order,
+            after: recurseAfter,
           }),
         }),
       }).then((res) => res.json());
@@ -249,7 +249,7 @@ export default class User {
     return output;
   }
 
-  async commentsDataFull(after = '', count = 50, order = '') {
+  async commentsDataFull(after = '', count = 20, order = '') {
     const user = this.username;
     const output = [];
 
@@ -288,9 +288,9 @@ export default class User {
             }`,
           variables: JSON.stringify({
             user,
-            recurseAfter,
             count,
             order,
+            after: recurseAfter,
           }),
         }),
       }).then((res) => res.json());
