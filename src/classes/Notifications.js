@@ -338,7 +338,7 @@ if (global.initVariables.experimentalFeatures) {
   };
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To use learn more about experimental features please visit the documentation.');
+    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
   };
 }
 

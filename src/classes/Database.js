@@ -23,6 +23,7 @@ function compare(value, hashData) {
 
 let exportable;
 
+console.log(constants)
 if (global.initVariables.experimentalFeatures) {
   let exportable = class Database {
     constructor(replitdbtoken, salt, options) {
@@ -59,7 +60,7 @@ if (global.initVariables.experimentalFeatures) {
   }
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To use learn more about experimental features please visit the documentation.');
+    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
   };
 }
 

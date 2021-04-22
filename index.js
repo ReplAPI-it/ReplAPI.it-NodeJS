@@ -31,7 +31,7 @@ export default function ReplAPI(initVariables) {
             defaultInitVariables[key][nestedKey] = nestedValue;
           }
         }
-      } else if (typeof value !== 'string' && typeof value !== 'number') {
+      } else if (typeof value !== 'string' && typeof value !== 'number' && typeof value !== 'boolean') {
         throw new Error(`Invalid type for value of ${key}.`);
       } else if (defaultInitVariables[key] === undefined) {
         defaultInitVariables[key] = value;
