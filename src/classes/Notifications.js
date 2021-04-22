@@ -5,7 +5,7 @@ import constants from '../utils/constants.js';
 
 let exportable;
 
-if (global.initVariables.experimentalFeatures) {
+if (false) {
   exportable = class Notifications {
     async postReplyNotification(after, count) {
       if (!global.cookies) {

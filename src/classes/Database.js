@@ -23,8 +23,7 @@ function compare(value, hashData) {
 
 let exportable;
 
-console.log(constants)
-if (global.initVariables.experimentalFeatures) {
+if (false) {
   let exportable = class Database {
     constructor(replitdbtoken, salt, options) {
       this.replitdbtoken = replitdbtoken || process.env.REPLIT_DB_URL.split('/')[4];
