@@ -2,6 +2,8 @@ import fs from 'fs';
 import path from 'path';
 import replapi from './src/source.js';
 
+import stringify from 'json-stable-stringify-without-jsonify';
+
 const defaultInitVariables = {
   username: undefined,
   captcha: {
@@ -22,6 +24,10 @@ const defaultInitVariables = {
   experimentalFeatures: undefined,
 };
 
+function sortByKey(a, b) {
+	return a.key > b.key ? 1 : -1;
+}
+
 export default function ReplAPI(initVariables) {
   if (initVariables) {
     for (const [key, value] of Object.entries(initVariables)) {
@@ -39,9 +45,9 @@ export default function ReplAPI(initVariables) {
         defaultInitVariables[key] = value;
       }
     }
-    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), JSON.stringify(defaultInitVariables), { encoding: 'utf8' });
+    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
   } else {
-    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), JSON.stringify(defaultInitVariables), { encoding: 'utf8' });
+    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
   }
 
   return {

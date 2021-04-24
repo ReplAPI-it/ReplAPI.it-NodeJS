@@ -6,7 +6,10 @@ import headers from '../utils/headers.js';
 import constants from '../utils/constants.js';
 
 let exportable;
-const isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
+let isExperimentalFeaturesEnabled;
+if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
+	isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
+}
 
 if (isExperimentalFeaturesEnabled) {
   exportable = class Notifications {

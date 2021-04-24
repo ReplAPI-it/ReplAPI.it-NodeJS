@@ -24,7 +24,10 @@ function compare(value, hashData) {
 }
 
 let exportable;
-const isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
+let isExperimentalFeaturesEnabled;
+if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
+	isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
+}
 
 if (isExperimentalFeaturesEnabled) {
   exportable = class Database {
