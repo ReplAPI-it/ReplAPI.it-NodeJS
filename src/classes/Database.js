@@ -1,12 +1,14 @@
 import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
 import headers from '../utils/headers.js';
 import constants from '../utils/constants.js';
 
 function hash(value, salt) {
-  const hash = crypto.createHmac('sha512', salt);
-  hash.update(value);
-  const result = hash.digest('hex');
+  const hashItem = crypto.createHmac('sha512', salt);
+  hashItem.update(value);
+  const result = hashItem.digest('hex');
   return {
     salt,
     hashedpassword: result,
@@ -14,7 +16,7 @@ function hash(value, salt) {
 }
 
 function compare(value, hashData) {
-  const resultData = _hash(value, hashData.salt);
+  const resultData = hash(value, hashData.salt);
   if (resultData.hashedpassword === hashData.hashedpassword) {
     return true;
   }
@@ -22,15 +24,16 @@ function compare(value, hashData) {
 }
 
 let exportable;
+const isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
 
-if (false) {
-  let exportable = class Database {
+if (isExperimentalFeaturesEnabled) {
+  exportable = class Database {
     constructor(replitdbtoken, salt, options) {
       this.replitdbtoken = replitdbtoken || process.env.REPLIT_DB_URL.split('/')[4];
       this.salt = salt;
       this.options = options;
     }
-  
+
     async set(key, value) {
       const info = await fetch(`https://kv.replit.com/v0/${this.replitdbtoken}`, {
         method: 'POST',
@@ -38,7 +41,7 @@ if (false) {
         body: `${encodeURIComponent(key)}=${encodeURIComponent(JSON.stringify(value))}`,
       }).then((res) => res.json());
     }
-  
+
     async get(key) {
       const info = await fetch(`https://kv.replit.com/v0/${this.replitdbtoken}/${key}`, {
         method: 'GET',
@@ -47,7 +50,7 @@ if (false) {
   			  res.json();
       });
     }
-  
+
     async delete(key) {
       const info = await fetch(`https://kv.replit.com/v0/${this.replitdbtoken}/${key}`, {
         method: 'GET',
@@ -56,7 +59,7 @@ if (false) {
   			  res.json();
       });
     }
-  }
+  };
 } else {
   exportable = function noExperimentalFeatures() {
     console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');

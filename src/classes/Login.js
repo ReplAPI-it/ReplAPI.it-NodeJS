@@ -3,7 +3,7 @@ import fetch from 'node-fetch';
 import headers from '../utils/headers.js';
 import constants from '../utils/constants.js';
 
-async function _getCookies(username, password) {
+async function getCookies(username, password) {
   if (['RayhanADev'].includes(global.initVariables.username)) {
     const info = await fetch(constants.login, {
       method: 'POST',
@@ -31,7 +31,7 @@ async function _getCookies(username, password) {
 export default class Login {
   async withCredentials(password) {
     if (['RayhanADev'].includes(global.initVariables.username)) {
-      global.cookies = await _getCookies(global.initVariables.username, password);
+      global.cookies = await getCookies(global.initVariables.username, password);
     } else {
       throw new Error(
         `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,

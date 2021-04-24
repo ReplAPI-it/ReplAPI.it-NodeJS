@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import replapi from './src/source.js';
 
 const defaultInitVariables = {
@@ -37,13 +39,13 @@ export default function ReplAPI(initVariables) {
         defaultInitVariables[key] = value;
       }
     }
-    global.initVariables = defaultInitVariables;
+    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), JSON.stringify(defaultInitVariables), { encoding: 'utf8' });
   } else {
-    global.initVariables = defaultInitVariables;
+    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), JSON.stringify(defaultInitVariables), { encoding: 'utf8' });
   }
 
   return {
-    defaults: global.initVariables,
+    defaults: defaultInitVariables,
     Board: replapi.Board,
     Comment: replapi.Comment,
     CustomDataQuery: replapi.CustomDataQuery,

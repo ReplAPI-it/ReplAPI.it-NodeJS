@@ -1,4 +1,7 @@
-const initVariables = global.initVariables || {
+import fs from 'fs';
+import path from 'path';
+
+const initVariables = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))) || {
   username: undefined,
   captcha: {
     token: undefined,
@@ -24,7 +27,7 @@ export default {
   subscriptionAttributes: 'id, userId, customerId, planId, timeUpdated, timeCreated, timeDeleted',
   userAttributes: 'id, username, firstName, lastName, bio, isVerified, displayName, fullName, url, isLoggedIn, isSubscribed, timeCreated, isBannedFromBoards, karma, isHacker, image',
   boardAttributes: 'id, name, description, slug, cta, titleCta, bodyCta, template, buttonCta, color, replRequired, isLocked, isAnswerable, isPrivate, timeCreated, timeUpdated, url, canPost',
-  replAttributes: 'id, language, isProject, isPrivate, isStarred, title, slug, description, folderId, isRenamed, url, timeCreated, timeUpdated, isOwner, tags { id }, pinnedToProfile, files, hostedUrl, terminalUrl',
+  replAttributes: 'id, language, isProject, isPrivate, isStarred, title, slug, description, folderId, isRenamed, url, timeCreated, timeUpdated, isOwner, tags { id }, pinnedToProfile, files, hostedUrl, terminalUrl, reactions { id, count }',
   commentAttributes: `id, body, voteCount, timeCreated, timeUpdated, url, isAuthor, canEdit, canVote, canComment, hasVoted, canReport, hasReported, isAnswer, canSelectAsAnswer, canUnselectAsAnswer, preview(length: ${initVariables.markdown.length || 150}, removeMarkdown: ${initVariables.markdown.removeMarkdown || true})`,
   postAttributes: `id, title, body, showHosted, voteCount, commentCount, isPinned, isLocked, timeCreated, timeUpdated, url, isAnnouncement, isAuthor, canEdit, canComment, canVote, canPin, canSetType, canChangeBoard, canLock, hasVoted, canReport, hasReported, isAnswerable, tutorialPages, preview(length: ${initVariables.markdown.length || 150}, removeMarkdown: ${initVariables.markdown.removeMarkdown || true})`,
   graphql: `${initVariables.endpoints.gql || 'https://staging.replit.com/graphql'}`,

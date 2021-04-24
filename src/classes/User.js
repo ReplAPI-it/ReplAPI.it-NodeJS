@@ -86,7 +86,6 @@ export default class User {
 
     async function recurse(recurseAfter) {
       if (recurseAfter === null) return;
-      console.log(recurseAfter)
       const info = await fetch(constants.graphql, {
         method: 'POST',
         headers,

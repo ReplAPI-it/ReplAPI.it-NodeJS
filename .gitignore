@@ -6,3 +6,6 @@ test
 
 # replit
 .replit
+
+# replapi
+.replapirc.json

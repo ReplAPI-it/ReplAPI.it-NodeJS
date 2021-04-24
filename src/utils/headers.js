@@ -3,7 +3,7 @@ export default {
   Accept: 'application/json',
   'Accept-Encoding': 'gzip, deflate, br',
   Connection: 'keep-alive',
-  'X-Requested-With': 'REPLAPIit',
+  'X-Requested-With': 'ReplAPI.it',
   Referrer: 'https://replit.com/',
   Origin: 'https://replit.com/',
 };
