@@ -1,8 +1,7 @@
 import fs from 'fs';
 import path from 'path';
-import replapi from './src/source.js';
-
 import stringify from 'json-stable-stringify-without-jsonify';
+import replapi from './src/source.js';
 
 const defaultInitVariables = {
   username: undefined,
@@ -25,7 +24,7 @@ const defaultInitVariables = {
 };
 
 function sortByKey(a, b) {
-	return a.key > b.key ? 1 : -1;
+  return a.key > b.key ? 1 : -1;
 }
 
 export default function ReplAPI(initVariables) {

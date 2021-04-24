@@ -8,7 +8,7 @@ import constants from '../utils/constants.js';
 let exportable;
 let isExperimentalFeaturesEnabled;
 if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
-	isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
+  isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
 }
 
 if (isExperimentalFeaturesEnabled) {
