@@ -1,3 +1,5 @@
+> ### ⚠️ **IMPORTANT**: ReplAPI.it is now in version 2.x! Any projects transitioning to 2.x should read through [this](https://github.com/RayhanADev/ReplAPI.it/releases/tag/v2.0.6). ⚠️
+
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -60,13 +62,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Code Screenshot](images/screenshot.jpg)](https://replit.com/@RayhanADev/REPLAPIit-Replit-API-Package)
+[![Code Screenshot](images/screenshot.jpg)](https://replit.com/@RayhanADev/ReplAPIit)
 
 The Replit GraphQL API is an extraordinary way to make projects unique and special, yet with the numerous packages available few such projects have been made. Why would that be? Most likely due to how complicated writing code can get and the limitations of their queries. My package, **ReplAPI.it**, changes that with a simple to use structure and many queries, some of which are:
 
 * Queries for Data on Users (such as Profile, Posts, Comments)
 * Queries for Data on Posts (such as Upvoters, Content)
-* Queries for Data on Notifications (such as Reply Notifications, Achievement Notifications)
+* Queries for Data on Repls (such as Files, Comments)
 * Mutations for Commenting, Reporting, and Posting
 * Queries for Data on Leaderboard (with filters such as cycles since)
 * and lots more!
@@ -97,48 +99,60 @@ If you have not already download npm:
    ```
 2. Require the package in your code
    ```js
-   const repl = require('replapi-it');
-   ```
+   import ReplAPI from 'replapi-it';
+   ``` 
+3. Initilize the package
+  ```js
+  const replapi = ReplAPI({
+    username: 'your-username-here'
+  });
+  ```
 
 ## Usage
 
 Using ReplAPI.it is very simple! Let's create a simple user and ask for their cycles:
  ```js
- const repl = require('replapi-it');
-
- const myUser = new repl.User("RayhanADev");
+ import ReplAPI from 'replapi-it
+ const replapi = ReplAPI({
+   username: 'your-username-here'
+ });
+ 
+ const myUser = new replapi.User("RayhanADev");
 
  async function getCycles() {
-  let info = await myUser.profileData();
-  let cycles = info.karma; // Yep, it's karma!
-  console.log(`User Cycles: ${cycles}`)
+   let info = await myUser.userGraphQLDataFull();
+   let cycles = info.karma; // Yep, it's karma!
+   console.log(`User Cycles: ${cycles}`)
  }
  
  getCycles()
  ```
 
 Output:
- ```sh
+ ```
  User Cycles: 1008
  ```
 
 
 That was fun! Now how about getting a specific post? Let's create a simple post and ask for it's title:
  ```js
- const repl = require('replapi-it');
+ import ReplAPI from 'replapi-it
+ const replapi = ReplAPI({
+   username: 'your-username-here'
+ });
 
- const myPost = new repl.Post(78043);
+ const myPost = new replapi.Post(78043);
 
  async function getTitle() {
-  let info = await myPost.postData();
-  let title = info.title;
-  console.log(`Post Title: ${title}`)
+   let info = await myPost.postDataFull();
+   let title = info.title;
+   console.log(`Post Title: ${title}`)
  }
  
  getTitle()
  ```
 Output:
- ```sh
+ ```
  Post Title: Presenting... 🤔 RayhanADev 🤔? (GraphQL Success!)
  ```
 
