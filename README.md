@@ -102,11 +102,11 @@ If you have not already download npm:
    import ReplAPI from 'replapi-it';
    ``` 
 3. Initilize the package
-  ```js
-  const replapi = ReplAPI({
-    username: 'your-username-here'
-  });
-  ```
+   ```js
+   const replapi = ReplAPI({
+      username: 'your-username-here'
+   });
+   ```
 
 ## Usage
 
