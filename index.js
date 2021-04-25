@@ -1,26 +1,28 @@
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
 import stringify from 'json-stable-stringify-without-jsonify';
 import replapi from './src/source.js';
 
 const defaultInitVariables = {
-  username: undefined,
+  username: '',
   captcha: {
-    token: undefined,
+    token: '',
   },
   endpoints: {
-    gql: undefined,
-    restful: undefined,
-    login: undefined,
+    gql: '',
+    restful: '',
+    login: '',
   },
   markdown: {
-    length: undefined,
-    removeMarkdown: undefined,
+    length: '',
+    removeMarkdown: '',
   },
   previewCount: {
-    comments: undefined,
+    comments: '',
   },
-  experimentalFeatures: undefined,
+  experimentalFeatures: '',
+  createDatabaseFlag: '',
 };
 
 function sortByKey(a, b) {
@@ -29,21 +31,7 @@ function sortByKey(a, b) {
 
 export default function ReplAPI(initVariables) {
   if (initVariables) {
-    for (const [key, value] of Object.entries(initVariables)) {
-      if (typeof value === 'object') {
-        for (const [nestedKey, nestedValue] of Object.entries(value)) {
-          if (typeof nestedValue !== 'string' && typeof nestedValue !== 'number') {
-            throw new Error(`Invalid type for value of ${nestedKey}.`);
-          } else if (defaultInitVariables[key][nestedKey] === undefined) {
-            defaultInitVariables[key][nestedKey] = nestedValue;
-          }
-        }
-      } else if (typeof value !== 'string' && typeof value !== 'number' && typeof value !== 'boolean') {
-        throw new Error(`Invalid type for value of ${key}.`);
-      } else if (defaultInitVariables[key] === undefined) {
-        defaultInitVariables[key] = value;
-      }
-    }
+    _.assign(defaultInitVariables, initVariables)
     fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
   } else {
     fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
@@ -51,6 +39,7 @@ export default function ReplAPI(initVariables) {
 
   return {
     defaults: defaultInitVariables,
+    Blog: replapi.Blog,
     Board: replapi.Board,
     Comment: replapi.Comment,
     CustomDataQuery: replapi.CustomDataQuery,
