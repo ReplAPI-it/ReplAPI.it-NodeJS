@@ -97,7 +97,7 @@ export default class User {
                   items { 
                     id
                     title
-                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                   }
                   pageInfo {
                     nextCursor
@@ -154,7 +154,7 @@ export default class User {
                       user { ${constants.userAttributes} }
                       board { ${constants.boardAttributes} }
                       repl { ${constants.replAttributes} }
-                      comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
+                      comments(count: ${constants.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
                       votes { items { id, user { ${constants.userAttributes} } } }
                       answeredBy { ${constants.userAttributes} }
                       answer { ${constants.commentAttributes} }
@@ -211,7 +211,7 @@ export default class User {
                 comments(count: $count, after: $after, order: $order) {
                   items {
                     id
-                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                   }
                   pageInfo {
                     nextCursor
@@ -273,7 +273,7 @@ export default class User {
                       user { ${constants.userAttributes} }
                       board { ${constants.boardAttributes} }
                       repl { ${constants.replAttributes} }
-                      comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
+                      comments(count: ${constants.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
                       votes { items { id, user { ${constants.userAttributes} } } }
                       answeredBy { ${constants.userAttributes} }
                       answer { ${constants.commentAttributes} }
@@ -317,7 +317,7 @@ export default class User {
   async userSearch(query, limit = '') {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (!query) {
         throw new Error('User Search needs a query to search. Please supply a query.');
       }
@@ -345,7 +345,7 @@ export default class User {
       else return info.data.usernameSearch;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }

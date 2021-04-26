@@ -26,6 +26,7 @@ if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
 }
 
 export default {
+	initVariables,
   roleAttributes: 'id, name, key, tagline',
   languageAttributes: 'id, displayName, key, category, tagline, icon, isNew',
   organizationAttributes: 'id, name, country, postalCode, state, city, googlePlaceId, timeCreated, timeUpdated, timeDeleted, time_created',

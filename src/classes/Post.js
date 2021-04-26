@@ -23,7 +23,7 @@ export default class Post {
             post(id: $id) {
               id
               title
-              preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+              preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
             }
           }`,
         variables: JSON.stringify({
@@ -58,7 +58,7 @@ export default class Post {
               user { ${constants.userAttributes} }
               board { ${constants.boardAttributes} }
               repl { ${constants.replAttributes} }
-              comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
+              comments(count: ${constants.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
               votes { items { id user { ${constants.userAttributes} } } }
               answeredBy { ${constants.userAttributes} }
               answer { ${constants.commentAttributes} }
@@ -102,7 +102,7 @@ export default class Post {
                   user { ${constants.userAttributes} }
                   board { ${constants.boardAttributes} }
                   repl { ${constants.replAttributes} }
-                  comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
+                  comments(count: ${constants.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
                   votes { items { id user { ${constants.userAttributes} } } }
                   answeredBy { ${constants.userAttributes} }
                   answer { ${constants.commentAttributes} }
@@ -128,7 +128,7 @@ export default class Post {
   async createPost(title, body, boardId, replId, showHosted) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof title !== 'string') {
         throw new Error(
           `Title must be of type string. Got type ${typeof title}.`,
@@ -166,7 +166,7 @@ export default class Post {
                 post {
                   id
                   title
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -186,7 +186,7 @@ export default class Post {
       else return info.data.createPost.post;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -194,7 +194,7 @@ export default class Post {
   async updatePost(title, body, isPinned, postType, isLocked, boardId, replId, showHosted) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof title !== 'string' || typeof title !== 'undefined') {
         throw new Error(
           `Title must be of type string. Got type ${typeof title}.`,
@@ -247,7 +247,7 @@ export default class Post {
                 post {
                   id
                   title
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -270,7 +270,7 @@ export default class Post {
       else return info.data.updatePost.post;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -278,7 +278,7 @@ export default class Post {
   async deletePost(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -295,7 +295,7 @@ export default class Post {
               deletePost(id: $id) {
                 id
                 title
-                preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
               }
             }`,
           variables: JSON.stringify({
@@ -308,7 +308,7 @@ export default class Post {
       else return info.data.post;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -316,7 +316,7 @@ export default class Post {
   async createPostVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -336,7 +336,7 @@ export default class Post {
                   post {
                     id
                     title
-                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
                   }
               }
             }`,
@@ -350,7 +350,7 @@ export default class Post {
       else return info.data.createPostVote;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -358,7 +358,7 @@ export default class Post {
   async deletePostVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -378,7 +378,7 @@ export default class Post {
                 post {
                   id
                   title
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -393,7 +393,7 @@ export default class Post {
       else return info.data.createPostVote;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -409,7 +409,7 @@ export default class Post {
               items {
                 id
                 title
-                preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
               }
               pageInfo {
                 nextCursor

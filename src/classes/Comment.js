@@ -22,7 +22,7 @@ export default class Comment {
           query Comment($id: Int!) {
             comment(id: $id) {
               id
-              preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+              preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
             }
           }`,
         variables: JSON.stringify({
@@ -62,7 +62,7 @@ export default class Comment {
                 user { ${constants.userAttributes} }
                 board { ${constants.boardAttributes} }
                 repl { ${constants.replAttributes} }
-                comments(count: ${global.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
+                comments(count: ${constants.initVariables.previewCount.comments || 10}) { items { ${constants.commentAttributes} } }
                 votes { items { id, user { ${constants.userAttributes} } } }
                 answeredBy { ${constants.userAttributes} }
                 answer { ${constants.commentAttributes} }
@@ -87,7 +87,7 @@ export default class Comment {
   async createCommentOnPost(body, postId) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof body !== 'string') {
         throw new Error(
           `Body must be of type string. Got type ${typeof title}.`,
@@ -109,7 +109,7 @@ export default class Comment {
               createComment(input: $input) {
                 comment {
                   id
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -126,7 +126,7 @@ export default class Comment {
       else return info.data.createComment.comment;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -134,7 +134,7 @@ export default class Comment {
   async createCommentOnComment(body, commentId) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof body !== 'string') {
         throw new Error(
           `Body must be of type string. Got type ${typeof title}.`,
@@ -156,7 +156,7 @@ export default class Comment {
               createComment(input: $input) {
                 comment {
                   id
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -173,7 +173,7 @@ export default class Comment {
       else return info.data.createComment.comment;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -181,7 +181,7 @@ export default class Comment {
   async updateComment(id, body) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Title must be of type number. Got type ${typeof title}.`,
@@ -203,7 +203,7 @@ export default class Comment {
               updateComment(input: $input) {
                 comment {
                   id
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -220,7 +220,7 @@ export default class Comment {
       else return info.data.updateComment.comment;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -228,7 +228,7 @@ export default class Comment {
   async deleteComment(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -244,7 +244,7 @@ export default class Comment {
             mutation DeleteComment($id: Int!) {
               deleteComment(id: $id) {
                 id
-                preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
               }
             }`,
           variables: JSON.stringify({
@@ -257,7 +257,7 @@ export default class Comment {
       else return info.data.comment;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -265,7 +265,7 @@ export default class Comment {
   async createCommentVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -284,7 +284,7 @@ export default class Comment {
                 user { username }
                 comment {
                   id
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -298,7 +298,7 @@ export default class Comment {
       else return info.data.createCommentVote;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
@@ -306,7 +306,7 @@ export default class Comment {
   async deleteCommentVote(id) {
     if (!global.cookies) {
       throw new Error('ReplAPI.it: Not logged in.');
-    } else if (['RayhanADev'].includes(global.initVariables.username)) {
+    } else if (['RayhanADev'].includes(constants.initVariables.username)) {
       if (typeof id !== 'number') {
         throw new Error(
           `Id must be of type number. Got type ${typeof title}.`,
@@ -325,7 +325,7 @@ export default class Comment {
                 user { username }
                 comment {
                   id
-                  preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                  preview(length: ${constants.initVariables.markdown.length || 150}, removeMarkdown: ${constants.initVariables.markdown.removeMarkdown || true})
                 }
               }
             }`,
@@ -340,7 +340,7 @@ export default class Comment {
       else return info.data.createCommentVote;
     } else {
       throw new Error(
-        `${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
+        `${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
       );
     }
   }
