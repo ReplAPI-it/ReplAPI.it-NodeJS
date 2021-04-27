@@ -11,9 +11,9 @@ var _fs = _interopRequireDefault(require("fs"));
 
 var _path = _interopRequireDefault(require("path"));
 
-var _headers = _interopRequireDefault(require("../utils/headers.js"));
+var _headers = _interopRequireDefault(require("../utils/headers.mjs"));
 
-var _constants = _interopRequireDefault(require("../utils/constants.js"));
+var _constants = _interopRequireDefault(require("../utils/constants.mjs"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

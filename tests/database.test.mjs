@@ -1,6 +1,6 @@
 import fs from 'fs';
 import Client from '@replit/database';
-import ReplAPI from '../';
+import ReplAPI from '../esm/index.mjs';
 
 const client = new Client();
 
@@ -69,8 +69,8 @@ async function myTestFunction() {
   console.log('Document2', doc_2);*/
   
   // Compare to ReplDB
-  /*const keys = await client.getAll();
-  console.log('From ReplDB', keys)*/
+  const keys = await client.getAll();
+  console.log('From ReplDB', keys);
 //  fs.writeFileSync('./test/test.json', JSON.stringify(info), { encoding: 'utf8' });
 }
 
