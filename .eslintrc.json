@@ -11,5 +11,11 @@
         "ecmaVersion": 12
     },
     "rules": {
+    	"no-console": "off",
+    	"no-debugger": "off",
+    	"import/extensions": "off",
+    	"import/no-mutable-exports": "off",
+    	"class-methods-use-this": "off",
+    	"max-classes-per-file": "off"
     }
 }

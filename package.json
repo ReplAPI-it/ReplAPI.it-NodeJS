@@ -1,14 +1,27 @@
 {
   "name": "replapi-it",
   "version": "2.0.9",
-  "description": "A wrapper for Repl.it's GraphQL (and soon REST and even Crosis) API. Designed to be easy to use!",
-  "type": "module",
-  "main": "index.js",
+  "description": "A NodeJS Wrapper allowing you access various places of information on Replit.",
+  "type": "commonjs",
+  "main": "./commonjs/index.js",
+  "exports": {
+    ".": {
+      "import": "./esm/index.mjs",
+      "require": "./commonjs/index.js",
+      "default": "./commonjs/index.js"
+    },
+    "./module": "./esm/index.mjs",
+    "./common": "./commonjs/index.js"
+  },
+  "module": "./esm/index.mjs",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"No Tests Specified\"",
-    "lint": "eslint . --ext .js",
-    "lint:fix": "eslint . --ext .js --fix"
+    "start": "node esm/index.mjs",
+    "test:commonjs": "node tests/common.test.js --experimental-conditional-exports",
+    "test:esm": "node tests/esm.test.mjs --experimental-conditional-exports",
+    "build": "babel esm --out-dir commonjs",
+    "build:watch": "babel esm --out-dir commonjs --watch",
+    "lint": "eslint esm --ext .mjs",
+    "lint:fix": "eslint esm --ext .mjs --fix"
   },
   "repository": {
     "type": "git",
@@ -16,6 +29,15 @@
   },
   "keywords": [
     "Replit",
+    "GraphQL",
+    "Restful",
+    "Blog",
+    "XML",
+    "Cookies",
+    "Login",
+    "Parse",
+    "Query",
+    "Mutations",
     "API",
     "NodeJS"
   ],
@@ -27,13 +49,18 @@
   "homepage": "https://github.com/RayhanADev/REPLAPI.it#readme",
   "dependencies": {
     "atob": "^2.1.2",
+    "core-js": "^3.11.0",
     "json-stable-stringify-without-jsonify": "^1.0.1",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
     "node-html-parser": "^3.1.3",
+    "regenerator-runtime": "^0.13.7",
     "rss-parser": "^3.12.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.13.16",
+    "@babel/preset-env": "^7.13.15",
     "@replit/database": "^2.0.1",
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",

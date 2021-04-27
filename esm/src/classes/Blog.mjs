@@ -13,19 +13,19 @@ if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
 if (isExperimentalFeaturesEnabled) {
   exportable = class Blog {
     async blogData() {
-    	const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
-    	delete feed.items;
+      const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
+      delete feed.items;
 
-    	return feed;
+      return feed;
     }
 
     async blogItems(order = 'newest', count = 10) {
-    	const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
+      const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
 
-    	if (order === 'oldest') feed.items.reverse();
-    	const posts = feed.items.slice(0, count);
+      if (order === 'oldest') feed.items.reverse();
+      const posts = feed.items.slice(0, count);
 
-    	return posts;
+      return posts;
     }
   };
 } else {

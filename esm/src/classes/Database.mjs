@@ -116,7 +116,7 @@ if (isExperimentalFeaturesEnabled) {
 
     async updateDoc(collectionName, docName, docItems) {
       const collection = await this.getCollection(collectionName);
-			_.assignIn(collection[docName], docItems);
+      _.assignIn(collection[docName], docItems);
 
       const info = await fetch(`${this.dbToken}`, {
         method: 'POST',
@@ -129,7 +129,7 @@ if (isExperimentalFeaturesEnabled) {
       const info = await fetch(`https://kv.replit.com/v0/${this.replitdbtoken}/${key}`, {
         method: 'GET',
         headers,
-      }).then((res) => res.json() );
+      }).then((res) => res.json());
     }
   };
 } else {

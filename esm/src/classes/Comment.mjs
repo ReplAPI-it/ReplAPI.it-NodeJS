@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 
-import headers from '../utils/headers.js';
-import constants from '../utils/constants.js';
+import headers from '../utils/headers.mjs';
+import constants from '../utils/constants.mjs';
 
 export default class Comment {
   constructor(id) {

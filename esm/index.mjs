@@ -1,8 +1,10 @@
+import 'core-js/stable/index.js';
+import 'regenerator-runtime/runtime.js';
 import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 import stringify from 'json-stable-stringify-without-jsonify';
-import replapi from './src/source.js';
+import replapi from './src/source.mjs';
 
 const defaultInitVariables = {
   username: '',
@@ -31,7 +33,7 @@ function sortByKey(a, b) {
 
 export default function ReplAPI(initVariables) {
   if (initVariables) {
-    _.assign(defaultInitVariables, initVariables)
+    _.assign(defaultInitVariables, initVariables);
     fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
   } else {
     fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
