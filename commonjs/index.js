@@ -17,7 +17,7 @@ var _lodash = _interopRequireDefault(require("lodash"));
 
 var _jsonStableStringifyWithoutJsonify = _interopRequireDefault(require("json-stable-stringify-without-jsonify"));
 
-var _source = _interopRequireDefault(require("./src/source.mjs"));
+var _source = _interopRequireDefault(require("./src/source.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

@@ -4,6 +4,8 @@ import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
 
+import constants from '../utils/constants.mjs';
+
 function hash(value, salt) {
   const hashItem = crypto.createHmac('sha512', salt);
   hashItem.update(value);
@@ -23,12 +25,8 @@ function compare(value, hashData) {
 }
 
 let exportable;
-let isExperimentalFeaturesEnabled;
-if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
-  isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
-}
 
-if (isExperimentalFeaturesEnabled) {
+if (constants.initVariables.experimentalFeatures) {
   exportable = class Database {
     constructor(dbToken, salt = '', options = {}) {
       if (!process.env.REPLIT_DB_URL) throw new Error('Please run the Database Class on a Replit Project only.');

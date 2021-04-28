@@ -7,9 +7,9 @@ exports.CustomRecursiveQuery = exports.CustomDataQuery = void 0;
 
 var _nodeFetch = _interopRequireDefault(require("node-fetch"));
 
-var _headers = _interopRequireDefault(require("../utils/headers.mjs"));
+var _headers = _interopRequireDefault(require("../utils/headers.js"));
 
-var _constants = _interopRequireDefault(require("../utils/constants.mjs"));
+var _constants = _interopRequireDefault(require("../utils/constants.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

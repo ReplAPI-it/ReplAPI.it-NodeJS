@@ -6,12 +6,8 @@ import headers from '../utils/headers.mjs';
 import constants from '../utils/constants.mjs';
 
 let exportable;
-let isExperimentalFeaturesEnabled;
-if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
-  isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
-}
 
-if (isExperimentalFeaturesEnabled) {
+if (constants.initVariables.experimentalFeatures) {
   exportable = class Notifications {
     async postReplyNotification(after, count) {
       if (!global.cookies) {

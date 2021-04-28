@@ -5,29 +5,29 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 
-var _Blog = _interopRequireDefault(require("./classes/Blog.mjs"));
+var _Blog = _interopRequireDefault(require("./classes/Blog.js"));
 
-var _Board = _interopRequireDefault(require("./classes/Board.mjs"));
+var _Board = _interopRequireDefault(require("./classes/Board.js"));
 
-var _Comment = _interopRequireDefault(require("./classes/Comment.mjs"));
+var _Comment = _interopRequireDefault(require("./classes/Comment.js"));
 
-var _Custom = require("./classes/Custom.mjs");
+var _Custom = require("./classes/Custom.js");
 
-var _Database = _interopRequireDefault(require("./classes/Database.mjs"));
+var _Database = _interopRequireDefault(require("./classes/Database.js"));
 
-var _Languages = _interopRequireDefault(require("./classes/Languages.mjs"));
+var _Languages = _interopRequireDefault(require("./classes/Languages.js"));
 
-var _Leaderboard = _interopRequireDefault(require("./classes/Leaderboard.mjs"));
+var _Leaderboard = _interopRequireDefault(require("./classes/Leaderboard.js"));
 
-var _Login = _interopRequireDefault(require("./classes/Login.mjs"));
+var _Login = _interopRequireDefault(require("./classes/Login.js"));
 
-var _Notifications = _interopRequireDefault(require("./classes/Notifications.mjs"));
+var _Notifications = _interopRequireDefault(require("./classes/Notifications.js"));
 
-var _Post = _interopRequireDefault(require("./classes/Post.mjs"));
+var _Post = _interopRequireDefault(require("./classes/Post.js"));
 
-var _Repl = _interopRequireDefault(require("./classes/Repl.mjs"));
+var _Repl = _interopRequireDefault(require("./classes/Repl.js"));
 
-var _User = _interopRequireDefault(require("./classes/User.mjs"));
+var _User = _interopRequireDefault(require("./classes/User.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 

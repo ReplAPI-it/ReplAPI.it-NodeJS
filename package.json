@@ -16,6 +16,7 @@
   "module": "./esm/index.mjs",
   "scripts": {
     "start": "node esm/index.mjs",
+    "test": "node tests/common.test.js --experimental-conditional-exports & node tests/esm.test.mjs --experimental-conditional-exports",
     "test:commonjs": "node tests/common.test.js --experimental-conditional-exports",
     "test:esm": "node tests/esm.test.mjs --experimental-conditional-exports",
     "build": "babel esm --out-dir commonjs",

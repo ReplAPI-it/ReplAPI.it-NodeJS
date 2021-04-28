@@ -2,15 +2,13 @@ import Parser from 'rss-parser';
 import fs from 'fs';
 import path from 'path';
 
+import constants from '../utils/constants.mjs';
+
 const parser = new Parser();
 
 let exportable;
-let isExperimentalFeaturesEnabled;
-if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
-  isExperimentalFeaturesEnabled = JSON.parse(fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
-}
 
-if (isExperimentalFeaturesEnabled) {
+if (constants.initVariables.experimentalFeatures) {
   exportable = class Blog {
     async blogData() {
       const feed = await parser.parseURL('https://blog.replit.com/feed.xml');

@@ -15,6 +15,8 @@ var _path = _interopRequireDefault(require("path"));
 
 var _crypto = _interopRequireDefault(require("crypto"));
 
+var _constants = _interopRequireDefault(require("../utils/constants.js"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -55,13 +57,8 @@ function compare(value, hashData) {
 }
 
 var exportable;
-var isExperimentalFeaturesEnabled;
 
-if (_fs["default"].existsSync(_path["default"].join(process.cwd(), '.replapirc.json'))) {
-  isExperimentalFeaturesEnabled = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
-}
-
-if (isExperimentalFeaturesEnabled) {
+if (_constants["default"].initVariables.experimentalFeatures) {
   exportable = /*#__PURE__*/function () {
     function Database(dbToken) {
       var salt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';

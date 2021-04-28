@@ -11,9 +11,9 @@ var _fs = _interopRequireDefault(require("fs"));
 
 var _path = _interopRequireDefault(require("path"));
 
-var _headers = _interopRequireDefault(require("../utils/headers.mjs"));
+var _headers = _interopRequireDefault(require("../utils/headers.js"));
 
-var _constants = _interopRequireDefault(require("../utils/constants.mjs"));
+var _constants = _interopRequireDefault(require("../utils/constants.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -28,13 +28,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 var exportable;
-var isExperimentalFeaturesEnabled;
 
-if (_fs["default"].existsSync(_path["default"].join(process.cwd(), '.replapirc.json'))) {
-  isExperimentalFeaturesEnabled = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), '.replapirc.json'))).experimentalFeatures;
-}
-
-if (isExperimentalFeaturesEnabled) {
+if (_constants["default"].initVariables.experimentalFeatures) {
   exportable = /*#__PURE__*/function () {
     function Notifications() {
       _classCallCheck(this, Notifications);
