@@ -1,13 +1,13 @@
-import HTMLParser from 'node-html-parser';
-import fetch from 'node-fetch';
-import atob from 'atob';
+import HTMLParser from "node-html-parser";
+import fetch from "node-fetch";
+import atob from "atob";
 
 async function fetchVariable() {
-  const html = await fetch('https://staging.replit.com/', {
-    method: 'GET',
+  const html = await fetch("https://staging.replit.com/", {
+    method: "GET",
     headers: {
-      'X-Requested-With': 'ReplAPI.it',
-      Referrer: 'https://staging.replit.com/',
+      "X-Requested-With": "ReplAPI.it",
+      Referrer: "https://staging.replit.com/",
     },
   }).then((res) => res.text());
 
@@ -22,7 +22,13 @@ async function fetchVariable() {
     },
   });
 
-  return JSON.parse(atob(root.childNodes[1].childNodes[0].childNodes[1].childNodes[0].rawText.split("'")[1].split("'")[0]));
+  return JSON.parse(
+    atob(
+      root.childNodes[1].childNodes[0].childNodes[1].childNodes[0].rawText
+        .split("'")[1]
+        .split("'")[0]
+    )
+  );
 }
 
 export default class Languages {

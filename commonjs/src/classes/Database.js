@@ -36,10 +36,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function hash(value, salt) {
-  var hashItem = _crypto["default"].createHmac('sha512', salt);
+  var hashItem = _crypto["default"].createHmac("sha512", salt);
 
   hashItem.update(value);
-  var result = hashItem.digest('hex');
+  var result = hashItem.digest("hex");
   return {
     salt: salt,
     hashedpassword: result
@@ -61,57 +61,57 @@ var exportable;
 if (_constants["default"].initVariables.experimentalFeatures) {
   exportable = /*#__PURE__*/function () {
     function Database(dbToken) {
-      var salt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+      var salt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
       _classCallCheck(this, Database);
 
-      if (!process.env.REPLIT_DB_URL) throw new Error('Please run the Database Class on a Replit Project only.');
+      if (!process.env.REPL_PUBKEYS && !process.env.REPL_ID) throw new Error("Please run the Database Class on a Replit Project only.");
       this.dbToken = dbToken || process.env.REPLIT_DB_URL;
       this.salt = salt;
       this.options = {
-        id: String(dbToken).split('/')[4] || process.env.REPLIT_DB_URL.split('/')[4],
+        id: String(dbToken).split("/")[4] || process.env.REPLIT_DB_URL.split("/")[4],
         owner: process.env.REPL_OWNER,
         collaborators: _objectSpread({}, options.collaborators),
         password: _objectSpread({}, hash(String(options.password), String(salt))),
         type: options.type,
         encrypted: options.encrypted || [false],
-        'max-items': options['max-items'] || 10
+        "max-items": options["max-items"] || 10
       };
     }
 
     _createClass(Database, [{
       key: "init",
       value: function () {
-        var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-          var isDatabaseSetup, createDatabaseFlag, info, _info;
+        var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(password) {
+          var currentDatabase, createDatabaseFlag, info, _info;
 
           return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(encodeURIComponent('replapi_database_config')), {
-                    method: 'GET'
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(encodeURIComponent("replapi_database_config")), {
+                    method: "GET"
                   }).then(function (res) {
                     return res.text();
                   });
 
                 case 2:
-                  isDatabaseSetup = _context.sent;
+                  currentDatabase = _context.sent;
 
-                  if (isDatabaseSetup) {
-                    _context.next = 22;
+                  if (currentDatabase) {
+                    _context.next = 24;
                     break;
                   }
 
-                  if (!(this.options.type === 'plus')) {
+                  if (!(this.options.type === "plus")) {
                     _context.next = 15;
                     break;
                   }
 
-                  if (_fs["default"].existsSync(_path["default"].join(process.cwd(), '.replapirc.json'))) {
-                    createDatabaseFlag = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), '.replapirc.json'))).createDatabaseFlag;
+                  if (_fs["default"].existsSync(_path["default"].join(process.cwd(), ".replapirc.json"))) {
+                    createDatabaseFlag = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), ".replapirc.json"))).createDatabaseFlag;
                   }
 
                   if (!createDatabaseFlag) {
@@ -121,11 +121,11 @@ if (_constants["default"].initVariables.experimentalFeatures) {
 
                   _context.next = 9;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: 'POST',
+                    method: "POST",
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                      "Content-Type": "application/x-www-form-urlencoded"
                     },
-                    body: "".concat(encodeURIComponent('replapi_database_config'), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
+                    body: "".concat(encodeURIComponent("replapi_database_config"), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
                   });
 
                 case 9:
@@ -141,18 +141,18 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   break;
 
                 case 15:
-                  if (!(this.options.type === 'repldb')) {
+                  if (!(this.options.type === "repldb")) {
                     _context.next = 21;
                     break;
                   }
 
                   _context.next = 18;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: 'POST',
+                    method: "POST",
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                      "Content-Type": "application/x-www-form-urlencoded"
                     },
-                    body: "".concat(encodeURIComponent('replapi_database_config'), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
+                    body: "".concat(encodeURIComponent("replapi_database_config"), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
                   });
 
                 case 18:
@@ -164,6 +164,18 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   throw new Error('Invalid Database Type. For a normal database, use the "repldb" option.');
 
                 case 22:
+                  _context.next = 26;
+                  break;
+
+                case 24:
+                  if (compare(password, JSON.parse(currentDatabase).password)) {
+                    _context.next = 26;
+                    break;
+                  }
+
+                  throw new Error("Incorrect Password. Database access denied.");
+
+                case 26:
                 case "end":
                   return _context.stop();
               }
@@ -171,7 +183,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
           }, _callee, this);
         }));
 
-        function init() {
+        function init(_x) {
           return _init.apply(this, arguments);
         }
 
@@ -188,9 +200,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 0:
                   _context2.next = 2;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: 'POST',
+                    method: "POST",
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                      "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify({})))
                   });
@@ -206,7 +218,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
           }, _callee2, this);
         }));
 
-        function createCollection(_x) {
+        function createCollection(_x2) {
           return _createCollection.apply(this, arguments);
         }
 
@@ -229,9 +241,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   collection[docName] = _objectSpread({}, docItems);
                   _context3.next = 6;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: 'POST',
+                    method: "POST",
                     headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
+                      "Content-Type": "application/x-www-form-urlencoded"
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
                   });
@@ -247,33 +259,39 @@ if (_constants["default"].initVariables.experimentalFeatures) {
           }, _callee3, this);
         }));
 
-        function createDoc(_x2, _x3, _x4) {
+        function createDoc(_x3, _x4, _x5) {
           return _createDoc.apply(this, arguments);
         }
 
         return createDoc;
       }()
     }, {
-      key: "getCollection",
+      key: "getDatabaseKeys",
       value: function () {
-        var _getCollection = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(collectionName) {
-          var info;
+        var _getDatabaseKeys = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+          var info, keys;
           return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
               switch (_context4.prev = _context4.next) {
                 case 0:
                   _context4.next = 2;
-                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
-                    method: 'GET'
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "?encode=true&prefix=").concat(encodeURIComponent("")), {
+                    method: "GET"
                   }).then(function (res) {
-                    return res.json();
+                    return res.text();
                   });
 
                 case 2:
                   info = _context4.sent;
-                  return _context4.abrupt("return", info);
+                  keys = info.split("\n").map(decodeURIComponent);
 
-                case 4:
+                  if (keys.indexOf("replapi_database_config") > -1) {
+                    keys.splice(keys.indexOf("replapi_database_config"), 1);
+                  }
+
+                  return _context4.abrupt("return", keys);
+
+                case 6:
                 case "end":
                   return _context4.stop();
               }
@@ -281,16 +299,16 @@ if (_constants["default"].initVariables.experimentalFeatures) {
           }, _callee4, this);
         }));
 
-        function getCollection(_x5) {
-          return _getCollection.apply(this, arguments);
+        function getDatabaseKeys() {
+          return _getDatabaseKeys.apply(this, arguments);
         }
 
-        return getCollection;
+        return getDatabaseKeys;
       }()
     }, {
-      key: "getDoc",
+      key: "getCollection",
       value: function () {
-        var _getDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(collectionName, docName) {
+        var _getCollection = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(collectionName) {
           var info;
           return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
@@ -298,14 +316,14 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 0:
                   _context5.next = 2;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
-                    method: 'GET'
+                    method: "GET"
                   }).then(function (res) {
                     return res.json();
                   });
 
                 case 2:
                   info = _context5.sent;
-                  return _context5.abrupt("return", info[docName]);
+                  return _context5.abrupt("return", info);
 
                 case 4:
                 case "end":
@@ -315,7 +333,41 @@ if (_constants["default"].initVariables.experimentalFeatures) {
           }, _callee5, this);
         }));
 
-        function getDoc(_x6, _x7) {
+        function getCollection(_x6) {
+          return _getCollection.apply(this, arguments);
+        }
+
+        return getCollection;
+      }()
+    }, {
+      key: "getDoc",
+      value: function () {
+        var _getDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(collectionName, docName) {
+          var info;
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
+                    method: "GET"
+                  }).then(function (res) {
+                    return res.json();
+                  });
+
+                case 2:
+                  info = _context6.sent;
+                  return _context6.abrupt("return", info[docName]);
+
+                case 4:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6, this);
+        }));
+
+        function getDoc(_x7, _x8) {
           return _getDoc.apply(this, arguments);
         }
 
@@ -324,67 +376,33 @@ if (_constants["default"].initVariables.experimentalFeatures) {
     }, {
       key: "updateDoc",
       value: function () {
-        var _updateDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(collectionName, docName, docItems) {
+        var _updateDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(collectionName, docName, docItems) {
           var collection, info;
-          return regeneratorRuntime.wrap(function _callee6$(_context6) {
-            while (1) {
-              switch (_context6.prev = _context6.next) {
-                case 0:
-                  _context6.next = 2;
-                  return this.getCollection(collectionName);
-
-                case 2:
-                  collection = _context6.sent;
-
-                  _lodash["default"].assignIn(collection[docName], docItems);
-
-                  _context6.next = 6;
-                  return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: 'POST',
-                    headers: {
-                      'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
-                  });
-
-                case 6:
-                  info = _context6.sent;
-
-                case 7:
-                case "end":
-                  return _context6.stop();
-              }
-            }
-          }, _callee6, this);
-        }));
-
-        function updateDoc(_x8, _x9, _x10) {
-          return _updateDoc.apply(this, arguments);
-        }
-
-        return updateDoc;
-      }()
-    }, {
-      key: "delete",
-      value: function () {
-        var _delete2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(key) {
-          var info;
           return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
                   _context7.next = 2;
-                  return (0, _nodeFetch["default"])("https://kv.replit.com/v0/".concat(this.replitdbtoken, "/").concat(key), {
-                    method: 'GET',
-                    headers: headers
-                  }).then(function (res) {
-                    return res.json();
-                  });
+                  return this.getCollection(collectionName);
 
                 case 2:
+                  collection = _context7.sent;
+
+                  _lodash["default"].assignIn(collection[docName], docItems);
+
+                  _context7.next = 6;
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken), {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
+                  });
+
+                case 6:
                   info = _context7.sent;
 
-                case 3:
+                case 7:
                 case "end":
                   return _context7.stop();
               }
@@ -392,11 +410,128 @@ if (_constants["default"].initVariables.experimentalFeatures) {
           }, _callee7, this);
         }));
 
-        function _delete(_x11) {
-          return _delete2.apply(this, arguments);
+        function updateDoc(_x9, _x10, _x11) {
+          return _updateDoc.apply(this, arguments);
         }
 
-        return _delete;
+        return updateDoc;
+      }()
+    }, {
+      key: "deleteCollection",
+      value: function () {
+        var _deleteCollection = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(collectionName) {
+          var info;
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
+                    method: "DELETE"
+                  });
+
+                case 2:
+                  info = _context8.sent;
+
+                case 3:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8, this);
+        }));
+
+        function deleteCollection(_x12) {
+          return _deleteCollection.apply(this, arguments);
+        }
+
+        return deleteCollection;
+      }()
+    }, {
+      key: "deleteDoc",
+      value: function () {
+        var _deleteDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(collectionName, docName) {
+          var collection, info;
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return this.getCollection(collectionName);
+
+                case 2:
+                  collection = _context9.sent;
+
+                  _lodash["default"].unset(collection, docName);
+
+                  _context9.next = 6;
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken), {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
+                  });
+
+                case 6:
+                  info = _context9.sent;
+
+                case 7:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9, this);
+        }));
+
+        function deleteDoc(_x13, _x14) {
+          return _deleteDoc.apply(this, arguments);
+        }
+
+        return deleteDoc;
+      }()
+    }, {
+      key: "deleteDocField",
+      value: function () {
+        var _deleteDocField = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(collectionName, docName, path) {
+          var collection, info;
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  _context10.next = 2;
+                  return this.getCollection(collectionName);
+
+                case 2:
+                  collection = _context10.sent;
+
+                  _lodash["default"].unset(collection[docName], path);
+
+                  _context10.next = 6;
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken), {
+                    method: "POST",
+                    headers: {
+                      "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
+                  });
+
+                case 6:
+                  info = _context10.sent;
+
+                case 7:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10, this);
+        }));
+
+        function deleteDocField(_x15, _x16, _x17) {
+          return _deleteDocField.apply(this, arguments);
+        }
+
+        return deleteDocField;
       }()
     }]);
 
@@ -404,7 +539,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
   }();
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
+    console.log("Experimental Features are not enabled. To learn more about experimental features please visit the documentation.");
   };
 }
 

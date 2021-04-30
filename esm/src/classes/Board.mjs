@@ -1,7 +1,7 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
-import headers from '../utils/headers.mjs';
-import constants from '../utils/constants.mjs';
+import headers from "../utils/headers.mjs";
+import constants from "../utils/constants.mjs";
 
 export default class Board {
   constructor(slug) {
@@ -11,7 +11,7 @@ export default class Board {
   async boardData() {
     const { slug } = this;
     const info = await fetch(constants.graphql, {
-      method: 'POST',
+      method: "POST",
       headers,
       body: JSON.stringify({
         query: `
@@ -26,7 +26,10 @@ export default class Board {
       }),
     }).then((res) => res.json());
 
-    if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+    if (info.errors)
+      throw new Error(
+        `Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+      );
 
     if (!info.data.boardBySlug) {
       throw new Error(`${slug} is not a board. Please query boards on Replit.`);
@@ -35,7 +38,7 @@ export default class Board {
     }
   }
 
-  async boardPosts(after = '', count = 5, order = '') {
+  async boardPosts(after = "", count = 5, order = "") {
     const { slug } = this;
     const output = [];
 
@@ -43,7 +46,7 @@ export default class Board {
       if (recurseAfter === null) return;
 
       const info = await fetch(constants.graphql, {
-        method: 'POST',
+        method: "POST",
         headers,
         body: JSON.stringify({
           query: `
@@ -53,7 +56,11 @@ export default class Board {
                   items { 
                     id
                     title
-                    preview(length: ${global.initVariables.markdown.length || 150}, removeMarkdown: ${global.initVariables.markdown.removeMarkdown || true})
+                    preview(length: ${
+                      global.initVariables.markdown.length || 150
+                    }, removeMarkdown: ${
+            global.initVariables.markdown.removeMarkdown || true
+          })
                   }
                   pageInfo {
                     nextCursor
@@ -70,11 +77,14 @@ export default class Board {
         }),
       }).then((res) => res.json());
 
-      if (info.errors) throw new Error(`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`);
+      if (info.errors)
+        throw new Error(
+          `Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+        );
 
       if (!info.data.boardBySlug) {
         throw new Error(
-          `${slug} is not a board. Please query boards on Replit.`,
+          `${slug} is not a board. Please query boards on Replit.`
         );
       } else {
         info.data.boardBySlug.posts.items.forEach((post) => {

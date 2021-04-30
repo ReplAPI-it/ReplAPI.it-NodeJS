@@ -7,10 +7,6 @@ exports["default"] = void 0;
 
 var _rssParser = _interopRequireDefault(require("rss-parser"));
 
-var _fs = _interopRequireDefault(require("fs"));
-
-var _path = _interopRequireDefault(require("path"));
-
 var _constants = _interopRequireDefault(require("../utils/constants.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -44,7 +40,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return parser.parseURL('https://blog.replit.com/feed.xml');
+                  return parser.parseURL("https://blog.replit.com/feed.xml");
 
                 case 2:
                   feed = _context.sent;
@@ -78,14 +74,14 @@ if (_constants["default"].initVariables.experimentalFeatures) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
-                  order = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : 'newest';
+                  order = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : "newest";
                   count = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 10;
                   _context2.next = 4;
-                  return parser.parseURL('https://blog.replit.com/feed.xml');
+                  return parser.parseURL("https://blog.replit.com/feed.xml");
 
                 case 4:
                   feed = _context2.sent;
-                  if (order === 'oldest') feed.items.reverse();
+                  if (order === "oldest") feed.items.reverse();
                   posts = feed.items.slice(0, count);
                   return _context2.abrupt("return", posts);
 
@@ -109,7 +105,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
   }();
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
+    console.log("Experimental Features are not enabled. To learn more about experimental features please visit the documentation.");
   };
 }
 

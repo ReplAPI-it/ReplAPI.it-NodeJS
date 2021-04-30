@@ -22,7 +22,8 @@
     "build:commonjs": "babel esm --out-dir commonjs",
     "lint": "eslint esm --ext .mjs",
     "lint:fix": "eslint esm --ext .mjs --fix",
-    "format": "prettier ."
+    "format": "prettier . --check",
+    "format:fix": "prettier . --write"
   },
   "repository": {
     "type": "git",
@@ -50,7 +51,7 @@
   "homepage": "https://github.com/RayhanADev/REPLAPI.it#readme",
   "dependencies": {
     "atob": "^2.1.2",
-    "core-js": "^3.11.0",
+    "core-js": "^3.11.1",
     "json-stable-stringify-without-jsonify": "^1.0.1",
     "lodash": "^4.17.21",
     "node-fetch": "^2.6.1",
@@ -60,8 +61,8 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.13.16",
-    "@babel/core": "^7.13.16",
-    "@babel/preset-env": "^7.13.15",
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
     "@replit/database": "^2.0.1",
     "eslint": "^7.24.0",
     "eslint-config-airbnb-base": "^14.2.1",

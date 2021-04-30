@@ -1,8 +1,6 @@
-import Parser from 'rss-parser';
-import fs from 'fs';
-import path from 'path';
+import Parser from "rss-parser";
 
-import constants from '../utils/constants.mjs';
+import constants from "../utils/constants.mjs";
 
 const parser = new Parser();
 
@@ -11,16 +9,16 @@ let exportable;
 if (constants.initVariables.experimentalFeatures) {
   exportable = class Blog {
     async blogData() {
-      const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
+      const feed = await parser.parseURL("https://blog.replit.com/feed.xml");
       delete feed.items;
 
       return feed;
     }
 
-    async blogItems(order = 'newest', count = 10) {
-      const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
+    async blogItems(order = "newest", count = 10) {
+      const feed = await parser.parseURL("https://blog.replit.com/feed.xml");
 
-      if (order === 'oldest') feed.items.reverse();
+      if (order === "oldest") feed.items.reverse();
       const posts = feed.items.slice(0, count);
 
       return posts;
@@ -28,7 +26,9 @@ if (constants.initVariables.experimentalFeatures) {
   };
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
+    console.log(
+      "Experimental Features are not enabled. To learn more about experimental features please visit the documentation."
+    );
   };
 }
 

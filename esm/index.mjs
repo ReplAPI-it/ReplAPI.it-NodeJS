@@ -1,30 +1,30 @@
-import 'core-js/stable/index.js';
-import 'regenerator-runtime/runtime.js';
-import fs from 'fs';
-import path from 'path';
-import _ from 'lodash';
-import stringify from 'json-stable-stringify-without-jsonify';
-import replapi from './src/source.mjs';
+import "core-js/stable/index.js";
+import "regenerator-runtime/runtime.js";
+import fs from "fs";
+import path from "path";
+import _ from "lodash";
+import stringify from "json-stable-stringify-without-jsonify";
+import replapi from "./src/source.mjs";
 
 const defaultInitVariables = {
-  username: '',
+  username: "",
   captcha: {
-    token: '',
+    token: "",
   },
   endpoints: {
-    gql: '',
-    restful: '',
-    login: '',
+    gql: "",
+    restful: "",
+    login: "",
   },
   markdown: {
-    length: '',
-    removeMarkdown: '',
+    length: "",
+    removeMarkdown: "",
   },
   previewCount: {
-    comments: '',
+    comments: "",
   },
-  experimentalFeatures: '',
-  createDatabaseFlag: '',
+  experimentalFeatures: "",
+  createDatabaseFlag: "",
 };
 
 function sortByKey(a, b) {
@@ -34,9 +34,17 @@ function sortByKey(a, b) {
 export default function ReplAPI(initVariables) {
   if (initVariables) {
     _.assign(defaultInitVariables, initVariables);
-    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
+    fs.writeFileSync(
+      path.join(process.cwd(), ".replapirc.json"),
+      `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
+      { encoding: "utf8" }
+    );
   } else {
-    fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`, { encoding: 'utf8' });
+    fs.writeFileSync(
+      path.join(process.cwd(), ".replapirc.json"),
+      `${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
+      { encoding: "utf8" }
+    );
   }
 
   return {

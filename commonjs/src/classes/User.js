@@ -42,7 +42,7 @@ var User = /*#__PURE__*/function () {
                 user = this.username;
                 _context.next = 3;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query User($user: String!) {\n            userByUsername(username: $user) {\n              ".concat(_constants["default"].userAttributes, "\n            }\n          }"),
@@ -101,7 +101,7 @@ var User = /*#__PURE__*/function () {
                 user = this.username;
                 _context2.next = 3;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query User($user: String!) {\n            userByUsername(username: $user) {\n              ".concat(_constants["default"].userAttributes, "\n              roles { ").concat(_constants["default"].roleAttributes, " }\n              organization { ").concat(_constants["default"].organizationAttributes, " }\n              languages { ").concat(_constants["default"].languageAttributes, " }\n            }\n          }"),
@@ -160,7 +160,7 @@ var User = /*#__PURE__*/function () {
                 username = this.username;
                 _context3.next = 3;
                 return (0, _nodeFetch["default"])("".concat(_constants["default"].restful, "/data/profiles/").concat(username), {
-                  method: 'GET',
+                  method: "GET",
                   headers: _headers["default"]
                 }).then(function (res) {
                   return res.json();
@@ -227,7 +227,7 @@ var User = /*#__PURE__*/function () {
                           case 2:
                             _context4.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n            query UserPost($user: String!, $after: String!, $count: Int!, $order: String!) {\n              userByUsername(username: $user) {\n                posts(count: $count, after: $after, order: $order) {\n                  items { \n                    id\n                    title\n                    preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }\n            }"),
@@ -287,9 +287,9 @@ var User = /*#__PURE__*/function () {
                   return _recurse.apply(this, arguments);
                 };
 
-                after = _args5.length > 0 && _args5[0] !== undefined ? _args5[0] : '';
+                after = _args5.length > 0 && _args5[0] !== undefined ? _args5[0] : "";
                 count = _args5.length > 1 && _args5[1] !== undefined ? _args5[1] : 10;
-                order = _args5.length > 2 && _args5[2] !== undefined ? _args5[2] : '';
+                order = _args5.length > 2 && _args5[2] !== undefined ? _args5[2] : "";
                 user = this.username;
                 output = [];
                 _context5.next = 9;
@@ -346,7 +346,7 @@ var User = /*#__PURE__*/function () {
                           case 2:
                             _context6.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n              query UserPost($user: String!, $after: String!, $count: Int!, $order: String!) {\n                userByUsername(username: $user) {\n                  posts(count: $count, after: $after, order: $order) {\n                    items { \n                      ".concat(_constants["default"].postAttributes, "\n                      user { ").concat(_constants["default"].userAttributes, " }\n                      board { ").concat(_constants["default"].boardAttributes, " }\n                      repl { ").concat(_constants["default"].replAttributes, " }\n                      comments(count: ").concat(_constants["default"].initVariables.previewCount.comments || 10, ") { items { ").concat(_constants["default"].commentAttributes, " } }\n                      votes { items { id, user { ").concat(_constants["default"].userAttributes, " } } }\n                      answeredBy { ").concat(_constants["default"].userAttributes, " }\n                      answer { ").concat(_constants["default"].commentAttributes, " }\n                    }\n                    pageInfo {\n                      nextCursor\n                    }\n                  }\n                }\n              }"),
@@ -406,9 +406,9 @@ var User = /*#__PURE__*/function () {
                   return _recurse4.apply(this, arguments);
                 };
 
-                after = _args7.length > 0 && _args7[0] !== undefined ? _args7[0] : '';
+                after = _args7.length > 0 && _args7[0] !== undefined ? _args7[0] : "";
                 count = _args7.length > 1 && _args7[1] !== undefined ? _args7[1] : 10;
-                order = _args7.length > 2 && _args7[2] !== undefined ? _args7[2] : '';
+                order = _args7.length > 2 && _args7[2] !== undefined ? _args7[2] : "";
                 user = this.username;
                 output = [];
                 _context7.next = 9;
@@ -465,7 +465,7 @@ var User = /*#__PURE__*/function () {
                           case 2:
                             _context8.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n            query UserComment($user: String!, $after: String!, $count: Int!, $order: String!) {\n              userByUsername(username: $user) {\n                comments(count: $count, after: $after, order: $order) {\n                  items {\n                    id\n                    preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }\n            }"),
@@ -525,9 +525,9 @@ var User = /*#__PURE__*/function () {
                   return _recurse7.apply(this, arguments);
                 };
 
-                after = _args9.length > 0 && _args9[0] !== undefined ? _args9[0] : '';
+                after = _args9.length > 0 && _args9[0] !== undefined ? _args9[0] : "";
                 count = _args9.length > 1 && _args9[1] !== undefined ? _args9[1] : 20;
-                order = _args9.length > 2 && _args9[2] !== undefined ? _args9[2] : '';
+                order = _args9.length > 2 && _args9[2] !== undefined ? _args9[2] : "";
                 user = this.username;
                 output = [];
                 _context9.next = 9;
@@ -584,7 +584,7 @@ var User = /*#__PURE__*/function () {
                           case 2:
                             _context10.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n            query UserComment($user: String!, $after: String!, $count: Int!, $order: String!) {\n              userByUsername(username: $user) {\n                comments(count: $count, after: $after, order: $order) {\n                  items {\n                    ".concat(_constants["default"].commentAttributes, "\n                    parentComment { ").concat(_constants["default"].commentAttributes, " }\n                    comments { ").concat(_constants["default"].commentAttributes, " }\n                    user { ").concat(_constants["default"].userAttributes, " }\n                    post {\n                      ").concat(_constants["default"].postAttributes, "\n                      user { ").concat(_constants["default"].userAttributes, " }\n                      board { ").concat(_constants["default"].boardAttributes, " }\n                      repl { ").concat(_constants["default"].replAttributes, " }\n                      comments(count: ").concat(_constants["default"].initVariables.previewCount.comments || 10, ") { items { ").concat(_constants["default"].commentAttributes, " } }\n                      votes { items { id, user { ").concat(_constants["default"].userAttributes, " } } }\n                      answeredBy { ").concat(_constants["default"].userAttributes, " }\n                      answer { ").concat(_constants["default"].commentAttributes, " }\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }\n            }"),
@@ -644,9 +644,9 @@ var User = /*#__PURE__*/function () {
                   return _recurse10.apply(this, arguments);
                 };
 
-                after = _args11.length > 0 && _args11[0] !== undefined ? _args11[0] : '';
+                after = _args11.length > 0 && _args11[0] !== undefined ? _args11[0] : "";
                 count = _args11.length > 1 && _args11[1] !== undefined ? _args11[1] : 20;
-                order = _args11.length > 2 && _args11[2] !== undefined ? _args11[2] : '';
+                order = _args11.length > 2 && _args11[2] !== undefined ? _args11[2] : "";
                 user = this.username;
                 output = [];
                 _context11.next = 9;
@@ -680,17 +680,17 @@ var User = /*#__PURE__*/function () {
           while (1) {
             switch (_context12.prev = _context12.next) {
               case 0:
-                limit = _args12.length > 1 && _args12[1] !== undefined ? _args12[1] : '';
+                limit = _args12.length > 1 && _args12[1] !== undefined ? _args12[1] : "";
 
                 if (global.cookies) {
                   _context12.next = 5;
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 5:
-                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
+                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
                   _context12.next = 19;
                   break;
                 }
@@ -700,13 +700,13 @@ var User = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('User Search needs a query to search. Please supply a query.');
+                throw new Error("User Search needs a query to search. Please supply a query.");
 
               case 8:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context12.next = 11;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            query UserSearch($query: String!, $limit: Int!) {\n              usernameSearch(query: $query, limit: $limit) {\n                id\n                username\n              }\n            }",

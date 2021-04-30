@@ -1,9 +1,7 @@
-import fetch from 'node-fetch';
-import fs from 'fs';
-import path from 'path';
+import fetch from "node-fetch";
 
-import headers from '../utils/headers.mjs';
-import constants from '../utils/constants.mjs';
+import headers from "../utils/headers.mjs";
+import constants from "../utils/constants.mjs";
 
 let exportable;
 
@@ -11,11 +9,11 @@ if (constants.initVariables.experimentalFeatures) {
   exportable = class Notifications {
     async postReplyNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -45,11 +43,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -58,11 +55,11 @@ if (constants.initVariables.experimentalFeatures) {
 
     async commentReplyNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -92,11 +89,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -105,11 +101,11 @@ if (constants.initVariables.experimentalFeatures) {
 
     async postMentionedNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -139,11 +135,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -152,11 +147,11 @@ if (constants.initVariables.experimentalFeatures) {
 
     async commentMentionedNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -186,11 +181,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -199,11 +193,11 @@ if (constants.initVariables.experimentalFeatures) {
 
     async answerNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -233,11 +227,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -246,11 +239,11 @@ if (constants.initVariables.experimentalFeatures) {
 
     async multiplayerInviteNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -280,11 +273,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -293,11 +285,11 @@ if (constants.initVariables.experimentalFeatures) {
 
     async allNotification(after, count) {
       if (!global.cookies) {
-        throw new Error('Not logged in.');
+        throw new Error("Not logged in.");
       } else {
         headers.Cookie = global.cookies;
         const info = await fetch(constants.graphql, {
-          method: 'POST',
+          method: "POST",
           headers,
           body: JSON.stringify({
             query: `
@@ -327,11 +319,10 @@ if (constants.initVariables.experimentalFeatures) {
               count,
             }),
           }),
-        })
-          .then((res) => res.json());
+        }).then((res) => res.json());
 
         if (!info.data.notifications) {
-          throw new Error('Cannot fetch notifications.');
+          throw new Error("Cannot fetch notifications.");
         } else {
           return info.data.notifications;
         }
@@ -340,7 +331,9 @@ if (constants.initVariables.experimentalFeatures) {
   };
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
+    console.log(
+      "Experimental Features are not enabled. To learn more about experimental features please visit the documentation."
+    );
   };
 }
 

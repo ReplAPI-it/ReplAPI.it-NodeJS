@@ -1,11 +1,11 @@
-import fetch from 'node-fetch';
+import fetch from "node-fetch";
 
-import headers from '../utils/headers.mjs';
-import constants from '../utils/constants.mjs';
+import headers from "../utils/headers.mjs";
+import constants from "../utils/constants.mjs";
 
 export default class Leaderboard {
-  async leaderboardData(after = '', count = 10, since) {
-    let query = '';
+  async leaderboardData(after = "", count = 10, since) {
+    let query = "";
     let variables = {};
     if (since) {
       query = `
@@ -42,7 +42,7 @@ export default class Leaderboard {
       if (recurseAfter === null) return;
 
       const info = await fetch(constants.graphql, {
-        method: 'POST',
+        method: "POST",
         headers,
         body: JSON.stringify({
           query,
@@ -54,7 +54,7 @@ export default class Leaderboard {
       }).then((res) => res.json());
 
       if (!info.data.leaderboard) {
-        throw new Error('Cannot fetch leaderboard');
+        throw new Error("Cannot fetch leaderboard");
       } else {
         info.data.leaderboard.items.forEach((user) => {
           output.push(user);

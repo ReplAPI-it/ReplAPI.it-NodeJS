@@ -7,10 +7,6 @@ exports["default"] = void 0;
 
 var _nodeFetch = _interopRequireDefault(require("node-fetch"));
 
-var _fs = _interopRequireDefault(require("fs"));
-
-var _path = _interopRequireDefault(require("path"));
-
 var _headers = _interopRequireDefault(require("../utils/headers.js"));
 
 var _constants = _interopRequireDefault(require("../utils/constants.js"));
@@ -49,13 +45,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query RepliedToPostNotification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on RepliedToPostNotification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -76,7 +72,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context.abrupt("return", info.data.notifications);
@@ -109,13 +105,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context2.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query RepliedToCommentNotification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on RepliedToCommentNotification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -136,7 +132,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context2.abrupt("return", info.data.notifications);
@@ -169,13 +165,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context3.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query MentionedInPostNotification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on MentionedInPostNotification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -196,7 +192,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context3.abrupt("return", info.data.notifications);
@@ -229,13 +225,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context4.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query MentionedInCommentNotification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on MentionedInPostNotification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -256,7 +252,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context4.abrupt("return", info.data.notifications);
@@ -289,13 +285,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context5.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query AnswerAcceptedNotification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on AnswerAcceptedNotification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -316,7 +312,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context5.abrupt("return", info.data.notifications);
@@ -349,13 +345,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context6.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query MultiplayerInvitedNotification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on MultiplayerInvitedNotification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -376,7 +372,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context6.abrupt("return", info.data.notifications);
@@ -409,13 +405,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Not logged in.');
+                  throw new Error("Not logged in.");
 
                 case 4:
                   _headers["default"].Cookie = global.cookies;
                   _context7.next = 7;
                   return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                    method: 'POST',
+                    method: "POST",
                     headers: _headers["default"],
                     body: JSON.stringify({
                       query: "\n              query Notification($after: String!, $count: Int!) {\n                notifications(after: $after, count: $count) {\n                  items {\n                    ... on Notification {\n                      id\n                      url\n                      text\n                      seen\n                      context\n                      creator {\n                        ".concat(_constants["default"].userAttributes, "\n                      }\n                      timeCreated\n                      timeUpdated\n                    }\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }"),
@@ -436,7 +432,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error('Cannot fetch notifications.');
+                  throw new Error("Cannot fetch notifications.");
 
                 case 12:
                   return _context7.abrupt("return", info.data.notifications);
@@ -461,7 +457,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
   }();
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
+    console.log("Experimental Features are not enabled. To learn more about experimental features please visit the documentation.");
   };
 }
 

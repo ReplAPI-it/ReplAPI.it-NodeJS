@@ -36,7 +36,7 @@ function _getReplId() {
           case 0:
             _context6.next = 2;
             return _constants["default"].fetch("".concat(_constants["default"].restful, "/data/repls/@").concat(username, "/").concat(slug), {
-              method: 'GET',
+              method: "GET",
               headers: _headers["default"]
             }).then(function (res) {
               return res.json();
@@ -61,7 +61,7 @@ var Repl = /*#__PURE__*/function () {
     _classCallCheck(this, Repl);
 
     this.username = username;
-    if (this.slug) this.slug = slug.replace(/ /g, '-');
+    if (this.slug) this.slug = slug.replace(/ /g, "-");
   }
 
   _createClass(Repl, [{
@@ -81,7 +81,7 @@ var Repl = /*#__PURE__*/function () {
                 id = _context.sent;
                 _context.next = 6;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Repl($id: String!) {\n            repl(id: $id) {\n              ... on Repl {\n                ".concat(_constants["default"].replAttributes, "\n              }\n            }\n          }"),
@@ -140,7 +140,7 @@ var Repl = /*#__PURE__*/function () {
                 username = this.username, slug = this.slug;
                 _context2.next = 3;
                 return (0, _nodeFetch["default"])("".concat(_constants["default"].restful, "/data/repls/@").concat(username, "/").concat(slug), {
-                  method: 'GET',
+                  method: "GET",
                   headers: _headers["default"]
                 }).then(function (res) {
                   return res.json();
@@ -185,7 +185,7 @@ var Repl = /*#__PURE__*/function () {
                 username = this.username, slug = this.slug;
                 _context3.next = 3;
                 return (0, _nodeFetch["default"])("https://replangs.rayhanadev.repl.co/".concat(username, "/").concat(slug), {
-                  method: 'GET',
+                  method: "GET",
                   headers: _headers["default"]
                 }).then(function (res) {
                   return res.json();
@@ -232,16 +232,16 @@ var Repl = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 4:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context4.next = 7;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
-                    query: '{ replTitle }'
+                    query: "{ replTitle }"
                   })
                 }).then(function (res) {
                   return res.json();
@@ -285,7 +285,7 @@ var Repl = /*#__PURE__*/function () {
               case 0:
                 _context5.next = 2;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query newRepls {\n            newRepls {\n              items {\n                ".concat(_constants["default"].replAttributes, "\n              }\n            }\n          }")

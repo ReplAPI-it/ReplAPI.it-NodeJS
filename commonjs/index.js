@@ -22,24 +22,24 @@ var _source = _interopRequireDefault(require("./src/source.js"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var defaultInitVariables = {
-  username: '',
+  username: "",
   captcha: {
-    token: ''
+    token: ""
   },
   endpoints: {
-    gql: '',
-    restful: '',
-    login: ''
+    gql: "",
+    restful: "",
+    login: ""
   },
   markdown: {
-    length: '',
-    removeMarkdown: ''
+    length: "",
+    removeMarkdown: ""
   },
   previewCount: {
-    comments: ''
+    comments: ""
   },
-  experimentalFeatures: '',
-  createDatabaseFlag: ''
+  experimentalFeatures: "",
+  createDatabaseFlag: ""
 };
 
 function sortByKey(a, b) {
@@ -50,18 +50,18 @@ function ReplAPI(initVariables) {
   if (initVariables) {
     _lodash["default"].assign(defaultInitVariables, initVariables);
 
-    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), ".replapirc.json"), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
       cmp: sortByKey,
       space: 4
     }), "\n"), {
-      encoding: 'utf8'
+      encoding: "utf8"
     });
   } else {
-    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), ".replapirc.json"), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
       cmp: sortByKey,
       space: 4
     }), "\n"), {
-      encoding: 'utf8'
+      encoding: "utf8"
     });
   }
 
