@@ -20,15 +20,14 @@ const replapiClasses = [
 ]
 
 const containsAll = (obj, arr) => {
-   for(const str of arr){
-      if(Object.keys(obj).includes(str)) {
-        continue;
-      } else {
-        return false;
-      }
-   }
-   
-   return true;
+	for(const str of arr){
+		if(Object.keys(obj).includes(str)) {
+			continue;
+		} else {
+			return false;
+		}
+	}
+	return true;
 };
 
 console.log(`ESM Test: ${containsAll(replapi, replapiClasses) ? 'Passing' : 'Fail'}`);
