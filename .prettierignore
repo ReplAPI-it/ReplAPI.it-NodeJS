@@ -1,0 +1,18 @@
+# Ignore folders:
+.github
+commonjs
+images
+tests
+
+# Ignore files:
+.eslintrc.json
+.gitignore
+.replapirc.json
+.replit
+babel.config.json
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+LICENSE
+README.md
+package.json
+package-lock.json
