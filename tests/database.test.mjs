@@ -11,15 +11,17 @@ const replapi = ReplAPI({
 });
 
 const myTestClass = new replapi.Database('', 'Furretz', {
+	password: 'Furr3tz',
+	type: 'plus',
 	collaborators: {
 		'HelperFurret': { access: 'write' },
 	},
-	password: 'Furr3tz',
-	type: 'plus',
+	encrypted: [true, 'SHA256'],
+	'max-items': 5,
 });
-await myTestClass.init();
 
 async function myTestFunction() {
+	await myTestClass.init('Furr3tz');
 	// Creation
   /*await myTestClass.createCollection('test_collection');
   await myTestClass.createDoc('test_collection', 'test_doc_0', {
@@ -64,13 +66,19 @@ async function myTestFunction() {
   });
 	
 	const collection_2 = await myTestClass.getCollection('test_collection');
-  console.log('Collection2', collection_2);
+  console.log('Collection', collection_2);
   const doc_2 = await myTestClass.getDoc('test_collection', 'test_doc_2');
-  console.log('Document2', doc_2);*/
+  console.log('Document', doc_2);*/
+  
+  // Deletion
+	/*await myTestClass.deleteDocField('test_collection', 'test_doc_1', 'pre-evolution.name');
+  await myTestClass.deleteCollection('test_collection', 'test_doc_2');
+  await myTestClass.deleteCollection('test_collection');*/
+  
   
   // Compare to ReplDB
-  const keys = await client.getAll();
-  console.log('From ReplDB', keys);
+  /*const keys = await client.getAll();
+  console.log('From ReplDB', keys);*/
 //  fs.writeFileSync('./test/test.json', JSON.stringify(info), { encoding: 'utf8' });
 }
 
