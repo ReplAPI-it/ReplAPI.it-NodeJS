@@ -5,6 +5,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+[![Downloads][downloads-shield]][downloads-url]
 
 <!-- PROJECT LOGO -->
 <br />
@@ -206,3 +207,5 @@ Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/Rayh
 [issues-url]: https://github.com/RayhanADev/REPLAPI.it/issues
 [license-shield]: https://img.shields.io/github/license/RayhanADev/REPLAPI.it.svg?style=for-the-badge
 [license-url]: https://github.com/RayhanADev/REPLAPI.it/blob/master/LICENSE.txt
+[downloads-shield]: https://img.shields.io/npm/dw/replapi-it?style=for-the-badge
+[downloads-url]: https://www.npmjs.com/package/replapi-it
