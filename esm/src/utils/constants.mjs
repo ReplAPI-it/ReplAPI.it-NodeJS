@@ -40,7 +40,7 @@ export default {
   boardAttributes:
     "id, name, description, slug, cta, titleCta, bodyCta, template, buttonCta, color, replRequired, isLocked, isAnswerable, isPrivate, timeCreated, timeUpdated, url, canPost",
   replAttributes:
-    "id, language, isProject, isPrivate, isStarred, title, slug, description, folderId, isRenamed, url, timeCreated, timeUpdated, isOwner, tags { id }, pinnedToProfile, files, hostedUrl, terminalUrl, reactions { id, count }",
+    "id, language, isProject, isPrivate, isStarred, isAlwaysOn, isBoosted, title, slug, description, folderId, folder { id, name }, size, isRenamed, url, timeCreated, timeUpdated, isOwner, tags { id }, pinnedToProfile, files, hostedUrl, terminalUrl, reactions { id, count }, ioTests { id, name, template { id } }, hasUnitTesting, unitTests { tests { id, name, code } }",
   commentAttributes: `id, body, voteCount, timeCreated, timeUpdated, url, isAuthor, canEdit, canVote, canComment, hasVoted, canReport, hasReported, isAnswer, canSelectAsAnswer, canUnselectAsAnswer, preview(length: ${
     initVariables.markdown.length || 150
   }, removeMarkdown: ${initVariables.markdown.removeMarkdown || true})`,

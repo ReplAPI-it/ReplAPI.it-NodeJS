@@ -4,8 +4,7 @@ import headers from "../utils/headers.mjs";
 import constants from "../utils/constants.mjs";
 
 async function getReplId(username, slug) {
-  const info = await constants
-    .fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
+  const info = await fetch(`${constants.restful}/data/repls/@${username}/${slug}`, {
       method: "GET",
       headers,
     })
@@ -17,7 +16,7 @@ async function getReplId(username, slug) {
 export default class Repl {
   constructor(username, slug) {
     this.username = username;
-    if (this.slug) this.slug = slug.replace(/ /g, "-");
+    this.slug = slug.replace(/ /g, "-").replace(/\./g, "");
   }
 
   async replGraphQLData() {
@@ -54,7 +53,7 @@ export default class Repl {
     }
   }
 
-  async replRESTData() {
+  async replRestfulData() {
     const { username, slug } = this;
 
     const info = await fetch(
@@ -72,11 +71,11 @@ export default class Repl {
     }
   }
 
-  async replLangs() {
+  async replReplLangsAPI() {
     const { username, slug } = this;
 
     const info = await fetch(
-      `https://replangs.rayhanadev.repl.co/${username}/${slug}`,
+      `https://langsapi.replapiit.repl.co/${username}/${slug}`,
       {
         method: "GET",
         headers,
@@ -85,6 +84,24 @@ export default class Repl {
 
     if (info.error) {
       throw new Error(`REPLangs Error: ${info.error}.`);
+    } else {
+      return info;
+    }
+  }
+  
+  async replReplFilesAPI(filename, raw) {
+    const { username, slug } = this;
+
+    const info = await fetch(
+      `https://replfiles.rayhanadev.repl.co/${filename ? 'file' : 'files'}/${username}/${slug}${filename ? `?filename=${filename}${raw ? '&raw=1' : ''}` : ''}`,
+      {
+        method: "GET",
+        headers,
+      }
+    ).then((res) => raw ? res.text() : res.json());
+
+    if (info.error) {
+      throw new Error(`ReplFiles Error: ${info.error}.`);
     } else {
       return info;
     }
