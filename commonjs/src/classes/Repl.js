@@ -28,14 +28,14 @@ function getReplId(_x, _x2) {
 }
 
 function _getReplId() {
-  _getReplId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(username, slug) {
+  _getReplId = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(username, slug) {
     var info;
-    return regeneratorRuntime.wrap(function _callee6$(_context6) {
+    return regeneratorRuntime.wrap(function _callee7$(_context7) {
       while (1) {
-        switch (_context6.prev = _context6.next) {
+        switch (_context7.prev = _context7.next) {
           case 0:
-            _context6.next = 2;
-            return _constants["default"].fetch("".concat(_constants["default"].restful, "/data/repls/@").concat(username, "/").concat(slug), {
+            _context7.next = 2;
+            return (0, _nodeFetch["default"])("".concat(_constants["default"].restful, "/data/repls/@").concat(username, "/").concat(slug), {
               method: "GET",
               headers: _headers["default"]
             }).then(function (res) {
@@ -43,15 +43,15 @@ function _getReplId() {
             });
 
           case 2:
-            info = _context6.sent;
-            return _context6.abrupt("return", info.id);
+            info = _context7.sent;
+            return _context7.abrupt("return", info.id);
 
           case 4:
           case "end":
-            return _context6.stop();
+            return _context7.stop();
         }
       }
-    }, _callee6);
+    }, _callee7);
   }));
   return _getReplId.apply(this, arguments);
 }
@@ -61,7 +61,7 @@ var Repl = /*#__PURE__*/function () {
     _classCallCheck(this, Repl);
 
     this.username = username;
-    if (this.slug) this.slug = slug.replace(/ /g, "-");
+    this.slug = slug.replace(/ /g, "-").replace(/\./g, "");
   }
 
   _createClass(Repl, [{
@@ -129,9 +129,9 @@ var Repl = /*#__PURE__*/function () {
       return replGraphQLData;
     }()
   }, {
-    key: "replRESTData",
+    key: "replRestfulData",
     value: function () {
-      var _replRESTData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+      var _replRestfulData = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
         var username, slug, info;
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
@@ -167,16 +167,16 @@ var Repl = /*#__PURE__*/function () {
         }, _callee2, this);
       }));
 
-      function replRESTData() {
-        return _replRESTData.apply(this, arguments);
+      function replRestfulData() {
+        return _replRestfulData.apply(this, arguments);
       }
 
-      return replRESTData;
+      return replRestfulData;
     }()
   }, {
-    key: "replLangs",
+    key: "replLangsAPI",
     value: function () {
-      var _replLangs = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+      var _replLangsAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
         var username, slug, info;
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
@@ -184,7 +184,7 @@ var Repl = /*#__PURE__*/function () {
               case 0:
                 username = this.username, slug = this.slug;
                 _context3.next = 3;
-                return (0, _nodeFetch["default"])("https://replangs.rayhanadev.repl.co/".concat(username, "/").concat(slug), {
+                return (0, _nodeFetch["default"])("https://langsapi.replapiit.repl.co/".concat(username, "/").concat(slug), {
                   method: "GET",
                   headers: _headers["default"]
                 }).then(function (res) {
@@ -212,23 +212,68 @@ var Repl = /*#__PURE__*/function () {
         }, _callee3, this);
       }));
 
-      function replLangs() {
-        return _replLangs.apply(this, arguments);
+      function replLangsAPI() {
+        return _replLangsAPI.apply(this, arguments);
       }
 
-      return replLangs;
+      return replLangsAPI;
     }()
   }, {
-    key: "replTitleGen",
+    key: "replFilesAPI",
     value: function () {
-      var _replTitleGen = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
-        var info;
+      var _replFilesAPI = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(filename, raw) {
+        var username, slug, info;
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
+                username = this.username, slug = this.slug;
+                _context4.next = 3;
+                return (0, _nodeFetch["default"])("https://filesapi.replapiit.repl.co/".concat(filename ? "file" : "files", "/").concat(username, "/").concat(slug).concat(filename ? "?filename=".concat(filename).concat(raw ? "&raw=1" : "") : ""), {
+                  method: "GET",
+                  headers: _headers["default"]
+                }).then(function (res) {
+                  return raw ? res.text() : res.json();
+                });
+
+              case 3:
+                info = _context4.sent;
+
+                if (!info.error) {
+                  _context4.next = 8;
+                  break;
+                }
+
+                throw new Error("ReplFiles Error: ".concat(info.error, "."));
+
+              case 8:
+                return _context4.abrupt("return", info);
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function replFilesAPI(_x3, _x4) {
+        return _replFilesAPI.apply(this, arguments);
+      }
+
+      return replFilesAPI;
+    }()
+  }, {
+    key: "replTitleGen",
+    value: function () {
+      var _replTitleGen = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+        var info;
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
                 if (global.cookies) {
-                  _context4.next = 4;
+                  _context5.next = 4;
                   break;
                 }
 
@@ -236,7 +281,7 @@ var Repl = /*#__PURE__*/function () {
 
               case 4:
                 _headers["default"]["Set-Cookie"] = global.cookies;
-                _context4.next = 7;
+                _context5.next = 7;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
                   method: "POST",
                   headers: _headers["default"],
@@ -248,24 +293,24 @@ var Repl = /*#__PURE__*/function () {
                 });
 
               case 7:
-                info = _context4.sent;
+                info = _context5.sent;
 
                 if (!info.errors) {
-                  _context4.next = 12;
+                  _context5.next = 12;
                   break;
                 }
 
                 throw new Error("Replit GraphQL Error(s): ".concat(JSON.stringify(info.errors)));
 
               case 12:
-                return _context4.abrupt("return", info.data.replTitle);
+                return _context5.abrupt("return", info.data.replTitle);
 
               case 13:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4);
+        }, _callee5);
       }));
 
       function replTitleGen() {
@@ -277,13 +322,13 @@ var Repl = /*#__PURE__*/function () {
   }, {
     key: "recentRepls",
     value: function () {
-      var _recentRepls = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+      var _recentRepls = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
         var info;
-        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                _context5.next = 2;
+                _context6.next = 2;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
                   method: "POST",
                   headers: _headers["default"],
@@ -295,24 +340,24 @@ var Repl = /*#__PURE__*/function () {
                 });
 
               case 2:
-                info = _context5.sent;
+                info = _context6.sent;
 
                 if (!info.errors) {
-                  _context5.next = 7;
+                  _context6.next = 7;
                   break;
                 }
 
                 throw new Error("Replit GraphQL Error(s): ".concat(JSON.stringify(info.errors)));
 
               case 7:
-                return _context5.abrupt("return", info.data.newRepls.items);
+                return _context6.abrupt("return", info.data.newRepls.items);
 
               case 8:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5);
+        }, _callee6);
       }));
 
       function recentRepls() {
