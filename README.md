@@ -1,4 +1,4 @@
-> ⚠️ **IMPORTANT**: ReplAPI.it is now in version 2.x! Any projects transitioning to 2.x should read through [this](https://github.com/RayhanADev/ReplAPI.it/releases/tag/v2.0.6). ⚠️
+> ⚠️ **IMPORTANT**: ReplAPI.it is now in version 2.x! Any projects transitioning to 2.x should read through [this](https://github.com/ReplAPI-it/ReplAPI.it/releases/tag/v2.0.6). ⚠️
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
@@ -10,7 +10,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/RayhanADev/REPLAPI.it">
+  <a href="https://github.com/ReplAPI-it/REPLAPI.it">
     <img src="images/logo.jpg" alt="Logo" width="600" height="200">
   </a>
 
@@ -19,14 +19,14 @@
   <p align="center">
     A Simple and Complete Replit API Package
     <br />
-    <a href="https://replapi-it-docs.vercel.app/"><strong>Explore the docs »</strong></a>
+    <a href="https://replapi-it.js.org"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://www.npmjs.com/package/replapi-it">View Package on NPM</a>
     ·
-    <a href="https://github.com/RayhanADev/REPLAPI.it/issues">Report Bug</a>
+    <a href="https://github.com/ReplAPI-it/REPLAPI.it/issues">Report Bug</a>
     ·
-    <a href="https://github.com/RayhanADev/REPLAPI.it/issues">Request Feature</a>
+    <a href="https://github.com/ReplAPI-it/REPLAPI.it/issues">Request Feature</a>
   </p>
 </p>
 
@@ -63,7 +63,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Code Screenshot](images/screenshot.jpg)](https://replit.com/@RayhanADev/ReplAPIit)
+[![Code Screenshot](images/screenshot.jpg)](https://replit.com/@ReplAPIit/Package)
 
 The Replit GraphQL API is an extraordinary way to make projects unique and special, yet with the numerous packages available few such projects have been made. Why would that be? Most likely due to how complicated writing code can get and the limitations of their queries. My package, **ReplAPI.it**, changes that with a simple to use structure and many queries, some of which are:
 
@@ -157,7 +157,7 @@ Output:
  Post Title: Presenting... 🤔 RayhanADev 🤔? (GraphQL Success!)
  ```
 
-_For more examples, please refer to the [Documentation](https://replapi-it-docs.vercel.app/)_
+_For more examples, please refer to the [Documentation](https://replapi-it.js.org)_
 
 ## Roadmap
 
@@ -183,7 +183,7 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 RayhanADev - [@RayhanADev](https://replit.com/@RayhanADev) - rayhanadev@protonmail.com
 
-Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/RayhanADev/REPLAPI.it)
+Project Link: [https://github.com/ReplAPI-it/REPLAPI.it](https://github.com/ReplAPI-it/REPLAPI.it)
 
 ## Acknowledgements
 
@@ -197,15 +197,15 @@ Project Link: [https://github.com/RayhanADev/REPLAPI.it](https://github.com/Rayh
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/RayhanADev/REPLAPI.it.svg?style=for-the-badge
-[contributors-url]: https://github.com/RayhanADev/REPLAPI.it/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/RayhanADev/REPLAPI.it.svg?style=for-the-badge
-[forks-url]: https://github.com/RayhanADev/REPLAPI.it/network/members
-[stars-shield]: https://img.shields.io/github/stars/RayhanADev/REPLAPI.it.svg?style=for-the-badge
-[stars-url]: https://github.com/RayhanADev/REPLAPI.it/stargazers
-[issues-shield]: https://img.shields.io/github/issues/RayhanADev/REPLAPI.it.svg?style=for-the-badge
-[issues-url]: https://github.com/RayhanADev/REPLAPI.it/issues
-[license-shield]: https://img.shields.io/github/license/RayhanADev/REPLAPI.it.svg?style=for-the-badge
-[license-url]: https://github.com/RayhanADev/REPLAPI.it/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
+[contributors-url]: https://github.com/ReplAPI-it/REPLAPI.it/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
+[forks-url]: https://github.com/ReplAPI-it/REPLAPI.it/network/members
+[stars-shield]: https://img.shields.io/github/stars/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
+[stars-url]: https://github.com/ReplAPI-it/REPLAPI.it/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
+[issues-url]: https://github.com/ReplAPI-it/REPLAPI.it/issues
+[license-shield]: https://img.shields.io/github/license/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
+[license-url]: https://github.com/ReplAPI-it/REPLAPI.it/blob/master/LICENSE.txt
 [downloads-shield]: https://img.shields.io/npm/dw/replapi-it?style=for-the-badge
 [downloads-url]: https://www.npmjs.com/package/replapi-it
