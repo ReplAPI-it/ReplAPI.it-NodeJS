@@ -4,8 +4,8 @@ const replapi = ReplAPI({
 });
 
 async function myTestFunction() {
-	const myRepl = new replapi.Repl('RayhanADev', 'ArchiveIt');
-	const info = await myRepl.replReplFilesAPI('src/index.js');
+	const myRepl = new replapi.Repl('RayhanADev', 'RollingForests');
+	const info = await myRepl.replComments();
 	console.log(info);
 }
 

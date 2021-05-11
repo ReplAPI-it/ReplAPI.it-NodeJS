@@ -3,28 +3,29 @@
   "version": "2.1.2",
   "description": "A NodeJS Wrapper allowing you access various places of information on Replit.",
   "type": "commonjs",
-  "main": "./commonjs/index.js",
+  "main": "./cjs/index.js",
   "exports": {
     ".": {
       "import": "./esm/index.mjs",
-      "require": "./commonjs/index.js",
-      "default": "./commonjs/index.js"
+      "require": "./cjs/index.js",
+      "default": "./cjs/index.js"
     },
     "./module": "./esm/index.mjs",
-    "./common": "./commonjs/index.js"
+    "./common": "./cjs/index.js"
   },
   "module": "./esm/index.mjs",
   "scripts": {
     "postinstall": "node -e \"try{require('./.scripts/postinstall')}catch(e){}\"",
     "start": "node esm/index.mjs",
     "test": "node tests/common.test.js --experimental-conditional-exports & node tests/esm.test.mjs --experimental-conditional-exports",
-    "test:commonjs": "node tests/common.test.js --experimental-conditional-exports",
+    "test:cjs": "node tests/common.test.js --experimental-conditional-exports",
     "test:esm": "node tests/esm.test.mjs --experimental-conditional-exports",
-    "build:commonjs": "babel esm --out-dir commonjs",
+    "build:cjs": "babel esm --out-dir cjs",
+    "postbuild:cjs": "node .scripts/postbuild:cjs.js",
     "lint": "eslint esm --ext .mjs",
     "lint:fix": "eslint esm --ext .mjs --fix",
-    "format": "prettier . --check",
-    "format:fix": "prettier . --write"
+    "format": "prettier --check .",
+    "format:fix": "prettier --write ."
   },
   "repository": {
     "type": "git",
@@ -70,6 +71,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "replace": "^1.2.1"
   }
 }

@@ -1,4 +1,4 @@
-const ReplAPI = require('../commonjs/index.js').default;
+const ReplAPI = require('../cjs/index.js').default;
 const replapi = ReplAPI({
 	username: 'RayhanADev',
 });

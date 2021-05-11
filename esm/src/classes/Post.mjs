@@ -102,7 +102,7 @@ export default class Post {
       headers,
       body: JSON.stringify({
         query: `
-          query Post($id: Int!) {
+          query PostRecentComments($id: Int!) {
             post(id: $id) {
               recentComments {
                 ${constants.commentAttributes}

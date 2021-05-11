@@ -49,7 +49,7 @@ export default class Repl {
       );
 
     if (!info.data.repl) {
-      throw new Error(`${slug} is not a repl. Please query repls on Repl.it.`);
+      throw new Error(`${slug} is not a repl. Please query repls on Replit.`);
     } else {
       return info.data.repl;
     }
@@ -67,10 +67,122 @@ export default class Repl {
     ).then((res) => res.json());
 
     if (!info) {
-      throw new Error(`${slug} is not a repl. Please query repls on Repl.it.`);
+      throw new Error(`${slug} is not a repl. Please query repls on Replit.`);
     } else {
       return info;
     }
+  }
+
+  async replPublicForks(after = "", count = 10) {
+    const { username, slug } = this;
+    const output = [];
+
+    const id = await getReplId(username, slug);
+    async function recurse(recurseAfter) {
+      if (recurseAfter === null) return;
+      const info = await fetch(constants.graphql, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          query: `
+						query ReplForks($id: String!, $after: String!, $count: Int!) {
+							repl(id: $id) {
+								... on Repl {
+									publicForks(after: $after, count: $count) {
+										items {
+											${constants.replAttributes}
+										}
+										pageInfo {
+											nextCursor
+										}
+									}
+								}
+							}
+						}`,
+          variables: JSON.stringify({
+            id,
+            count,
+            after: recurseAfter,
+          }),
+        }),
+      }).then((res) => res.json());
+
+      if (info.errors)
+        throw new Error(
+          `Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+        );
+
+      if (!info.data.repl) {
+        throw new Error(`${slug} is not a repl. Please query repls on Replit.`);
+      } else {
+        info.data.repl.publicForks.items.forEach((post) => {
+          output.push(post);
+        });
+        if (output.length !== count) {
+          await recurse(info.data.repl.publicForks.pageInfo.nextCursor);
+        }
+      }
+    }
+
+    await recurse(after);
+    return output;
+  }
+
+  async replComments(after = "", count = 10) {
+    const { username, slug } = this;
+    const output = [];
+
+    const id = await getReplId(username, slug);
+    async function recurse(recurseAfter) {
+      if (recurseAfter === null) return;
+      const info = await fetch(constants.graphql, {
+        method: "POST",
+        headers,
+        body: JSON.stringify({
+          query: `
+						query ReplForks($id: String!, $after: String!, $count: Int!) {
+							repl(id: $id) {
+								... on Repl {
+									comments(after: $after, count: $count) {
+										items {
+											${constants.replCommentAttributes}
+											user { ${constants.userAttributes} }
+											replies { ${constants.replCommentAttributes} }
+										}
+										pageInfo {
+											nextCursor
+										}
+									}
+								}
+							}
+						}`,
+          variables: JSON.stringify({
+            id,
+            count,
+            after: recurseAfter,
+          }),
+        }),
+      }).then((res) => res.json());
+
+      if (info.errors)
+        throw new Error(
+          `Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+        );
+
+      if (!info.data.repl) {
+        throw new Error(`${slug} is not a repl. Please query repls on Replit.`);
+      } else {
+        info.data.repl.comments.items.forEach((post) => {
+          output.push(post);
+        });
+        if (output.length !== count) {
+          await recurse(info.data.repl.comments.pageInfo.nextCursor);
+        }
+      }
+    }
+
+    await recurse(after);
+    return output;
   }
 
   async replLangsAPI() {
