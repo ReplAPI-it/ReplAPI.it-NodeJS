@@ -167,13 +167,7 @@ I'm considering adding in support for Crosis communications after they distribut
 
 ## Contributing
 
-Contributions are **much appreciated**, and if you know another query that should be implemented on this package, follow these steps!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions are **much appreciated**, and if you have a cool idea that feels right in this package then you should check out our [contributing](.github/CONTRIBUTING.md) page.
 
 ## License
 
