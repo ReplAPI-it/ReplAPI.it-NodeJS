@@ -8,12 +8,10 @@
     ".": {
       "import": "./esm/index.mjs",
       "require": "./cjs/index.js",
-      "script": "./umd/index.js",
-      "default": "./umd/index.js"
+      "default": "./cjs/index.js"
     },
     "./module": "./esm/index.mjs",
-    "./common": "./cjs/index.js",
-    "./browser": "./umd/index.js"
+    "./common": "./cjs/index.js"
   },
   "module": "./esm/index.mjs",
   "scripts": {
@@ -22,10 +20,8 @@
     "test": "node tests/common.test.js --experimental-conditional-exports & node tests/esm.test.mjs --experimental-conditional-exports",
     "test:cjs": "node tests/common.test.js --experimental-conditional-exports",
     "test:esm": "node tests/esm.test.mjs --experimental-conditional-exports",
-    "build:cjs": "babel esm --out-dir cjs",
+    "build:cjs": "rimraf cjs & babel esm --out-dir cjs",
     "postbuild:cjs": "node .scripts/postbuild:cjs.js",
-    "build:umd": "babel esm --plugins @babel/plugin-transform-modules-umd --out-dir umd",
-    "postbuild:umd": "node .scripts/postbuild:umd.js",
     "lint": "eslint esm --ext .mjs",
     "lint:fix": "eslint esm --ext .mjs --fix",
     "format": "prettier --check .",
@@ -77,6 +73,7 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.22.1",
     "prettier": "2.2.1",
-    "replace": "^1.2.1"
+    "replace": "^1.2.1",
+    "rimraf": "^3.0.2"
   }
 }

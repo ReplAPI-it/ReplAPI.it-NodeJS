@@ -17,29 +17,29 @@ var _lodash = _interopRequireDefault(require("lodash"));
 
 var _jsonStableStringifyWithoutJsonify = _interopRequireDefault(require("json-stable-stringify-without-jsonify"));
 
-var _source = _interopRequireDefault(require("./src/source.js"));
+var _loader = _interopRequireDefault(require("./src/loader.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var defaultInitVariables = {
-  username: "",
+  username: '',
   captcha: {
-    token: ""
+    token: ''
   },
   endpoints: {
-    gql: "",
-    restful: "",
-    login: ""
+    gql: '',
+    restful: '',
+    login: ''
   },
   markdown: {
-    length: "",
-    removeMarkdown: ""
+    length: '',
+    removeMarkdown: ''
   },
   previewCount: {
-    comments: ""
+    comments: ''
   },
-  experimentalFeatures: "",
-  createDatabaseFlag: ""
+  experimentalFeatures: '',
+  createDatabaseFlag: ''
 };
 
 function sortByKey(a, b) {
@@ -50,35 +50,35 @@ function ReplAPI(initVariables) {
   if (initVariables) {
     _lodash["default"].assign(defaultInitVariables, initVariables);
 
-    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), ".replapirc.json"), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
       cmp: sortByKey,
       space: 4
     }), "\n"), {
-      encoding: "utf8"
+      encoding: 'utf8'
     });
   } else {
-    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), ".replapirc.json"), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
       cmp: sortByKey,
       space: 4
     }), "\n"), {
-      encoding: "utf8"
+      encoding: 'utf8'
     });
   }
 
   return {
     defaults: defaultInitVariables,
-    Blog: _source["default"].Blog,
-    Board: _source["default"].Board,
-    Comment: _source["default"].Comment,
-    CustomDataQuery: _source["default"].CustomDataQuery,
-    CustomRecursiveQuery: _source["default"].CustomRecursiveQuery,
-    Database: _source["default"].Database,
-    Languages: _source["default"].Languages,
-    Leaderboard: _source["default"].Leaderboard,
-    Login: _source["default"].Login,
-    Notifications: _source["default"].Notifications,
-    Post: _source["default"].Post,
-    Repl: _source["default"].Repl,
-    User: _source["default"].User
+    Blog: _loader["default"].Blog,
+    Board: _loader["default"].Board,
+    Comment: _loader["default"].Comment,
+    CustomDataQuery: _loader["default"].CustomDataQuery,
+    CustomRecursiveQuery: _loader["default"].CustomRecursiveQuery,
+    Database: _loader["default"].Database,
+    Languages: _loader["default"].Languages,
+    Leaderboard: _loader["default"].Leaderboard,
+    Login: _loader["default"].Login,
+    Notifications: _loader["default"].Notifications,
+    Post: _loader["default"].Post,
+    Repl: _loader["default"].Repl,
+    User: _loader["default"].User
   };
 }
