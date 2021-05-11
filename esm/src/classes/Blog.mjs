@@ -1,35 +1,29 @@
 import Parser from 'rss-parser';
-
-import constants from '../utils/constants.mjs';
+import _ from 'lodash';
 
 const parser = new Parser();
 
-let exportable;
+export default class Blog {
+	async blogData() {
+		const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
+		delete feed.items;
 
-if (constants.initVariables.experimentalFeatures) {
-	exportable = class Blog {
-		async blogData() {
-			const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
-			delete feed.items;
+		return feed;
+	}
 
-			return feed;
-		}
+	async blogItem(guid) {
+		const { items } = await parser.parseURL('https://blog.replit.com/feed.xml');
+		const postIndex = _.findIndex(items, ['guid', guid]);
 
-		async blogItems(order = 'newest', count = 10) {
-			const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
+		return items[postIndex];
+	}
 
-			if (order === 'oldest') feed.items.reverse();
-			const posts = feed.items.slice(0, count);
+	async blogItems(order = 'newest', count = 10) {
+		const feed = await parser.parseURL('https://blog.replit.com/feed.xml');
 
-			return posts;
-		}
-	};
-} else {
-	exportable = function noExperimentalFeatures() {
-		console.log(
-			'Experimental Features are not enabled. To learn more about experimental features please visit the documentation.'
-		);
-	};
+		if (order === 'oldest') feed.items.reverse();
+		const posts = feed.items.slice(0, count);
+
+		return posts;
+	}
 }
-
-export default exportable;
