@@ -9,7 +9,7 @@
       "import": "./esm/index.mjs",
       "require": "./cjs/index.js",
       "script": "./umd/index.js",
-      "default": "./cjs/index.js"
+      "default": "./umd/index.js"
     },
     "./module": "./esm/index.mjs",
     "./common": "./cjs/index.js",
