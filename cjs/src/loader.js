@@ -15,6 +15,8 @@ var _Custom = require("./classes/Custom.js");
 
 var _Database = _interopRequireDefault(require("./classes/Database.js"));
 
+var _Explore = _interopRequireDefault(require("./classes/Explore.js"));
+
 var _Languages = _interopRequireDefault(require("./classes/Languages.js"));
 
 var _Leaderboard = _interopRequireDefault(require("./classes/Leaderboard.js"));
@@ -38,6 +40,7 @@ var _default = {
   CustomDataQuery: _Custom.CustomDataQuery,
   CustomRecursiveQuery: _Custom.CustomRecursiveQuery,
   Database: _Database["default"],
+  Explore: _Explore["default"],
   Languages: _Languages["default"],
   Leaderboard: _Leaderboard["default"],
   Login: _Login["default"],

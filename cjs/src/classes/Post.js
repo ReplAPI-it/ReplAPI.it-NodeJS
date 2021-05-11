@@ -524,7 +524,7 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("Id must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
+                throw new Error("Id must be of type number. Got type ".concat(_typeof(id), "."));
 
               case 7:
                 _headers["default"]['Set-Cookie'] = global.cookies;
@@ -603,7 +603,7 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("Id must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
+                throw new Error("Id must be of type number. Got type ".concat(_typeof(id), "."));
 
               case 7:
                 _headers["default"]['Set-Cookie'] = global.cookies;
@@ -682,7 +682,7 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("Id must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
+                throw new Error("Id must be of type number. Got type ".concat(_typeof(id), "."));
 
               case 7:
                 _headers["default"]['Set-Cookie'] = global.cookies;

@@ -251,7 +251,7 @@ export default class Repl {
 			else return info.data.replTitle;
 		}
 	}
-	
+
 	async createReplComment(body) {
 		const { username, slug } = this;
 		const id = await getReplId(username, slug);
@@ -259,7 +259,9 @@ export default class Repl {
 			throw new Error('ReplAPI.it: Not logged in.');
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof body !== 'string') {
-				throw new Error(`Body must be of type string. Got type ${typeof body}.`);
+				throw new Error(
+					`Body must be of type string. Got type ${typeof body}.`
+				);
 			}
 
 			headers['Set-Cookie'] = global.cookies;
@@ -297,7 +299,7 @@ export default class Repl {
 			);
 		}
 	}
-	
+
 	async replyReplComment(id, body) {
 		if (!global.cookies) {
 			throw new Error('ReplAPI.it: Not logged in.');
@@ -306,7 +308,9 @@ export default class Repl {
 				throw new Error(`Id must be of type string. Got type ${typeof id}.`);
 			}
 			if (typeof body !== 'string') {
-				throw new Error(`Body must be of type string. Got type ${typeof body}.`);
+				throw new Error(
+					`Body must be of type string. Got type ${typeof body}.`
+				);
 			}
 
 			headers['Set-Cookie'] = global.cookies;
@@ -344,7 +348,7 @@ export default class Repl {
 			);
 		}
 	}
-	
+
 	async updateReplComment(body) {
 		const { username, slug } = this;
 		const id = await getReplId(username, slug);
@@ -352,7 +356,9 @@ export default class Repl {
 			throw new Error('ReplAPI.it: Not logged in.');
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof body !== 'string') {
-				throw new Error(`Body must be of type string. Got type ${typeof body}.`);
+				throw new Error(
+					`Body must be of type string. Got type ${typeof body}.`
+				);
 			}
 
 			headers['Set-Cookie'] = global.cookies;
@@ -390,7 +396,7 @@ export default class Repl {
 			);
 		}
 	}
-	
+
 	async deleteReplComment() {
 		const { username, slug } = this;
 		const id = await getReplId(username, slug);

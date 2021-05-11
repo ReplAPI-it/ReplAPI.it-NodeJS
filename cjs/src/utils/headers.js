@@ -9,8 +9,8 @@ var _default = {
   Accept: 'application/json',
   'Accept-Encoding': 'gzip, deflate, br',
   Connection: 'keep-alive',
-  'X-Requested-With': 'ReplAPI.it',
-  Referrer: 'https://replit.com/',
-  Origin: 'https://replit.com/'
+  'X-Requested-With': 'the ReplAPI.it Project',
+  Referrer: 'https://staging.replit.com/',
+  Origin: 'https://staging.replit.com/'
 };
 exports["default"] = _default;

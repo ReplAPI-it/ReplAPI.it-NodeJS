@@ -72,6 +72,7 @@ function ReplAPI(initVariables) {
     Comment: _loader["default"].Comment,
     CustomDataQuery: _loader["default"].CustomDataQuery,
     CustomRecursiveQuery: _loader["default"].CustomRecursiveQuery,
+    Explore: _loader["default"].Explore,
     Database: _loader["default"].Database,
     Languages: _loader["default"].Languages,
     Leaderboard: _loader["default"].Leaderboard,

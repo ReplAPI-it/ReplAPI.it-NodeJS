@@ -10,6 +10,7 @@ const replapiClasses = [
   'CustomDataQuery',
   'CustomRecursiveQuery',
   'Database',
+  'Explore',
   'Languages',
   'Leaderboard',
   'Login',
