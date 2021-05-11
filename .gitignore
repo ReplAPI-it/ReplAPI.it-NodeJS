@@ -1,8 +1,9 @@
 # packages
-node_modules
+node_modules/
 
-# replit
+# configuration files
 .replit
-
-# replapi
 .replapirc.json
+
+# developer tests
+tests/dev/
