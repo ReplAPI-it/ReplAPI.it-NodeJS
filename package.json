@@ -8,10 +8,12 @@
     ".": {
       "import": "./esm/index.mjs",
       "require": "./cjs/index.js",
+      "script": "./umd/index.js",
       "default": "./cjs/index.js"
     },
     "./module": "./esm/index.mjs",
-    "./common": "./cjs/index.js"
+    "./common": "./cjs/index.js",
+    "./browser": "./umd/index.js"
   },
   "module": "./esm/index.mjs",
   "scripts": {
