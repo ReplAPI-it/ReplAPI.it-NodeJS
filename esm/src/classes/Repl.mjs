@@ -34,6 +34,9 @@ export default class Repl {
             repl(id: $id) {
               ... on Repl {
                 ${constants.replAttributes}
+                tags {
+                	${constants.tagAttributes}
+                }
               }
             }
           }`,
@@ -90,7 +93,10 @@ export default class Repl {
 								... on Repl {
 									publicForks(after: $after, count: $count) {
 										items {
-											${constants.replAttributes}
+				              ${constants.replAttributes}
+				              tags {
+				              	${constants.tagAttributes}
+				              }
 										}
 										pageInfo {
 											nextCursor
@@ -243,6 +249,182 @@ export default class Repl {
 					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
 				);
 			else return info.data.replTitle;
+		}
+	}
+	
+	async createReplComment(body) {
+		const { username, slug } = this;
+		const id = await getReplId(username, slug);
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
+			if (typeof body !== 'string') {
+				throw new Error(`Body must be of type string. Got type ${typeof body}.`);
+			}
+
+			headers['Set-Cookie'] = global.cookies;
+			const info = await fetch(constants.graphql, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify({
+					query: `
+            mutation CreateReplComment($input: CreateReplCommentInput!) {
+              createReplComment(input: $input) {
+								..on ReplComment {
+									${constants.replCommentAttributes}
+									user { ${constants.userAttributes} }
+									replies { ${constants.replCommentAttributes} }
+								}
+							}
+						}`,
+					variables: JSON.stringify({
+						input: {
+							replId: id,
+							body,
+						},
+					}),
+				}),
+			}).then((res) => res.json());
+
+			if (info.errors)
+				throw new Error(
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				);
+			else return info.data.createReplComment;
+		} else {
+			throw new Error(
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+			);
+		}
+	}
+	
+	async replyReplComment(id, body) {
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
+			if (typeof id !== 'string') {
+				throw new Error(`Id must be of type string. Got type ${typeof id}.`);
+			}
+			if (typeof body !== 'string') {
+				throw new Error(`Body must be of type string. Got type ${typeof body}.`);
+			}
+
+			headers['Set-Cookie'] = global.cookies;
+			const info = await fetch(constants.graphql, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify({
+					query: `
+            mutation CreateReplCommentReply($input: CreateReplCommentReplyInput!) {
+              createReplCommentReply(input: $input) {
+								..on ReplComment {
+									${constants.replCommentAttributes}
+									user { ${constants.userAttributes} }
+									replies { ${constants.replCommentAttributes} }
+								}
+							}
+						}`,
+					variables: JSON.stringify({
+						input: {
+							id,
+							body,
+						},
+					}),
+				}),
+			}).then((res) => res.json());
+
+			if (info.errors)
+				throw new Error(
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				);
+			else return info.data.createReplCommentReply;
+		} else {
+			throw new Error(
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+			);
+		}
+	}
+	
+	async updateReplComment(body) {
+		const { username, slug } = this;
+		const id = await getReplId(username, slug);
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
+			if (typeof body !== 'string') {
+				throw new Error(`Body must be of type string. Got type ${typeof body}.`);
+			}
+
+			headers['Set-Cookie'] = global.cookies;
+			const info = await fetch(constants.graphql, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify({
+					query: `
+            mutation UpdateReplComment($input: UpdateReplCommentInput!) {
+              updateReplComment(input: $input) {
+								..on ReplComment {
+									${constants.replCommentAttributes}
+									user { ${constants.userAttributes} }
+									replies { ${constants.replCommentAttributes} }
+								}
+							}
+						}`,
+					variables: JSON.stringify({
+						input: {
+							id,
+							body,
+						},
+					}),
+				}),
+			}).then((res) => res.json());
+
+			if (info.errors)
+				throw new Error(
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				);
+			else return info.data.updateReplComment;
+		} else {
+			throw new Error(
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+			);
+		}
+	}
+	
+	async deleteReplComment() {
+		const { username, slug } = this;
+		const id = await getReplId(username, slug);
+		if (!global.cookies) {
+			throw new Error('ReplAPI.it: Not logged in.');
+		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
+			headers['Set-Cookie'] = global.cookies;
+			const info = await fetch(constants.graphql, {
+				method: 'POST',
+				headers,
+				body: JSON.stringify({
+					query: `
+            mutation DeleteReplComment($id: String!) {
+              deleteReplComment(id: $id) {
+								..on ReplComment {
+									id
+								}
+							}
+						}`,
+					variables: JSON.stringify({
+						id,
+					}),
+				}),
+			}).then((res) => res.json());
+
+			if (info.errors)
+				throw new Error(
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				);
+			else return info.data.deleteReplComment;
+		} else {
+			throw new Error(
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+			);
 		}
 	}
 

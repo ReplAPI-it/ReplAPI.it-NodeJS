@@ -3,6 +3,7 @@ import Board from './classes/Board.mjs';
 import Comment from './classes/Comment.mjs';
 import { CustomDataQuery, CustomRecursiveQuery } from './classes/Custom.mjs';
 import Database from './classes/Database.mjs';
+import Explore from './classes/Explore.mjs';
 import Languages from './classes/Languages.mjs';
 import Leaderboard from './classes/Leaderboard.mjs';
 import Login from './classes/Login.mjs';
@@ -18,6 +19,7 @@ export default {
 	CustomDataQuery,
 	CustomRecursiveQuery,
 	Database,
+	Explore,
 	Languages,
 	Leaderboard,
 	Login,

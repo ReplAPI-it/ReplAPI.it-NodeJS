@@ -320,7 +320,7 @@ export default class Post {
 			throw new Error('ReplAPI.it: Not logged in.');
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof id !== 'number') {
-				throw new Error(`Id must be of type number. Got type ${typeof title}.`);
+				throw new Error(`Id must be of type number. Got type ${typeof id}.`);
 			}
 
 			headers['Set-Cookie'] = global.cookies;
@@ -363,7 +363,7 @@ export default class Post {
 			throw new Error('ReplAPI.it: Not logged in.');
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof id !== 'number') {
-				throw new Error(`Id must be of type number. Got type ${typeof title}.`);
+				throw new Error(`Id must be of type number. Got type ${typeof id}.`);
 			}
 
 			headers['Set-Cookie'] = global.cookies;
@@ -410,7 +410,7 @@ export default class Post {
 			throw new Error('ReplAPI.it: Not logged in.');
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof id !== 'number') {
-				throw new Error(`Id must be of type number. Got type ${typeof title}.`);
+				throw new Error(`Id must be of type number. Got type ${typeof id}.`);
 			}
 
 			headers['Set-Cookie'] = global.cookies;

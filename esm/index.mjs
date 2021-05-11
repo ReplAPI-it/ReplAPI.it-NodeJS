@@ -54,6 +54,7 @@ export default function ReplAPI(initVariables) {
 		Comment: classes.Comment,
 		CustomDataQuery: classes.CustomDataQuery,
 		CustomRecursiveQuery: classes.CustomRecursiveQuery,
+		Explore: classes.Explore,
 		Database: classes.Database,
 		Languages: classes.Languages,
 		Leaderboard: classes.Leaderboard,
