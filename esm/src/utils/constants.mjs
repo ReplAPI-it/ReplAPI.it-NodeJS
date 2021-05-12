@@ -6,6 +6,12 @@ if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
 	initVariables = JSON.parse(
 		fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))
 	);
+} else if (fs.existsSync(path.join(process.cwd(), '.replapirc.mjs'))) {
+	// .js in case process.env is needed
+
+	initVariables = (await import(path.join(process.cwd(), '.replapirc.mjs')))
+		.default;
+
 } else {
 	initVariables = {
 		username: undefined,

@@ -15,6 +15,8 @@ var initVariables;
 
 if (_fs["default"].existsSync(_path["default"].join(process.cwd(), '.replapirc.json'))) {
   initVariables = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), '.replapirc.json')));
+} else if(_fs["default"].existsSync(_path["default"].join(process.cwd(), '.replapirc.js'))) {
+	initVariables = require(_path["default"].join(process.cwd(), '.replapirc.js')).default;
 } else {
   initVariables = {
     username: undefined,
