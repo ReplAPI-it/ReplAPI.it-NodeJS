@@ -4,6 +4,8 @@ node_modules/
 # configuration files
 .replit
 .replapirc.json
+.replapirc.js
+.replapirc.mjs
 
 # developer tests
 tests/dev/
