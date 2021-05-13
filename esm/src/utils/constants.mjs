@@ -6,11 +6,24 @@ if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
 	initVariables = JSON.parse(
 		fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))
 	);
-} else if (fs.existsSync(path.join(process.cwd(), '.replapirc.mjs'))) {
-	
-	initVariables = (await import(path.join(process.cwd(), '.replapirc.mjs')))
-		.default;
-
+} else if (fs.existsSync(path.join(process.cwd(), 'replapi-it.config.mjs'))) {
+	(async () => {
+		initVariables = (
+			await import(path.join(process.cwd(), 'replapi-it.config.mjs'))
+		).default;
+	})();
+} else if (fs.existsSync(path.join(process.cwd(), 'replapi-it.config.js'))) {
+	(async () => {
+		initVariables = (
+			await import(path.join(process.cwd(), 'replapi-it.config.js'))
+		).default;
+	})();
+} else if (fs.existsSync(path.join(process.cwd(), 'replapi-it.config.cjs'))) {
+	(async () => {
+		initVariables = (
+			await import(path.join(process.cwd(), 'replapi-it.config.cjs'))
+		).default;
+	})();
 } else {
 	initVariables = {
 		username: undefined,

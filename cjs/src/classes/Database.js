@@ -84,8 +84,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
       key: "init",
       value: function () {
         var _init = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(password) {
-          var currentDatabase, createDatabaseFlag, info, _info;
-
+          var currentDatabase, createDatabaseFlag;
           return regeneratorRuntime.wrap(function _callee$(_context) {
             while (1) {
               switch (_context.prev = _context.next) {
@@ -101,12 +100,12 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   currentDatabase = _context.sent;
 
                   if (currentDatabase) {
-                    _context.next = 24;
+                    _context.next = 22;
                     break;
                   }
 
                   if (!(this.options.type === 'plus')) {
-                    _context.next = 15;
+                    _context.next = 14;
                     break;
                   }
 
@@ -115,7 +114,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   }
 
                   if (!createDatabaseFlag) {
-                    _context.next = 12;
+                    _context.next = 11;
                     break;
                   }
 
@@ -129,24 +128,23 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 9:
-                  info = _context.sent;
-                  _context.next = 13;
+                  _context.next = 12;
                   break;
 
-                case 12:
+                case 11:
                   throw new Error('Are you sure you want to use these options to configure a Database? You will not be able to change these options in the future. If you are, then in your .replapirc.json file set a "createDatabaseFlag" key to "true". For more information, read the documentation.');
 
-                case 13:
-                  _context.next = 22;
+                case 12:
+                  _context.next = 20;
                   break;
 
-                case 15:
+                case 14:
                   if (!(this.options.type === 'repldb')) {
-                    _context.next = 21;
+                    _context.next = 19;
                     break;
                   }
 
-                  _context.next = 18;
+                  _context.next = 17;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
                     method: 'POST',
                     headers: {
@@ -155,27 +153,26 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     body: "".concat(encodeURIComponent('replapi_database_config'), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
                   });
 
-                case 18:
-                  _info = _context.sent;
-                  _context.next = 22;
+                case 17:
+                  _context.next = 20;
                   break;
 
-                case 21:
+                case 19:
                   throw new Error('Invalid Database Type. For a normal database, use the "repldb" option.');
 
-                case 22:
-                  _context.next = 26;
+                case 20:
+                  _context.next = 24;
                   break;
 
-                case 24:
+                case 22:
                   if (compare(password, JSON.parse(currentDatabase).password)) {
-                    _context.next = 26;
+                    _context.next = 24;
                     break;
                   }
 
                   throw new Error('Incorrect Password. Database access denied.');
 
-                case 26:
+                case 24:
                 case "end":
                   return _context.stop();
               }
@@ -193,7 +190,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
       key: "createCollection",
       value: function () {
         var _createCollection = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(collectionName) {
-          var info;
           return regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
@@ -208,9 +204,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 2:
-                  info = _context2.sent;
-
-                case 3:
                 case "end":
                   return _context2.stop();
               }
@@ -228,7 +221,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
       key: "createDoc",
       value: function () {
         var _createDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(collectionName, docName, docItems) {
-          var collection, info;
+          var collection;
           return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
               switch (_context3.prev = _context3.next) {
@@ -249,9 +242,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 6:
-                  info = _context3.sent;
-
-                case 7:
                 case "end":
                   return _context3.stop();
               }
@@ -377,7 +367,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
       key: "updateDoc",
       value: function () {
         var _updateDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(collectionName, docName, docItems) {
-          var collection, info;
+          var collection;
           return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
@@ -400,9 +390,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 6:
-                  info = _context7.sent;
-
-                case 7:
                 case "end":
                   return _context7.stop();
               }
@@ -420,7 +407,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
       key: "deleteCollection",
       value: function () {
         var _deleteCollection = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(collectionName) {
-          var info;
           return regeneratorRuntime.wrap(function _callee8$(_context8) {
             while (1) {
               switch (_context8.prev = _context8.next) {
@@ -431,9 +417,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 2:
-                  info = _context8.sent;
-
-                case 3:
                 case "end":
                   return _context8.stop();
               }
@@ -451,7 +434,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
       key: "deleteDoc",
       value: function () {
         var _deleteDoc = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(collectionName, docName) {
-          var collection, info;
+          var collection;
           return regeneratorRuntime.wrap(function _callee9$(_context9) {
             while (1) {
               switch (_context9.prev = _context9.next) {
@@ -474,9 +457,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 6:
-                  info = _context9.sent;
-
-                case 7:
                 case "end":
                   return _context9.stop();
               }
@@ -493,8 +473,8 @@ if (_constants["default"].initVariables.experimentalFeatures) {
     }, {
       key: "deleteDocField",
       value: function () {
-        var _deleteDocField = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(collectionName, docName, path) {
-          var collection, info;
+        var _deleteDocField = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(collectionName, docName, docPath) {
+          var collection;
           return regeneratorRuntime.wrap(function _callee10$(_context10) {
             while (1) {
               switch (_context10.prev = _context10.next) {
@@ -505,7 +485,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 2:
                   collection = _context10.sent;
 
-                  _lodash["default"].unset(collection[docName], path);
+                  _lodash["default"].unset(collection[docName], docPath);
 
                   _context10.next = 6;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
@@ -517,9 +497,6 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   });
 
                 case 6:
-                  info = _context10.sent;
-
-                case 7:
                 case "end":
                   return _context10.stop();
               }

@@ -31,20 +31,56 @@ function sortByKey(a, b) {
 	return a.key > b.key ? 1 : -1;
 }
 
-export default function ReplAPI(initVariables) {
+export default function ReplAPI(initVariables, filetype = '.json') {
 	if (initVariables) {
 		_.assign(defaultInitVariables, initVariables);
-		fs.writeFileSync(
-			path.join(process.cwd(), '.replapirc.json'),
-			`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
-			{ encoding: 'utf8' }
-		);
-	} else {
-		fs.writeFileSync(
-			path.join(process.cwd(), '.replapirc.json'),
-			`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
-			{ encoding: 'utf8' }
-		);
+	}
+
+	switch (filetype) {
+		case '.json':
+			fs.writeFileSync(
+				path.join(process.cwd(), '.replapirc.json'),
+				`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
+				{ encoding: 'utf8' }
+			);
+			break;
+		case '.mjs':
+			fs.writeFileSync(
+				path.join(process.cwd(), 'replapi-it.config.mjs'),
+				`export default ${stringify(defaultInitVariables, {
+					cmp: sortByKey,
+					space: 4,
+				})}\n`,
+				{ encoding: 'utf8' }
+			);
+			break;
+		case '.cjs':
+			fs.writeFileSync(
+				path.join(process.cwd(), 'replapi-it.config.cjs'),
+				`module.exports = ${stringify(defaultInitVariables, {
+					cmp: sortByKey,
+					space: 4,
+				})}\n`,
+				{ encoding: 'utf8' }
+			);
+			break;
+		case '.js':
+			fs.writeFileSync(
+				path.join(process.cwd(), 'replapi-it.config.js'),
+				`module.exports = ${stringify(defaultInitVariables, {
+					cmp: sortByKey,
+					space: 4,
+				})}\n`,
+				{ encoding: 'utf8' }
+			);
+			break;
+		default:
+			fs.writeFileSync(
+				path.join(process.cwd(), '.replapirc.json'),
+				`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
+				{ encoding: 'utf8' }
+			);
+			break;
 	}
 
 	return {
