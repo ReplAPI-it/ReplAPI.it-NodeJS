@@ -38,7 +38,7 @@ function _getReplId() {
           case 0:
             _context15.next = 2;
             return (0, _nodeFetch["default"])("".concat(_constants["default"].restful, "/data/repls/@").concat(username, "/").concat(slug), {
-              method: "GET",
+              method: 'GET',
               headers: _headers["default"]
             }).then(function (res) {
               return res.json();
@@ -63,7 +63,7 @@ var Repl = /*#__PURE__*/function () {
     _classCallCheck(this, Repl);
 
     this.username = username;
-    this.slug = slug.replace(/ /g, "-").replace(/\./g, "");
+    this.slug = slug.replace(/ /g, '-').replace(/\./g, '');
   }
 
   _createClass(Repl, [{
@@ -83,7 +83,7 @@ var Repl = /*#__PURE__*/function () {
                 id = _context.sent;
                 _context.next = 6;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Repl($id: String!) {\n            repl(id: $id) {\n              ... on Repl {\n                ".concat(_constants["default"].replAttributes, "\n                tags {\n                \t").concat(_constants["default"].tagAttributes, "\n                }\n              }\n            }\n          }"),
@@ -142,7 +142,7 @@ var Repl = /*#__PURE__*/function () {
                 username = this.username, slug = this.slug;
                 _context2.next = 3;
                 return (0, _nodeFetch["default"])("".concat(_constants["default"].restful, "/data/repls/@").concat(username, "/").concat(slug), {
-                  method: "GET",
+                  method: 'GET',
                   headers: _headers["default"]
                 }).then(function (res) {
                   return res.json();
@@ -210,7 +210,7 @@ var Repl = /*#__PURE__*/function () {
                           case 2:
                             _context3.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: "POST",
+                              method: 'POST',
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n\t\t\t\t\t\tquery ReplForks($id: String!, $after: String!, $count: Int!) {\n\t\t\t\t\t\t\trepl(id: $id) {\n\t\t\t\t\t\t\t\t... on Repl {\n\t\t\t\t\t\t\t\t\tpublicForks(after: $after, count: $count) {\n\t\t\t\t\t\t\t\t\t\titems {\n\t\t\t\t              ".concat(_constants["default"].replAttributes, "\n\t\t\t\t              tags {\n\t\t\t\t              \t").concat(_constants["default"].tagAttributes, "\n\t\t\t\t              }\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\tpageInfo {\n\t\t\t\t\t\t\t\t\t\t\tnextCursor\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"),
@@ -269,7 +269,7 @@ var Repl = /*#__PURE__*/function () {
                   return _recurse.apply(this, arguments);
                 };
 
-                after = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : "";
+                after = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : '';
                 count = _args4.length > 1 && _args4[1] !== undefined ? _args4[1] : 10;
                 username = this.username, slug = this.slug;
                 output = [];
@@ -333,7 +333,7 @@ var Repl = /*#__PURE__*/function () {
                           case 2:
                             _context5.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: "POST",
+                              method: 'POST',
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n\t\t\t\t\t\tquery ReplForks($id: String!, $after: String!, $count: Int!) {\n\t\t\t\t\t\t\trepl(id: $id) {\n\t\t\t\t\t\t\t\t... on Repl {\n\t\t\t\t\t\t\t\t\tcomments(after: $after, count: $count) {\n\t\t\t\t\t\t\t\t\t\titems {\n\t\t\t\t\t\t\t\t\t\t\t".concat(_constants["default"].replCommentAttributes, "\n\t\t\t\t\t\t\t\t\t\t\tuser { ").concat(_constants["default"].userAttributes, " }\n\t\t\t\t\t\t\t\t\t\t\treplies { ").concat(_constants["default"].replCommentAttributes, " }\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t\tpageInfo {\n\t\t\t\t\t\t\t\t\t\t\tnextCursor\n\t\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"),
@@ -392,7 +392,7 @@ var Repl = /*#__PURE__*/function () {
                   return _recurse4.apply(this, arguments);
                 };
 
-                after = _args6.length > 0 && _args6[0] !== undefined ? _args6[0] : "";
+                after = _args6.length > 0 && _args6[0] !== undefined ? _args6[0] : '';
                 count = _args6.length > 1 && _args6[1] !== undefined ? _args6[1] : 10;
                 username = this.username, slug = this.slug;
                 output = [];
@@ -433,7 +433,7 @@ var Repl = /*#__PURE__*/function () {
                 username = this.username, slug = this.slug;
                 _context7.next = 3;
                 return (0, _nodeFetch["default"])("https://langsapi.replapiit.repl.co/".concat(username, "/").concat(slug), {
-                  method: "GET",
+                  method: 'GET',
                   headers: _headers["default"]
                 }).then(function (res) {
                   return res.json();
@@ -477,8 +477,8 @@ var Repl = /*#__PURE__*/function () {
               case 0:
                 username = this.username, slug = this.slug;
                 _context8.next = 3;
-                return (0, _nodeFetch["default"])("https://filesapi.replapiit.repl.co/".concat(filename ? "file" : "files", "/").concat(username, "/").concat(slug).concat(filename ? "?filename=".concat(filename).concat(raw ? "&raw=1" : "") : ""), {
-                  method: "GET",
+                return (0, _nodeFetch["default"])("https://filesapi.replapiit.repl.co/".concat(filename ? 'file' : 'files', "/").concat(username, "/").concat(slug).concat(filename ? "?filename=".concat(filename).concat(raw ? '&raw=1' : '') : ''), {
+                  method: 'GET',
                   headers: _headers["default"]
                 }).then(function (res) {
                   return raw ? res.text() : res.json();
@@ -525,16 +525,16 @@ var Repl = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context9.next = 7;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
-                    query: "{ replTitle }"
+                    query: '{ replTitle }'
                   })
                 }).then(function (res) {
                   return res.json();
@@ -588,15 +588,15 @@ var Repl = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 8:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context10.next = 22;
                   break;
                 }
 
-                if (!(typeof body !== "string")) {
+                if (!(typeof body !== 'string')) {
                   _context10.next = 11;
                   break;
                 }
@@ -604,10 +604,10 @@ var Repl = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(_typeof(body), "."));
 
               case 11:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context10.next = 14;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreateReplComment($input: CreateReplCommentInput!) {\n              createReplComment(input: $input) {\n\t\t\t\t\t\t\t\t..on ReplComment {\n\t\t\t\t\t\t\t\t\t".concat(_constants["default"].replCommentAttributes, "\n\t\t\t\t\t\t\t\t\tuser { ").concat(_constants["default"].userAttributes, " }\n\t\t\t\t\t\t\t\t\treplies { ").concat(_constants["default"].replCommentAttributes, " }\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"),
@@ -670,15 +670,15 @@ var Repl = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context11.next = 20;
                   break;
                 }
 
-                if (!(typeof id !== "string")) {
+                if (!(typeof id !== 'string')) {
                   _context11.next = 7;
                   break;
                 }
@@ -686,7 +686,7 @@ var Repl = /*#__PURE__*/function () {
                 throw new Error("Id must be of type string. Got type ".concat(_typeof(id), "."));
 
               case 7:
-                if (!(typeof body !== "string")) {
+                if (!(typeof body !== 'string')) {
                   _context11.next = 9;
                   break;
                 }
@@ -694,10 +694,10 @@ var Repl = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(_typeof(body), "."));
 
               case 9:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context11.next = 12;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreateReplCommentReply($input: CreateReplCommentReplyInput!) {\n              createReplCommentReply(input: $input) {\n\t\t\t\t\t\t\t\t..on ReplComment {\n\t\t\t\t\t\t\t\t\t".concat(_constants["default"].replCommentAttributes, "\n\t\t\t\t\t\t\t\t\tuser { ").concat(_constants["default"].userAttributes, " }\n\t\t\t\t\t\t\t\t\treplies { ").concat(_constants["default"].replCommentAttributes, " }\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"),
@@ -767,15 +767,15 @@ var Repl = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 8:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context12.next = 22;
                   break;
                 }
 
-                if (!(typeof body !== "string")) {
+                if (!(typeof body !== 'string')) {
                   _context12.next = 11;
                   break;
                 }
@@ -783,10 +783,10 @@ var Repl = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(_typeof(body), "."));
 
               case 11:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context12.next = 14;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation UpdateReplComment($input: UpdateReplCommentInput!) {\n              updateReplComment(input: $input) {\n\t\t\t\t\t\t\t\t..on ReplComment {\n\t\t\t\t\t\t\t\t\t".concat(_constants["default"].replCommentAttributes, "\n\t\t\t\t\t\t\t\t\tuser { ").concat(_constants["default"].userAttributes, " }\n\t\t\t\t\t\t\t\t\treplies { ").concat(_constants["default"].replCommentAttributes, " }\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}"),
@@ -856,18 +856,18 @@ var Repl = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 8:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context13.next = 20;
                   break;
                 }
 
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context13.next = 12;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation DeleteReplComment($id: String!) {\n              deleteReplComment(id: $id) {\n\t\t\t\t\t\t\t\t..on ReplComment {\n\t\t\t\t\t\t\t\t\tid\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}",
@@ -924,7 +924,7 @@ var Repl = /*#__PURE__*/function () {
               case 0:
                 _context14.next = 2;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query newRepls {\n            newRepls {\n              items {\n                ".concat(_constants["default"].replAttributes, "\n              }\n            }\n          }")

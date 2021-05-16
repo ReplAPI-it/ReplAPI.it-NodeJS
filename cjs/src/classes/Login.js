@@ -34,23 +34,23 @@ function _getCookies() {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            if (!["RayhanADev"].includes(global.initVariables.username)) {
+            if (!['RayhanADev'].includes(global.initVariables.username)) {
               _context3.next = 11;
               break;
             }
 
             _context3.next = 3;
             return (0, _nodeFetch["default"])(_constants["default"].login, {
-              method: "POST",
+              method: 'POST',
               headers: _headers["default"],
               body: JSON.stringify({
                 username: username,
                 password: password,
                 captcha: global.initVariables.captcha.token,
-                hCaptchaSiteKey: "7f7c5b9f-8cff-49f3-ab09-5666dca1104b"
+                hCaptchaSiteKey: '7f7c5b9f-8cff-49f3-ab09-5666dca1104b'
               })
             }).then(function (res) {
-              return res.headers.raw()["set-cookie"][1];
+              return res.headers.raw()['set-cookie'][1];
             });
 
           case 3:
@@ -96,7 +96,7 @@ var Login = /*#__PURE__*/function () {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (!["RayhanADev"].includes(global.initVariables.username)) {
+                if (!['RayhanADev'].includes(global.initVariables.username)) {
                   _context.next = 6;
                   break;
                 }
@@ -134,7 +134,7 @@ var Login = /*#__PURE__*/function () {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                if (!["RayhanADev"].includes(global.initVariables.username)) {
+                if (!['RayhanADev'].includes(global.initVariables.username)) {
                   _context2.next = 4;
                   break;
                 }

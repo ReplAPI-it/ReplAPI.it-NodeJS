@@ -43,7 +43,7 @@ var Comment = /*#__PURE__*/function () {
               case 0:
                 id = this.id;
 
-                if (!(typeof id !== "number")) {
+                if (!(typeof id !== 'number')) {
                   _context.next = 3;
                   break;
                 }
@@ -53,7 +53,7 @@ var Comment = /*#__PURE__*/function () {
               case 3:
                 _context.next = 5;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Comment($id: Int!) {\n            comment(id: $id) {\n              id\n              preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n            }\n          }"),
@@ -111,7 +111,7 @@ var Comment = /*#__PURE__*/function () {
               case 0:
                 id = this.id;
 
-                if (!(typeof id !== "number")) {
+                if (!(typeof id !== 'number')) {
                   _context2.next = 3;
                   break;
                 }
@@ -121,7 +121,7 @@ var Comment = /*#__PURE__*/function () {
               case 3:
                 _context2.next = 5;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Comment($id: Int!) {\n            comment(id: $id) {\n              ".concat(_constants["default"].commentAttributes, "\n              parentComment { ").concat(_constants["default"].commentAttributes, " }\n              comments { ").concat(_constants["default"].commentAttributes, " }\n              user { ").concat(_constants["default"].userAttributes, " }\n              post {\n                ").concat(_constants["default"].postAttributes, "\n                user { ").concat(_constants["default"].userAttributes, " }\n                board { ").concat(_constants["default"].boardAttributes, " }\n                repl { ").concat(_constants["default"].replAttributes, " }\n                comments(count: ").concat(_constants["default"].initVariables.previewCount.comments || 10, ") { items { ").concat(_constants["default"].commentAttributes, " } }\n                votes { items { id, user { ").concat(_constants["default"].userAttributes, " } } }\n                answeredBy { ").concat(_constants["default"].userAttributes, " }\n                answer { ").concat(_constants["default"].commentAttributes, " }\n              }\n            }\n          }"),
@@ -182,15 +182,15 @@ var Comment = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context3.next = 20;
                   break;
                 }
 
-                if (!(typeof body !== "string")) {
+                if (!(typeof body !== 'string')) {
                   _context3.next = 7;
                   break;
                 }
@@ -198,7 +198,7 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 7:
-                if (!(typeof postId !== "number")) {
+                if (!(typeof postId !== 'number')) {
                   _context3.next = 9;
                   break;
                 }
@@ -206,10 +206,10 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Post ID must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 9:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context3.next = 12;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreateComment($input: CreateCommentInput!) {\n              createComment(input: $input) {\n                comment {\n                  id\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -272,15 +272,15 @@ var Comment = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context4.next = 20;
                   break;
                 }
 
-                if (!(typeof body !== "string")) {
+                if (!(typeof body !== 'string')) {
                   _context4.next = 7;
                   break;
                 }
@@ -288,7 +288,7 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 7:
-                if (!(typeof commentId !== "number")) {
+                if (!(typeof commentId !== 'number')) {
                   _context4.next = 9;
                   break;
                 }
@@ -296,10 +296,10 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Post ID must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 9:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context4.next = 12;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreateComment($input: CreateCommentInput!) {\n              createComment(input: $input) {\n                comment {\n                  id\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -362,15 +362,15 @@ var Comment = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context5.next = 20;
                   break;
                 }
 
-                if (!(typeof id !== "number")) {
+                if (!(typeof id !== 'number')) {
                   _context5.next = 7;
                   break;
                 }
@@ -378,7 +378,7 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Title must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 7:
-                if (!(typeof body !== "string" || typeof body !== "undefined")) {
+                if (!(typeof body !== 'string' || typeof body !== 'undefined')) {
                   _context5.next = 9;
                   break;
                 }
@@ -386,10 +386,10 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(_typeof(body), "."));
 
               case 9:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context5.next = 12;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation UpdateComment($input: UpdateCommentInput!) {\n              updateComment(input: $input) {\n                comment {\n                  id\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -452,15 +452,15 @@ var Comment = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context6.next = 18;
                   break;
                 }
 
-                if (!(typeof id !== "number")) {
+                if (!(typeof id !== 'number')) {
                   _context6.next = 7;
                   break;
                 }
@@ -468,10 +468,10 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Id must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 7:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context6.next = 10;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation DeleteComment($id: Int!) {\n              deleteComment(id: $id) {\n                id\n                preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n              }\n            }"),
@@ -531,15 +531,15 @@ var Comment = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context7.next = 18;
                   break;
                 }
 
-                if (!(typeof id !== "number")) {
+                if (!(typeof id !== 'number')) {
                   _context7.next = 7;
                   break;
                 }
@@ -547,10 +547,10 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Id must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 7:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context7.next = 10;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreateCommentVote($id: Int!) {\n              createCommentVote(id: $id) {\n                id\n                user { username }\n                comment {\n                  id\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -610,15 +610,15 @@ var Comment = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error("ReplAPI.it: Not logged in.");
+                throw new Error('ReplAPI.it: Not logged in.');
 
               case 4:
-                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
+                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
                   _context8.next = 18;
                   break;
                 }
 
-                if (!(typeof id !== "number")) {
+                if (!(typeof id !== 'number')) {
                   _context8.next = 7;
                   break;
                 }
@@ -626,10 +626,10 @@ var Comment = /*#__PURE__*/function () {
                 throw new Error("Id must be of type number. Got type ".concat(typeof title === "undefined" ? "undefined" : _typeof(title), "."));
 
               case 7:
-                _headers["default"]["Set-Cookie"] = global.cookies;
+                _headers["default"]['Set-Cookie'] = global.cookies;
                 _context8.next = 10;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: "POST",
+                  method: 'POST',
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation DeleteCommentVote($id: Int!) {\n              deleteCommentVote(id: $id) {\n                id\n                user { username }\n                comment {\n                  id\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),

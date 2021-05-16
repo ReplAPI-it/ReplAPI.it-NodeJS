@@ -36,10 +36,10 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
 function hash(value, salt) {
-  var hashItem = _crypto["default"].createHmac("sha512", salt);
+  var hashItem = _crypto["default"].createHmac('sha512', salt);
 
   hashItem.update(value);
-  var result = hashItem.digest("hex");
+  var result = hashItem.digest('hex');
   return {
     salt: salt,
     hashedpassword: result
@@ -61,22 +61,22 @@ var exportable;
 if (_constants["default"].initVariables.experimentalFeatures) {
   exportable = /*#__PURE__*/function () {
     function Database(dbToken) {
-      var salt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+      var salt = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
       var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
 
       _classCallCheck(this, Database);
 
-      if (!process.env.REPL_PUBKEYS && !process.env.REPL_ID) throw new Error("Please run the Database Class on a Replit Project only.");
+      if (!process.env.REPL_PUBKEYS && !process.env.REPL_ID) throw new Error('Please run the Database Class on a Replit Project only.');
       this.dbToken = dbToken || process.env.REPLIT_DB_URL;
       this.salt = salt;
       this.options = {
-        id: String(dbToken).split("/")[4] || process.env.REPLIT_DB_URL.split("/")[4],
+        id: String(dbToken).split('/')[4] || process.env.REPLIT_DB_URL.split('/')[4],
         owner: process.env.REPL_OWNER,
         collaborators: _objectSpread({}, options.collaborators),
         password: _objectSpread({}, hash(String(options.password), String(salt))),
         type: options.type,
         encrypted: options.encrypted || [false],
-        "max-items": options["max-items"] || 10
+        'max-items': options['max-items'] || 10
       };
     }
 
@@ -90,8 +90,8 @@ if (_constants["default"].initVariables.experimentalFeatures) {
               switch (_context.prev = _context.next) {
                 case 0:
                   _context.next = 2;
-                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(encodeURIComponent("replapi_database_config")), {
-                    method: "GET"
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(encodeURIComponent('replapi_database_config')), {
+                    method: 'GET'
                   }).then(function (res) {
                     return res.text();
                   });
@@ -104,13 +104,13 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  if (!(this.options.type === "plus")) {
+                  if (!(this.options.type === 'plus')) {
                     _context.next = 14;
                     break;
                   }
 
-                  if (_fs["default"].existsSync(_path["default"].join(process.cwd(), ".replapirc.json"))) {
-                    createDatabaseFlag = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), ".replapirc.json"))).createDatabaseFlag;
+                  if (_fs["default"].existsSync(_path["default"].join(process.cwd(), '.replapirc.json'))) {
+                    createDatabaseFlag = JSON.parse(_fs["default"].readFileSync(_path["default"].join(process.cwd(), '.replapirc.json'))).createDatabaseFlag;
                   }
 
                   if (!createDatabaseFlag) {
@@ -120,11 +120,11 @@ if (_constants["default"].initVariables.experimentalFeatures) {
 
                   _context.next = 9;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    body: "".concat(encodeURIComponent("replapi_database_config"), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
+                    body: "".concat(encodeURIComponent('replapi_database_config'), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
                   });
 
                 case 9:
@@ -139,18 +139,18 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   break;
 
                 case 14:
-                  if (!(this.options.type === "repldb")) {
+                  if (!(this.options.type === 'repldb')) {
                     _context.next = 19;
                     break;
                   }
 
                   _context.next = 17;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
-                    body: "".concat(encodeURIComponent("replapi_database_config"), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
+                    body: "".concat(encodeURIComponent('replapi_database_config'), "=").concat(encodeURIComponent(JSON.stringify(_objectSpread({}, this.options))))
                   });
 
                 case 17:
@@ -170,7 +170,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                     break;
                   }
 
-                  throw new Error("Incorrect Password. Database access denied.");
+                  throw new Error('Incorrect Password. Database access denied.');
 
                 case 24:
                 case "end":
@@ -196,9 +196,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 0:
                   _context2.next = 2;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify({})))
                   });
@@ -234,9 +234,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                   collection[docName] = _objectSpread({}, docItems);
                   _context3.next = 6;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
                   });
@@ -265,18 +265,18 @@ if (_constants["default"].initVariables.experimentalFeatures) {
               switch (_context4.prev = _context4.next) {
                 case 0:
                   _context4.next = 2;
-                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "?encode=true&prefix=").concat(encodeURIComponent("")), {
-                    method: "GET"
+                  return (0, _nodeFetch["default"])("".concat(this.dbToken, "?encode=true&prefix=").concat(encodeURIComponent('')), {
+                    method: 'GET'
                   }).then(function (res) {
                     return res.text();
                   });
 
                 case 2:
                   info = _context4.sent;
-                  keys = info.split("\n").map(decodeURIComponent);
+                  keys = info.split('\n').map(decodeURIComponent);
 
-                  if (keys.indexOf("replapi_database_config") > -1) {
-                    keys.splice(keys.indexOf("replapi_database_config"), 1);
+                  if (keys.indexOf('replapi_database_config') > -1) {
+                    keys.splice(keys.indexOf('replapi_database_config'), 1);
                   }
 
                   return _context4.abrupt("return", keys);
@@ -306,7 +306,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 0:
                   _context5.next = 2;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
-                    method: "GET"
+                    method: 'GET'
                   }).then(function (res) {
                     return res.json();
                   });
@@ -340,7 +340,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 0:
                   _context6.next = 2;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
-                    method: "GET"
+                    method: 'GET'
                   }).then(function (res) {
                     return res.json();
                   });
@@ -382,9 +382,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
 
                   _context7.next = 6;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
                   });
@@ -413,7 +413,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
                 case 0:
                   _context8.next = 2;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken, "/").concat(collectionName), {
-                    method: "DELETE"
+                    method: 'DELETE'
                   });
 
                 case 2:
@@ -449,9 +449,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
 
                   _context9.next = 6;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
                   });
@@ -489,9 +489,9 @@ if (_constants["default"].initVariables.experimentalFeatures) {
 
                   _context10.next = 6;
                   return (0, _nodeFetch["default"])("".concat(this.dbToken), {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                      "Content-Type": "application/x-www-form-urlencoded"
+                      'Content-Type': 'application/x-www-form-urlencoded'
                     },
                     body: "".concat(encodeURIComponent(collectionName), "=").concat(encodeURIComponent(JSON.stringify(collection)))
                   });
@@ -516,7 +516,7 @@ if (_constants["default"].initVariables.experimentalFeatures) {
   }();
 } else {
   exportable = function noExperimentalFeatures() {
-    console.log("Experimental Features are not enabled. To learn more about experimental features please visit the documentation.");
+    console.log('Experimental Features are not enabled. To learn more about experimental features please visit the documentation.');
   };
 }
 
