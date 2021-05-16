@@ -32,9 +32,7 @@ function sortByKey(a, b) {
 }
 
 export default function ReplAPI(initVariables, filetype = '.json') {
-	if (initVariables) {
-		_.assign(defaultInitVariables, initVariables);
-	}
+	if (initVariables) _.assign(defaultInitVariables, initVariables);
 
 	switch (filetype) {
 		case '.json':
@@ -46,7 +44,7 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 			break;
 		case '.mjs':
 			fs.writeFileSync(
-				path.join(process.cwd(), 'replapi-it.config.mjs'),
+				path.join(process.cwd(), 'replapi.config.mjs'),
 				`export default ${stringify(defaultInitVariables, {
 					cmp: sortByKey,
 					space: 4,
@@ -56,7 +54,7 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 			break;
 		case '.cjs':
 			fs.writeFileSync(
-				path.join(process.cwd(), 'replapi-it.config.cjs'),
+				path.join(process.cwd(), 'replapi.config.cjs'),
 				`module.exports = ${stringify(defaultInitVariables, {
 					cmp: sortByKey,
 					space: 4,
@@ -66,7 +64,7 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 			break;
 		case '.js':
 			fs.writeFileSync(
-				path.join(process.cwd(), 'replapi-it.config.js'),
+				path.join(process.cwd(), 'replapi.config.js'),
 				`module.exports = ${stringify(defaultInitVariables, {
 					cmp: sortByKey,
 					space: 4,
@@ -75,6 +73,7 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 			);
 			break;
 		default:
+			console.warn(`Invalid file type '${filetype}'`);
 			fs.writeFileSync(
 				path.join(process.cwd(), '.replapirc.json'),
 				`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,

@@ -69,7 +69,7 @@ var Leaderboard = /*#__PURE__*/function () {
                           case 2:
                             _context.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: query,
@@ -89,7 +89,7 @@ var Leaderboard = /*#__PURE__*/function () {
                               break;
                             }
 
-                            throw new Error('Cannot fetch leaderboard');
+                            throw new Error("Cannot fetch leaderboard");
 
                           case 9:
                             info.data.leaderboard.items.forEach(function (user) {
@@ -118,10 +118,10 @@ var Leaderboard = /*#__PURE__*/function () {
                   return _recurse.apply(this, arguments);
                 };
 
-                after = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : '';
+                after = _args2.length > 0 && _args2[0] !== undefined ? _args2[0] : "";
                 count = _args2.length > 1 && _args2[1] !== undefined ? _args2[1] : 10;
                 since = _args2.length > 2 ? _args2[2] : undefined;
-                query = '';
+                query = "";
                 variables = {};
 
                 if (since) {

@@ -38,7 +38,7 @@ var Blog = /*#__PURE__*/function () {
             switch (_context.prev = _context.next) {
               case 0:
                 _context.next = 2;
-                return parser.parseURL('https://blog.replit.com/feed.xml');
+                return parser.parseURL("https://blog.replit.com/feed.xml");
 
               case 2:
                 feed = _context.sent;
@@ -70,12 +70,12 @@ var Blog = /*#__PURE__*/function () {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return parser.parseURL('https://blog.replit.com/feed.xml');
+                return parser.parseURL("https://blog.replit.com/feed.xml");
 
               case 2:
                 _yield$parser$parseUR = _context2.sent;
                 items = _yield$parser$parseUR.items;
-                postIndex = _lodash["default"].findIndex(items, ['guid', guid]);
+                postIndex = _lodash["default"].findIndex(items, ["guid", guid]);
                 return _context2.abrupt("return", items[postIndex]);
 
               case 6:
@@ -105,14 +105,14 @@ var Blog = /*#__PURE__*/function () {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                order = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : 'newest';
+                order = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : "newest";
                 count = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 10;
                 _context3.next = 4;
-                return parser.parseURL('https://blog.replit.com/feed.xml');
+                return parser.parseURL("https://blog.replit.com/feed.xml");
 
               case 4:
                 feed = _context3.sent;
-                if (order === 'oldest') feed.items.reverse();
+                if (order === "oldest") feed.items.reverse();
                 posts = feed.items.slice(0, count);
                 return _context3.abrupt("return", posts);
 

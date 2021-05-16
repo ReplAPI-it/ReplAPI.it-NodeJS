@@ -35,11 +35,11 @@ function _fetchVariable() {
         switch (_context3.prev = _context3.next) {
           case 0:
             _context3.next = 2;
-            return (0, _nodeFetch["default"])('https://staging.replit.com/', {
-              method: 'GET',
+            return (0, _nodeFetch["default"])("https://staging.replit.com/", {
+              method: "GET",
               headers: {
-                'X-Requested-With': 'ReplAPI.it',
-                Referrer: 'https://staging.replit.com/'
+                "X-Requested-With": "ReplAPI.it",
+                Referrer: "https://staging.replit.com/"
               }
             }).then(function (res) {
               return res.text();

@@ -1,49 +1,59 @@
-import fs from 'fs';
-import path from 'path';
+import _ from 'lodash';
+import { cosmiconfig, defaultLoaders } from 'cosmiconfig';
 
-let initVariables;
-if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
-	initVariables = JSON.parse(
-		fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))
-	);
-} else if (fs.existsSync(path.join(process.cwd(), 'replapi-it.config.mjs'))) {
-	(async () => {
-		initVariables = (
-			await import(path.join(process.cwd(), 'replapi-it.config.mjs'))
-		).default;
-	})();
-} else if (fs.existsSync(path.join(process.cwd(), 'replapi-it.config.js'))) {
-	(async () => {
-		initVariables = (
-			await import(path.join(process.cwd(), 'replapi-it.config.js'))
-		).default;
-	})();
-} else if (fs.existsSync(path.join(process.cwd(), 'replapi-it.config.cjs'))) {
-	(async () => {
-		initVariables = (
-			await import(path.join(process.cwd(), 'replapi-it.config.cjs'))
-		).default;
-	})();
-} else {
-	initVariables = {
-		username: undefined,
-		captcha: {
-			token: undefined,
+const initVariables = {
+	username: '',
+	captcha: {
+		token: '',
+	},
+	endpoints: {
+		gql: '',
+		restful: '',
+		login: '',
+	},
+	markdown: {
+		length: '',
+		removeMarkdown: '',
+	},
+	previewCount: {
+		comments: '',
+	},
+	experimentalFeatures: '',
+	createDatabaseFlag: '',
+};
+
+const moduleName = 'replapi';
+
+const explorer = cosmiconfig(moduleName, {
+	searchPlaces: [
+		'package.json',
+		`.${moduleName}rc`,
+		`.${moduleName}rc.json`,
+		`.${moduleName}rc.yaml`,
+		`.${moduleName}rc.yml`,
+		`.${moduleName}rc.js`,
+		`.${moduleName}rc.cjs`,
+		`${moduleName}.config.js`,
+		`${moduleName}.config.cjs`,
+		`${moduleName}.config.mjs`,
+	],
+	loaders: {
+		defaultLoaders,
+		'.mjs': async (filepath) => {
+			const val = await import(filepath);
+			return val;
 		},
-		endpoints: {
-			gql: undefined,
-			restful: undefined,
-			login: undefined,
-		},
-		markdown: {
-			length: undefined,
-			removeMarkdown: undefined,
-		},
-		previewCount: {
-			comments: undefined,
-		},
-	};
-}
+	},
+});
+
+explorer
+	.search()
+	.then((result) => {
+		if (result !== null) _.assign(initVariables, result.config);
+	})
+	.catch(() => {
+		throw new Error('Could not read configuration files!');
+	});
 
 export default {
 	initVariables,

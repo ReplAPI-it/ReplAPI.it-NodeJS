@@ -1,7 +1,7 @@
 import ReplAPI from '../esm/index.mjs';
 const replapi = ReplAPI({
 	username: 'RayhanADev',
-});
+}, ".mjs");
 
 const replapiClasses = [
   'Blog',

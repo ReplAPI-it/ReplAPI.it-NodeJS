@@ -43,7 +43,7 @@ var Post = /*#__PURE__*/function () {
               case 0:
                 id = this.id;
 
-                if (!(typeof id !== 'number')) {
+                if (!(typeof id !== "number")) {
                   _context.next = 3;
                   break;
                 }
@@ -53,7 +53,7 @@ var Post = /*#__PURE__*/function () {
               case 3:
                 _context.next = 5;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Post($id: Int!) {\n            post(id: $id) {\n              id\n              title\n              preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n            }\n          }"),
@@ -111,7 +111,7 @@ var Post = /*#__PURE__*/function () {
               case 0:
                 id = this.id;
 
-                if (!(typeof id !== 'number')) {
+                if (!(typeof id !== "number")) {
                   _context2.next = 3;
                   break;
                 }
@@ -121,7 +121,7 @@ var Post = /*#__PURE__*/function () {
               case 3:
                 _context2.next = 5;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Post($id: Int!) {\n            post(id: $id) {\n              ".concat(_constants["default"].postAttributes, "\n              user { ").concat(_constants["default"].userAttributes, " }\n              board { ").concat(_constants["default"].boardAttributes, " }\n              repl { ").concat(_constants["default"].replAttributes, " }\n              comments(count: ").concat(_constants["default"].initVariables.previewCount.comments || 10, ") { items { ").concat(_constants["default"].commentAttributes, " } }\n              votes { items { id user { ").concat(_constants["default"].userAttributes, " } } }\n              answeredBy { ").concat(_constants["default"].userAttributes, " }\n              answer { ").concat(_constants["default"].commentAttributes, " }\n            }\n          }"),
@@ -179,7 +179,7 @@ var Post = /*#__PURE__*/function () {
               case 0:
                 id = this.id;
 
-                if (!(typeof id !== 'number')) {
+                if (!(typeof id !== "number")) {
                   _context3.next = 3;
                   break;
                 }
@@ -189,7 +189,7 @@ var Post = /*#__PURE__*/function () {
               case 3:
                 _context3.next = 5;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query PostRecentComments($id: Int!) {\n            post(id: $id) {\n              recentComments {\n                ".concat(_constants["default"].commentAttributes, "\n                parentComment { ").concat(_constants["default"].commentAttributes, " }\n                comments { ").concat(_constants["default"].commentAttributes, " }\n                user { ").concat(_constants["default"].userAttributes, " }\n                post { \n                  ").concat(_constants["default"].postAttributes, "\n                  user { ").concat(_constants["default"].userAttributes, " }\n                  board { ").concat(_constants["default"].boardAttributes, " }\n                  repl { ").concat(_constants["default"].replAttributes, " }\n                  comments(count: ").concat(_constants["default"].initVariables.previewCount.comments || 10, ") { items { ").concat(_constants["default"].commentAttributes, " } }\n                  votes { items { id user { ").concat(_constants["default"].userAttributes, " } } }\n                  answeredBy { ").concat(_constants["default"].userAttributes, " }\n                  answer { ").concat(_constants["default"].commentAttributes, " }\n                }\n              }\n            }\n          }"),
@@ -250,15 +250,15 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 4:
-                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
+                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
                   _context4.next = 26;
                   break;
                 }
 
-                if (!(typeof title !== 'string')) {
+                if (!(typeof title !== "string")) {
                   _context4.next = 7;
                   break;
                 }
@@ -266,7 +266,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Title must be of type string. Got type ".concat(_typeof(title), "."));
 
               case 7:
-                if (!(typeof body !== 'string')) {
+                if (!(typeof body !== "string")) {
                   _context4.next = 9;
                   break;
                 }
@@ -274,7 +274,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(_typeof(body), "."));
 
               case 9:
-                if (!(typeof boardId !== 'number')) {
+                if (!(typeof boardId !== "number")) {
                   _context4.next = 11;
                   break;
                 }
@@ -282,7 +282,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Board ID must be of type number. Got type ".concat(_typeof(boardId), "."));
 
               case 11:
-                if (!(typeof replId !== 'string')) {
+                if (!(typeof replId !== "string")) {
                   _context4.next = 13;
                   break;
                 }
@@ -290,7 +290,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Repl ID must be of type string. Got type ".concat(_typeof(replId), "."));
 
               case 13:
-                if (!(typeof showHosted !== 'string')) {
+                if (!(typeof showHosted !== "string")) {
                   _context4.next = 15;
                   break;
                 }
@@ -298,10 +298,10 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Show Hosted must be of type boolean. Got type ".concat(_typeof(showHosted), "."));
 
               case 15:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context4.next = 18;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreatePost($input: CreatePostInput!) {\n              createPost(input: $input) {\n                post {\n                  id\n                  title\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -367,15 +367,15 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 4:
-                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
+                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
                   _context5.next = 32;
                   break;
                 }
 
-                if (!(typeof title !== 'string' || typeof title !== 'undefined')) {
+                if (!(typeof title !== "string" || typeof title !== "undefined")) {
                   _context5.next = 7;
                   break;
                 }
@@ -383,7 +383,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Title must be of type string. Got type ".concat(_typeof(title), "."));
 
               case 7:
-                if (!(typeof body !== 'string' || typeof body !== 'undefined')) {
+                if (!(typeof body !== "string" || typeof body !== "undefined")) {
                   _context5.next = 9;
                   break;
                 }
@@ -391,7 +391,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Body must be of type string. Got type ".concat(_typeof(body), "."));
 
               case 9:
-                if (!(typeof isPinned !== 'boolean' || typeof isPinned !== 'undefined')) {
+                if (!(typeof isPinned !== "boolean" || typeof isPinned !== "undefined")) {
                   _context5.next = 11;
                   break;
                 }
@@ -399,7 +399,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("isPinned must be of type boolean. Got type ".concat(_typeof(isPinned), "."));
 
               case 11:
-                if (!(typeof postType !== 'string' || typeof postType !== 'undefined')) {
+                if (!(typeof postType !== "string" || typeof postType !== "undefined")) {
                   _context5.next = 13;
                   break;
                 }
@@ -407,7 +407,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Post Type must be of type string. Got type ".concat(_typeof(postType), "."));
 
               case 13:
-                if (!(typeof isLocked !== 'boolean' || typeof isLocked !== 'undefined')) {
+                if (!(typeof isLocked !== "boolean" || typeof isLocked !== "undefined")) {
                   _context5.next = 15;
                   break;
                 }
@@ -415,7 +415,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("isLocked must be of type boolean. Got type ".concat(_typeof(isPinned), "."));
 
               case 15:
-                if (!(typeof boardId !== 'number' || typeof boardId !== 'undefined')) {
+                if (!(typeof boardId !== "number" || typeof boardId !== "undefined")) {
                   _context5.next = 17;
                   break;
                 }
@@ -423,7 +423,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Board ID must be of type number. Got type ".concat(_typeof(boardId), "."));
 
               case 17:
-                if (!(typeof replId !== 'string' || typeof replId !== 'undefined')) {
+                if (!(typeof replId !== "string" || typeof replId !== "undefined")) {
                   _context5.next = 19;
                   break;
                 }
@@ -431,7 +431,7 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Repl ID must be of type string. Got type ".concat(_typeof(replId), "."));
 
               case 19:
-                if (!(typeof showHosted !== 'string' || typeof showHosted !== 'undefined')) {
+                if (!(typeof showHosted !== "string" || typeof showHosted !== "undefined")) {
                   _context5.next = 21;
                   break;
                 }
@@ -439,10 +439,10 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Show Hosted must be of type boolean. Got type ".concat(_typeof(showHosted), "."));
 
               case 21:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context5.next = 24;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation UpdatePost($input: UpdatePostInput!) {\n              updatePost(input: $input) {\n                post {\n                  id\n                  title\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -511,15 +511,15 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 4:
-                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
+                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
                   _context6.next = 18;
                   break;
                 }
 
-                if (!(typeof id !== 'number')) {
+                if (!(typeof id !== "number")) {
                   _context6.next = 7;
                   break;
                 }
@@ -527,10 +527,10 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Id must be of type number. Got type ".concat(_typeof(id), "."));
 
               case 7:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context6.next = 10;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreatePost($id: Int!) {\n              deletePost(id: $id) {\n                id\n                title\n                preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(global.initVariables.markdown.removeMarkdown || true, ")\n              }\n            }"),
@@ -590,15 +590,15 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 4:
-                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
+                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
                   _context7.next = 18;
                   break;
                 }
 
-                if (!(typeof id !== 'number')) {
+                if (!(typeof id !== "number")) {
                   _context7.next = 7;
                   break;
                 }
@@ -606,10 +606,10 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Id must be of type number. Got type ".concat(_typeof(id), "."));
 
               case 7:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context7.next = 10;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation CreatePostVote($id: Int!) {\n              createPostVote(id: $id) {\n                id\n                user { username }\n                  post {\n                    id\n                    title\n                    preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(global.initVariables.markdown.removeMarkdown || true, ")\n                  }\n              }\n            }"),
@@ -669,15 +669,15 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('ReplAPI.it: Not logged in.');
+                throw new Error("ReplAPI.it: Not logged in.");
 
               case 4:
-                if (!['RayhanADev'].includes(_constants["default"].initVariables.username)) {
+                if (!["RayhanADev"].includes(_constants["default"].initVariables.username)) {
                   _context8.next = 18;
                   break;
                 }
 
-                if (!(typeof id !== 'number')) {
+                if (!(typeof id !== "number")) {
                   _context8.next = 7;
                   break;
                 }
@@ -685,10 +685,10 @@ var Post = /*#__PURE__*/function () {
                 throw new Error("Id must be of type number. Got type ".concat(_typeof(id), "."));
 
               case 7:
-                _headers["default"]['Set-Cookie'] = global.cookies;
+                _headers["default"]["Set-Cookie"] = global.cookies;
                 _context8.next = 10;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n            mutation DeletePostVote($id: Int!) {\n              deletePostVote(id: $id) {\n                id\n                user { username }\n                post {\n                  id\n                  title\n                  preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n                }\n              }\n            }"),
@@ -747,12 +747,12 @@ var Post = /*#__PURE__*/function () {
           while (1) {
             switch (_context9.prev = _context9.next) {
               case 0:
-                after = _args9.length > 0 && _args9[0] !== undefined ? _args9[0] : '';
+                after = _args9.length > 0 && _args9[0] !== undefined ? _args9[0] : "";
                 count = _args9.length > 1 && _args9[1] !== undefined ? _args9[1] : 10;
-                order = _args9.length > 2 && _args9[2] !== undefined ? _args9[2] : '';
+                order = _args9.length > 2 && _args9[2] !== undefined ? _args9[2] : "";
                 _context9.next = 5;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Posts($after: String!, $count: Int!, $order: String!) {\n            posts(after: $after, count: $count, order: $order) {\n              items {\n                id\n                title\n                preview(length: ".concat(_constants["default"].initVariables.markdown.length || 150, ", removeMarkdown: ").concat(_constants["default"].initVariables.markdown.removeMarkdown || true, ")\n              }\n              pageInfo {\n                nextCursor\n              }\n            }\n          }"),
@@ -782,7 +782,7 @@ var Post = /*#__PURE__*/function () {
                   break;
                 }
 
-                throw new Error('Could not fetch posts.');
+                throw new Error("Could not fetch posts.");
 
               case 12:
                 return _context9.abrupt("return", info.data.posts);

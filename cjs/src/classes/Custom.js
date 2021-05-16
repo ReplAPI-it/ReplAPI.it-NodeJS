@@ -52,14 +52,14 @@ var CustomDataQuery = /*#__PURE__*/function () {
               case 0:
                 queryName = this.queryName, customQuery = this.customQuery, customVariables = this.customVariables;
                 specialQueryVariables = {
-                  since: 'KarmaSince',
-                  count: 'Int',
-                  id: 'Int',
-                  limit: 'Int'
+                  since: "KarmaSince",
+                  count: "Int",
+                  id: "Int",
+                  limit: "Int"
                 };
                 Object.freeze(specialQueryVariables);
                 queryVariables = Object.keys(customVariables);
-                queryVariablesString = '';
+                queryVariablesString = "";
 
                 for (i = 0; i < queryVariables.length; i += 1) {
                   type = void 0;
@@ -67,9 +67,9 @@ var CustomDataQuery = /*#__PURE__*/function () {
                   if (Object.prototype.hasOwnProperty.call(specialQueryVariables, queryVariables[i])) {
                     type = String(specialQueryVariables[queryVariables[i]]);
                   } else {
-                    type = String(_typeof(queryVariables[i])).split('');
+                    type = String(_typeof(queryVariables[i])).split("");
                     type[0] = type[0].toUpperCase();
-                    type = type.join('');
+                    type = type.join("");
                   }
 
                   if (i !== queryVariables.length - 1) {
@@ -81,7 +81,7 @@ var CustomDataQuery = /*#__PURE__*/function () {
 
                 _context.next = 8;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query ".concat(queryName, "(").concat(queryVariablesString, ") {\n            ").concat(customQuery, "\n          }"),
@@ -164,7 +164,7 @@ var CustomRecursiveQuery = /*#__PURE__*/function () {
                           case 2:
                             _context2.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n            query ".concat(queryName, "(").concat(queryVariablesString, ") {\n              ").concat(customQuery, "\n            }"),
@@ -187,7 +187,7 @@ var CustomRecursiveQuery = /*#__PURE__*/function () {
                             throw new Error("Custom Recusive Query ".concat(queryName, " returned an error: ").concat(JSON.stringify(info.errors)));
 
                           case 9:
-                            info.data[customQuery.trim().split('(')[0]][treePath].items.forEach(function (item) {
+                            info.data[customQuery.trim().split("(")[0]][treePath].items.forEach(function (item) {
                               output.push(item);
                             });
 
@@ -197,7 +197,7 @@ var CustomRecursiveQuery = /*#__PURE__*/function () {
                             }
 
                             _context2.next = 13;
-                            return recurse(info.data[customQuery.trim().split('(')[0]][treePath].pageInfo.nextCursor);
+                            return recurse(info.data[customQuery.trim().split("(")[0]][treePath].pageInfo.nextCursor);
 
                           case 13:
                           case "end":
@@ -215,14 +215,14 @@ var CustomRecursiveQuery = /*#__PURE__*/function () {
 
                 queryName = this.queryName, customQuery = this.customQuery, customVariables = this.customVariables, treePath = this.treePath, customAfter = this.customAfter, customCount = this.customCount;
                 specialQueryVariables = {
-                  since: 'KarmaSince',
-                  count: 'Int',
-                  id: 'Int',
-                  limit: 'Int'
+                  since: "KarmaSince",
+                  count: "Int",
+                  id: "Int",
+                  limit: "Int"
                 };
                 Object.freeze(specialQueryVariables);
                 queryVariables = Object.keys(customVariables);
-                queryVariablesString = '';
+                queryVariablesString = "";
 
                 for (i = 0; i < queryVariables.length; i += 1) {
                   type = void 0;
@@ -230,9 +230,9 @@ var CustomRecursiveQuery = /*#__PURE__*/function () {
                   if (Object.prototype.hasOwnProperty.call(specialQueryVariables, queryVariables[i])) {
                     type = String(specialQueryVariables[queryVariables[i]]);
                   } else {
-                    type = String(_typeof(queryVariables[i])).split('');
+                    type = String(_typeof(queryVariables[i])).split("");
                     type[0] = type[0].toUpperCase();
-                    type = type.join('');
+                    type = type.join("");
                   }
 
                   if (i !== queryVariables.length - 1) {

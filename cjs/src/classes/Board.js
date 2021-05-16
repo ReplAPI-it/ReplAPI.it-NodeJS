@@ -42,7 +42,7 @@ var Board = /*#__PURE__*/function () {
                 slug = this.slug;
                 _context.next = 3;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n          query Board($slug: String!) {\n            boardBySlug(slug: $slug) {\n              ".concat(_constants["default"].boardAttributes, "\n            }\n          }"),
@@ -123,7 +123,7 @@ var Board = /*#__PURE__*/function () {
                           case 2:
                             _context2.next = 4;
                             return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                              method: 'POST',
+                              method: "POST",
                               headers: _headers["default"],
                               body: JSON.stringify({
                                 query: "\n            query BoardPosts($slug: String!, $after: String!, $count: Int!, $order: String!) {\n              boardBySlug(slug: $slug) {\n                posts(count: $count, after: $after, order: $order) {\n                  items { \n                    id\n                    title\n                    preview(length: ".concat(global.initVariables.markdown.length || 150, ", removeMarkdown: ").concat(global.initVariables.markdown.removeMarkdown || true, ")\n                  }\n                  pageInfo {\n                    nextCursor\n                  }\n                }\n              }\n            }"),
@@ -183,9 +183,9 @@ var Board = /*#__PURE__*/function () {
                   return _recurse.apply(this, arguments);
                 };
 
-                after = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : '';
+                after = _args3.length > 0 && _args3[0] !== undefined ? _args3[0] : "";
                 count = _args3.length > 1 && _args3[1] !== undefined ? _args3[1] : 5;
-                order = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : '';
+                order = _args3.length > 2 && _args3[2] !== undefined ? _args3[2] : "";
                 slug = this.slug;
                 output = [];
                 _context3.next = 9;

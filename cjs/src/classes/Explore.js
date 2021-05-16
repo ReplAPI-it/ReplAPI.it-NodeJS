@@ -41,7 +41,7 @@ var Explore = /*#__PURE__*/function () {
               case 0:
                 _context.next = 2;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n\t\t\t\t\tquery ExploreFeaturedRepls {\n\t\t\t\t\t\tfeaturedRepls {\n\t\t\t\t\t\t\t".concat(_constants["default"].replAttributes, "\n\t\t\t\t\t\t}\n\t\t\t\t\t}")
@@ -96,7 +96,7 @@ var Explore = /*#__PURE__*/function () {
               case 0:
                 _context2.next = 2;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n\t\t\t\t\tquery ExploreFeaturedRepls {\n\t\t\t\t\t\ttrendingTagsFeed {\n\t\t\t\t\t\t\ttags\n\t\t\t\t\t\t}\n\t\t\t\t\t}"
@@ -152,7 +152,7 @@ var Explore = /*#__PURE__*/function () {
                 tag = this.tag;
                 _context3.next = 3;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n\t\t\t\t\tquery ExploreTrendingRepls($id: String!) {\n\t\t\t\t\t\ttag(id: $id) {\n\t\t\t\t\t\t\t".concat(_constants["default"].tagAttributes, "\n\t\t\t\t\t\t}\n\t\t\t\t\t}"),
@@ -211,11 +211,11 @@ var Explore = /*#__PURE__*/function () {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                after = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : '';
+                after = _args4.length > 0 && _args4[0] !== undefined ? _args4[0] : "";
                 tag = this.tag;
                 _context4.next = 4;
                 return (0, _nodeFetch["default"])(_constants["default"].graphql, {
-                  method: 'POST',
+                  method: "POST",
                   headers: _headers["default"],
                   body: JSON.stringify({
                     query: "\n\t\t\t\t\tquery ExploreTrendingRepls($id: String!, $after: String!) {\n\t\t\t\t\t\ttag(id: $id) {\n\t\t\t\t\t\t\trepls(after: $after) {\n\t\t\t\t\t\t\t\titems {\n\t\t\t\t\t\t\t\t\t".concat(_constants["default"].replAttributes, "\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}"),

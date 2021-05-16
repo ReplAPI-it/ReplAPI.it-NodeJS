@@ -1,7 +1,7 @@
 const ReplAPI = require('../cjs/index.js').default;
 const replapi = ReplAPI({
 	username: 'RayhanADev',
-});
+}, ".js");
 
 const replapiClasses = [
   'Blog',
