@@ -137,7 +137,7 @@ Output:
 
 That was fun! Now how about getting a specific post? Let's create a simple post and ask for it's title:
  ```js
- import ReplAPI from 'replapi-it
+ import ReplAPI from 'replapi-it';
  const replapi = ReplAPI({
    username: 'your-username-here'
  });
