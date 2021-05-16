@@ -113,7 +113,7 @@ If you have not already download npm:
 
 Using ReplAPI.it is very simple! Let's create a simple user and ask for their cycles:
  ```js
- import ReplAPI from 'replapi-it
+ import ReplAPI from 'replapi-it';
  const replapi = ReplAPI({
    username: 'your-username-here'
  });
