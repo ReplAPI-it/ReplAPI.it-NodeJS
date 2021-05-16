@@ -67,7 +67,7 @@ if (constants.initVariables.experimentalFeatures) {
 					}
 
 					if (createDatabaseFlag) {
-						const info = await fetch(`${this.dbToken}`, {
+						await fetch(`${this.dbToken}`, {
 							method: 'POST',
 							headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 							body: `${encodeURIComponent(
@@ -80,7 +80,7 @@ if (constants.initVariables.experimentalFeatures) {
 						);
 					}
 				} else if (this.options.type === 'repldb') {
-					const info = await fetch(`${this.dbToken}`, {
+					await fetch(`${this.dbToken}`, {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 						body: `${encodeURIComponent(
@@ -98,7 +98,7 @@ if (constants.initVariables.experimentalFeatures) {
 		}
 
 		async createCollection(collectionName) {
-			const info = await fetch(`${this.dbToken}`, {
+			await fetch(`${this.dbToken}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
@@ -111,7 +111,7 @@ if (constants.initVariables.experimentalFeatures) {
 			const collection = await this.getCollection(collectionName);
 			collection[docName] = { ...docItems };
 
-			const info = await fetch(`${this.dbToken}`, {
+			await fetch(`${this.dbToken}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
@@ -156,7 +156,7 @@ if (constants.initVariables.experimentalFeatures) {
 			const collection = await this.getCollection(collectionName);
 			_.assignIn(collection[docName], docItems);
 
-			const info = await fetch(`${this.dbToken}`, {
+			await fetch(`${this.dbToken}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
@@ -166,7 +166,7 @@ if (constants.initVariables.experimentalFeatures) {
 		}
 
 		async deleteCollection(collectionName) {
-			const info = await fetch(`${this.dbToken}/${collectionName}`, {
+			await fetch(`${this.dbToken}/${collectionName}`, {
 				method: 'DELETE',
 			});
 		}
@@ -175,7 +175,7 @@ if (constants.initVariables.experimentalFeatures) {
 			const collection = await this.getCollection(collectionName);
 			_.unset(collection, docName);
 
-			const info = await fetch(`${this.dbToken}`, {
+			await fetch(`${this.dbToken}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
@@ -184,11 +184,11 @@ if (constants.initVariables.experimentalFeatures) {
 			});
 		}
 
-		async deleteDocField(collectionName, docName, path) {
+		async deleteDocField(collectionName, docName, docPath) {
 			const collection = await this.getCollection(collectionName);
-			_.unset(collection[docName], path);
+			_.unset(collection[docName], docPath);
 
-			const info = await fetch(`${this.dbToken}`, {
+			await fetch(`${this.dbToken}`, {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(

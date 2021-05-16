@@ -47,22 +47,61 @@ function sortByKey(a, b) {
 }
 
 function ReplAPI(initVariables) {
-  if (initVariables) {
-    _lodash["default"].assign(defaultInitVariables, initVariables);
+  var filetype = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '.json';
+  if (initVariables) _lodash["default"].assign(defaultInitVariables, initVariables);
 
-    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
-      cmp: sortByKey,
-      space: 4
-    }), "\n"), {
-      encoding: 'utf8'
-    });
-  } else {
-    _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
-      cmp: sortByKey,
-      space: 4
-    }), "\n"), {
-      encoding: 'utf8'
-    });
+  switch (filetype) {
+    case '.json':
+      _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+        cmp: sortByKey,
+        space: 4
+      }), "\n"), {
+        encoding: 'utf8'
+      });
+
+      break;
+
+    case '.js':
+      _fs["default"].writeFileSync(_path["default"].join(process.cwd(), 'replapi.config.js'), "export default ".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+        cmp: sortByKey,
+        space: 4
+      }), "\n"), {
+        encoding: 'utf8'
+      });
+
+      break;
+
+    case '.cjs':
+      _fs["default"].writeFileSync(_path["default"].join(process.cwd(), 'replapi.config.cjs'), "module.exports = ".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+        cmp: sortByKey,
+        space: 4
+      }), "\n"), {
+        encoding: 'utf8'
+      });
+
+      break;
+
+    case '.js':
+      _fs["default"].writeFileSync(_path["default"].join(process.cwd(), 'replapi.config.js'), "module.exports = ".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+        cmp: sortByKey,
+        space: 4
+      }), "\n"), {
+        encoding: 'utf8'
+      });
+
+      break;
+
+    default:
+      console.warn("Invalid file type '".concat(filetype, "'"));
+
+      _fs["default"].writeFileSync(_path["default"].join(process.cwd(), '.replapirc.json'), "".concat((0, _jsonStableStringifyWithoutJsonify["default"])(defaultInitVariables, {
+        cmp: sortByKey,
+        space: 4
+      }), "\n"), {
+        encoding: 'utf8'
+      });
+
+      break;
   }
 
   return {
