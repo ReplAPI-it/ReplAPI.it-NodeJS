@@ -6,7 +6,7 @@ import _ from 'lodash';
 import stringify from 'json-stable-stringify-without-jsonify';
 import classes from './src/loader.mjs';
 
-var defaultInitVariables = {
+const defaultInitVariables = {
 	username: '',
 	captcha: {
 		token: '',
