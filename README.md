@@ -24,9 +24,9 @@
     <br />
     <a href="https://www.npmjs.com/package/replapi-it">View Package on NPM</a>
     ·
-    <a href="https://github.com/ReplAPI-it/REPLAPI.it/issues">Report Bug</a>
+    <a href="https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/issues">Report Bug</a>
     ·
-    <a href="https://github.com/ReplAPI-it/REPLAPI.it/issues">Request Feature</a>
+    <a href="https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/issues">Request Feature</a>
   </p>
 </p>
 
@@ -161,7 +161,7 @@ _For more examples, please refer to the [Documentation](https://replapi-it.js.or
 
 ## Roadmap
 
-See the [open issues](https://github.com/RayhanADev/REPLAPI.it/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/RayhanADev/ReplAPI.it-NodeJS/issues) for a list of proposed features (and known issues).
 
 I'm considering adding in support for Crosis communications after they distribute developer keys again. Right now I'm experimenting with WSS and eval.repl.it for code execution!
 
@@ -177,7 +177,7 @@ Distributed under the GPL-3.0 License. See `LICENSE` for more information.
 
 RayhanADev - [@RayhanADev](https://replit.com/@RayhanADev) - rayhanadev@protonmail.com
 
-Project Link: [https://github.com/ReplAPI-it/REPLAPI.it](https://github.com/ReplAPI-it/REPLAPI.it)
+Project Link: [https://github.com/ReplAPI-it/ReplAPI.it-NodeJS](https://github.com/ReplAPI-it/ReplAPI.it-NodeJS)
 
 ## Acknowledgements
 
@@ -191,15 +191,15 @@ Project Link: [https://github.com/ReplAPI-it/REPLAPI.it](https://github.com/Repl
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
-[contributors-url]: https://github.com/ReplAPI-it/REPLAPI.it/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
-[forks-url]: https://github.com/ReplAPI-it/REPLAPI.it/network/members
-[stars-shield]: https://img.shields.io/github/stars/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
-[stars-url]: https://github.com/ReplAPI-it/REPLAPI.it/stargazers
-[issues-shield]: https://img.shields.io/github/issues/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
-[issues-url]: https://github.com/ReplAPI-it/REPLAPI.it/issues
-[license-shield]: https://img.shields.io/github/license/ReplAPI-it/REPLAPI.it.svg?style=for-the-badge
-[license-url]: https://github.com/ReplAPI-it/REPLAPI.it/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/ReplAPI-it/ReplAPI.it-NodeJS.svg?style=for-the-badge
+[contributors-url]: https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/ReplAPI-it/ReplAPI.it-NodeJS.svg?style=for-the-badge
+[forks-url]: https://github.com/ReplAPI-it/REPLAPI.it-NodeJS/network/members
+[stars-shield]: https://img.shields.io/github/stars/ReplAPI-it/ReplAPI.it-NodeJS.svg?style=for-the-badge
+[stars-url]: https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/ReplAPI-it/ReplAPI.it-NodeJS.svg?style=for-the-badge
+[issues-url]: https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/issues
+[license-shield]: https://img.shields.io/github/license/ReplAPI-it/ReplAPI.it-NodeJS.svg?style=for-the-badge
+[license-url]: https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/blob/master/LICENSE.txt
 [downloads-shield]: https://img.shields.io/npm/dw/replapi-it?style=for-the-badge
 [downloads-url]: https://www.npmjs.com/package/replapi-it
