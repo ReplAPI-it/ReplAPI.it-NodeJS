@@ -161,7 +161,7 @@ _For more examples, please refer to the [Documentation](https://replapi-it.js.or
 
 ## Roadmap
 
-See the [open issues](https://github.com/RayhanADev/ReplAPI.it-NodeJS/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/ReplAPI-it/ReplAPI.it-NodeJS/issues) for a list of proposed features (and known issues).
 
 I'm considering adding in support for Crosis communications after they distribute developer keys again. Right now I'm experimenting with WSS and eval.repl.it for code execution!
 
