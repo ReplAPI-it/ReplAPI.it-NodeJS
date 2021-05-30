@@ -1,3 +1,5 @@
+> ⚠️ **IMPORTANT**: Documentation is broken, will fix soon ⚠️
+
 > ⚠️ **IMPORTANT**: ReplAPI.it is now in version 2.x! Any projects transitioning to 2.x should read through [this](https://github.com/ReplAPI-it/ReplAPI.it/releases/tag/v2.0.6). ⚠️
 
 [![Contributors][contributors-shield]][contributors-url]
