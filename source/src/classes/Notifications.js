@@ -332,7 +332,7 @@ if (constants.initVariables.experimentalFeatures) {
 } else {
 	exportable = function noExperimentalFeatures() {
 		console.log(
-			'Experimental Features are not enabled. To learn more about experimental features please visit the documentation.'
+			'Experimental Features are not enabled. To learn more about experimental features please visit the documentation.',
 		);
 	};
 }

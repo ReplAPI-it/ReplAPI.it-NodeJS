@@ -31,7 +31,7 @@ if (constants.initVariables.experimentalFeatures) {
 		constructor(dbToken, salt = '', options = {}) {
 			if (!process.env.REPL_PUBKEYS && !process.env.REPL_ID)
 				throw new Error(
-					'Please run the Database Class on a Replit Project only.'
+					'Please run the Database Class on a Replit Project only.',
 				);
 
 			this.dbToken = dbToken || process.env.REPLIT_DB_URL;
@@ -54,7 +54,7 @@ if (constants.initVariables.experimentalFeatures) {
 				`${this.dbToken}/${encodeURIComponent('replapi_database_config')}`,
 				{
 					method: 'GET',
-				}
+				},
 			).then((res) => res.text());
 
 			if (!currentDatabase) {
@@ -62,34 +62,38 @@ if (constants.initVariables.experimentalFeatures) {
 					let createDatabaseFlag;
 					if (fs.existsSync(path.join(process.cwd(), '.replapirc.json'))) {
 						createDatabaseFlag = JSON.parse(
-							fs.readFileSync(path.join(process.cwd(), '.replapirc.json'))
+							fs.readFileSync(path.join(process.cwd(), '.replapirc.json')),
 						).createDatabaseFlag;
 					}
 
 					if (createDatabaseFlag) {
 						await fetch(`${this.dbToken}`, {
 							method: 'POST',
-							headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+							headers: {
+								'Content-Type': 'application/x-www-form-urlencoded',
+							},
 							body: `${encodeURIComponent(
-								'replapi_database_config'
+								'replapi_database_config',
 							)}=${encodeURIComponent(JSON.stringify({ ...this.options }))}`,
 						});
 					} else {
 						throw new Error(
-							'Are you sure you want to use these options to configure a Database? You will not be able to change these options in the future. If you are, then in your .replapirc.json file set a "createDatabaseFlag" key to "true". For more information, read the documentation.'
+							'Are you sure you want to use these options to configure a Database? You will not be able to change these options in the future. If you are, then in your .replapirc.json file set a "createDatabaseFlag" key to "true". For more information, read the documentation.',
 						);
 					}
 				} else if (this.options.type === 'repldb') {
 					await fetch(`${this.dbToken}`, {
 						method: 'POST',
-						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+						},
 						body: `${encodeURIComponent(
-							'replapi_database_config'
+							'replapi_database_config',
 						)}=${encodeURIComponent(JSON.stringify({ ...this.options }))}`,
 					});
 				} else {
 					throw new Error(
-						'Invalid Database Type. For a normal database, use the "repldb" option.'
+						'Invalid Database Type. For a normal database, use the "repldb" option.',
 					);
 				}
 			} else if (!compare(password, JSON.parse(currentDatabase).password)) {
@@ -100,9 +104,11 @@ if (constants.initVariables.experimentalFeatures) {
 		async createCollection(collectionName) {
 			await fetch(`${this.dbToken}`, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
-					JSON.stringify({})
+					JSON.stringify({}),
 				)}`,
 			});
 		}
@@ -113,9 +119,11 @@ if (constants.initVariables.experimentalFeatures) {
 
 			await fetch(`${this.dbToken}`, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
-					JSON.stringify(collection)
+					JSON.stringify(collection),
 				)}`,
 			});
 		}
@@ -125,7 +133,7 @@ if (constants.initVariables.experimentalFeatures) {
 				`${this.dbToken}?encode=true&prefix=${encodeURIComponent('')}`,
 				{
 					method: 'GET',
-				}
+				},
 			).then((res) => res.text());
 
 			const keys = info.split('\n').map(decodeURIComponent);
@@ -158,9 +166,11 @@ if (constants.initVariables.experimentalFeatures) {
 
 			await fetch(`${this.dbToken}`, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
-					JSON.stringify(collection)
+					JSON.stringify(collection),
 				)}`,
 			});
 		}
@@ -177,9 +187,11 @@ if (constants.initVariables.experimentalFeatures) {
 
 			await fetch(`${this.dbToken}`, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
-					JSON.stringify(collection)
+					JSON.stringify(collection),
 				)}`,
 			});
 		}
@@ -190,9 +202,11 @@ if (constants.initVariables.experimentalFeatures) {
 
 			await fetch(`${this.dbToken}`, {
 				method: 'POST',
-				headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+				},
 				body: `${encodeURIComponent(collectionName)}=${encodeURIComponent(
-					JSON.stringify(collection)
+					JSON.stringify(collection),
 				)}`,
 			});
 		}
@@ -200,7 +214,7 @@ if (constants.initVariables.experimentalFeatures) {
 } else {
 	exportable = function noExperimentalFeatures() {
 		console.log(
-			'Experimental Features are not enabled. To learn more about experimental features please visit the documentation.'
+			'Experimental Features are not enabled. To learn more about experimental features please visit the documentation.',
 		);
 	};
 }

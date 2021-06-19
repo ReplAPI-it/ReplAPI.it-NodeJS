@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
 import stringify from 'json-stable-stringify-without-jsonify';
-import classes from './src/loader.mjs';
+import classes from './src/loader.js';
 
 const defaultInitVariables = {
 	username: '',
@@ -36,8 +36,11 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 		case '.json':
 			fs.writeFileSync(
 				path.join(process.cwd(), '.replapirc.json'),
-				`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
-				{ encoding: 'utf8' }
+				`${stringify(defaultInitVariables, {
+					cmp: sortByKey,
+					space: 4,
+				})}\n`,
+				{ encoding: 'utf8' },
 			);
 			break;
 		case '.mjs':
@@ -47,7 +50,7 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 					cmp: sortByKey,
 					space: 4,
 				})}\n`,
-				{ encoding: 'utf8' }
+				{ encoding: 'utf8' },
 			);
 			break;
 		case '.cjs':
@@ -57,7 +60,7 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 					cmp: sortByKey,
 					space: 4,
 				})}\n`,
-				{ encoding: 'utf8' }
+				{ encoding: 'utf8' },
 			);
 			break;
 		case '.js':
@@ -67,34 +70,24 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 					cmp: sortByKey,
 					space: 4,
 				})}\n`,
-				{ encoding: 'utf8' }
+				{ encoding: 'utf8' },
 			);
 			break;
 		default:
 			console.warn(`Invalid file type '${filetype}'`);
 			fs.writeFileSync(
 				path.join(process.cwd(), '.replapirc.json'),
-				`${stringify(defaultInitVariables, { cmp: sortByKey, space: 4 })}\n`,
-				{ encoding: 'utf8' }
+				`${stringify(defaultInitVariables, {
+					cmp: sortByKey,
+					space: 4,
+				})}\n`,
+				{ encoding: 'utf8' },
 			);
 			break;
 	}
 
 	return {
 		defaults: defaultInitVariables,
-		Blog: classes.Blog,
 		Board: classes.Board,
-		Comment: classes.Comment,
-		CustomDataQuery: classes.CustomDataQuery,
-		CustomRecursiveQuery: classes.CustomRecursiveQuery,
-		Explore: classes.Explore,
-		Database: classes.Database,
-		Languages: classes.Languages,
-		Leaderboard: classes.Leaderboard,
-		Login: classes.Login,
-		Notifications: classes.Notifications,
-		Post: classes.Post,
-		Repl: classes.Repl,
-		User: classes.User,
 	};
 }

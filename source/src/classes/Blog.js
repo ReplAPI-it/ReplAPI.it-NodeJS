@@ -1,5 +1,5 @@
 import Parser from 'rss-parser';
-import _ from 'lodash';
+import { findIndex } from 'lodash-es';
 
 const parser = new Parser();
 
@@ -13,7 +13,7 @@ export default class Blog {
 
 	async blogItem(guid) {
 		const { items } = await parser.parseURL('https://blog.replit.com/feed.xml');
-		const postIndex = _.findIndex(items, ['guid', guid]);
+		const postIndex = findIndex(items, ['guid', guid]);
 
 		return items[postIndex];
 	}

@@ -23,7 +23,7 @@ async function getCookies(username, password) {
 		}
 	} else {
 		throw new Error(
-			`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+			`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 		);
 	}
 }
@@ -33,11 +33,11 @@ export default class Login {
 		if (['RayhanADev'].includes(global.initVariables.username)) {
 			global.cookies = await getCookies(
 				global.initVariables.username,
-				password
+				password,
 			);
 		} else {
 			throw new Error(
-				`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -47,7 +47,7 @@ export default class Login {
 			global.cookies = sid;
 		} else {
 			throw new Error(
-				`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${global.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}

@@ -38,7 +38,7 @@ export default class Post {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.post) {
@@ -81,7 +81,7 @@ export default class Post {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.post) {
@@ -132,7 +132,7 @@ export default class Post {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.post) {
@@ -148,27 +148,27 @@ export default class Post {
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof title !== 'string') {
 				throw new Error(
-					`Title must be of type string. Got type ${typeof title}.`
+					`Title must be of type string. Got type ${typeof title}.`,
 				);
 			}
 			if (typeof body !== 'string') {
 				throw new Error(
-					`Body must be of type string. Got type ${typeof body}.`
+					`Body must be of type string. Got type ${typeof body}.`,
 				);
 			}
 			if (typeof boardId !== 'number') {
 				throw new Error(
-					`Board ID must be of type number. Got type ${typeof boardId}.`
+					`Board ID must be of type number. Got type ${typeof boardId}.`,
 				);
 			}
 			if (typeof replId !== 'string') {
 				throw new Error(
-					`Repl ID must be of type string. Got type ${typeof replId}.`
+					`Repl ID must be of type string. Got type ${typeof replId}.`,
 				);
 			}
 			if (typeof showHosted !== 'string') {
 				throw new Error(
-					`Show Hosted must be of type boolean. Got type ${typeof showHosted}.`
+					`Show Hosted must be of type boolean. Got type ${typeof showHosted}.`,
 				);
 			}
 
@@ -205,12 +205,12 @@ export default class Post {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.createPost.post;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -223,49 +223,49 @@ export default class Post {
 		isLocked,
 		boardId,
 		replId,
-		showHosted
+		showHosted,
 	) {
 		if (!global.cookies) {
 			throw new Error('ReplAPI.it: Not logged in.');
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof title !== 'string' || typeof title !== 'undefined') {
 				throw new Error(
-					`Title must be of type string. Got type ${typeof title}.`
+					`Title must be of type string. Got type ${typeof title}.`,
 				);
 			}
 			if (typeof body !== 'string' || typeof body !== 'undefined') {
 				throw new Error(
-					`Body must be of type string. Got type ${typeof body}.`
+					`Body must be of type string. Got type ${typeof body}.`,
 				);
 			}
 			if (typeof isPinned !== 'boolean' || typeof isPinned !== 'undefined') {
 				throw new Error(
-					`isPinned must be of type boolean. Got type ${typeof isPinned}.`
+					`isPinned must be of type boolean. Got type ${typeof isPinned}.`,
 				);
 			}
 			if (typeof postType !== 'string' || typeof postType !== 'undefined') {
 				throw new Error(
-					`Post Type must be of type string. Got type ${typeof postType}.`
+					`Post Type must be of type string. Got type ${typeof postType}.`,
 				);
 			}
 			if (typeof isLocked !== 'boolean' || typeof isLocked !== 'undefined') {
 				throw new Error(
-					`isLocked must be of type boolean. Got type ${typeof isPinned}.`
+					`isLocked must be of type boolean. Got type ${typeof isPinned}.`,
 				);
 			}
 			if (typeof boardId !== 'number' || typeof boardId !== 'undefined') {
 				throw new Error(
-					`Board ID must be of type number. Got type ${typeof boardId}.`
+					`Board ID must be of type number. Got type ${typeof boardId}.`,
 				);
 			}
 			if (typeof replId !== 'string' || typeof replId !== 'undefined') {
 				throw new Error(
-					`Repl ID must be of type string. Got type ${typeof replId}.`
+					`Repl ID must be of type string. Got type ${typeof replId}.`,
 				);
 			}
 			if (typeof showHosted !== 'string' || typeof showHosted !== 'undefined') {
 				throw new Error(
-					`Show Hosted must be of type boolean. Got type ${typeof showHosted}.`
+					`Show Hosted must be of type boolean. Got type ${typeof showHosted}.`,
 				);
 			}
 
@@ -305,12 +305,12 @@ export default class Post {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.updatePost.post;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -348,12 +348,12 @@ export default class Post {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.post;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -395,12 +395,12 @@ export default class Post {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.createPostVote;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -442,12 +442,12 @@ export default class Post {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.createPostVote;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -484,7 +484,7 @@ export default class Post {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.posts) {

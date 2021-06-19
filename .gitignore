@@ -3,8 +3,9 @@ node_modules/
 
 # configuration files
 .replit
+replit.nix
 .replapirc.*
-.replapi.config.*
+replapi.config.*
 
 # developer tests
 tests/dev/

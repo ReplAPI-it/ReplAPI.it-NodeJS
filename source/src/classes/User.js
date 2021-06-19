@@ -28,7 +28,7 @@ export default class User {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.userByUsername) {
@@ -61,7 +61,7 @@ export default class User {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.userByUsername) {
@@ -81,7 +81,7 @@ export default class User {
 
 		if (!info) {
 			throw new Error(
-				`${username} is not a user. Please query users on Replit.`
+				`${username} is not a user. Please query users on Replit.`,
 			);
 		} else {
 			return info;
@@ -128,7 +128,7 @@ export default class User {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 
 			if (!info.data.userByUsername) {
@@ -193,7 +193,7 @@ export default class User {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 
 			if (!info.data.userByUsername) {
@@ -252,7 +252,7 @@ export default class User {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 
 			if (!info.data.userByUsername) {
@@ -323,7 +323,7 @@ export default class User {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 
 			if (!info.data.userByUsername) {
@@ -348,7 +348,7 @@ export default class User {
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (!query) {
 				throw new Error(
-					'User Search needs a query to search. Please supply a query.'
+					'User Search needs a query to search. Please supply a query.',
 				);
 			}
 
@@ -373,12 +373,12 @@ export default class User {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.usernameSearch;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}

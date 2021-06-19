@@ -51,9 +51,11 @@
   "homepage": "https://github.com/ReplAPI-it/ReplAPI.it-NodeJS#readme",
   "dependencies": {
     "cosmiconfig": "^7.0.0",
+    "gql-query-creator": "0.0.1",
     "json-stable-stringify-without-jsonify": "^1.0.1",
     "lightfetch-node": "0.0.9",
     "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "node-html-parser": "^3.3.5",
     "rss-parser": "^3.12.0"
   },
@@ -62,9 +64,7 @@
     "@commitlint/config-conventional": "^12.1.4",
     "@replit/database": "^2.0.1",
     "eslint": "^7.28.0",
-    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.4",
-    "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
     "prettier": "^2.3.1",
     "replace": "^1.2.1",

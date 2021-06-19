@@ -9,7 +9,7 @@ async function getReplId(username, slug) {
 		{
 			method: 'GET',
 			headers,
-		}
+		},
 	).then((res) => res.json());
 
 	return info.id;
@@ -48,7 +48,7 @@ export default class Repl {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.repl) {
@@ -66,7 +66,7 @@ export default class Repl {
 			{
 				method: 'GET',
 				headers,
-			}
+			},
 		).then((res) => res.json());
 
 		if (!info) {
@@ -115,7 +115,7 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 
 			if (!info.data.repl) {
@@ -172,7 +172,7 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 
 			if (!info.data.repl) {
@@ -199,7 +199,7 @@ export default class Repl {
 			{
 				method: 'GET',
 				headers,
-			}
+			},
 		).then((res) => res.json());
 
 		if (info.error) {
@@ -221,7 +221,7 @@ export default class Repl {
 			{
 				method: 'GET',
 				headers,
-			}
+			},
 		).then((res) => (raw ? res.text() : res.json()));
 
 		if (info.error) {
@@ -246,7 +246,7 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.replTitle;
 		}
@@ -260,7 +260,7 @@ export default class Repl {
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof body !== 'string') {
 				throw new Error(
-					`Body must be of type string. Got type ${typeof body}.`
+					`Body must be of type string. Got type ${typeof body}.`,
 				);
 			}
 
@@ -290,12 +290,12 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.createReplComment;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -309,7 +309,7 @@ export default class Repl {
 			}
 			if (typeof body !== 'string') {
 				throw new Error(
-					`Body must be of type string. Got type ${typeof body}.`
+					`Body must be of type string. Got type ${typeof body}.`,
 				);
 			}
 
@@ -339,12 +339,12 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.createReplCommentReply;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -357,7 +357,7 @@ export default class Repl {
 		} else if (['RayhanADev'].includes(constants.initVariables.username)) {
 			if (typeof body !== 'string') {
 				throw new Error(
-					`Body must be of type string. Got type ${typeof body}.`
+					`Body must be of type string. Got type ${typeof body}.`,
 				);
 			}
 
@@ -387,12 +387,12 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.updateReplComment;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -424,12 +424,12 @@ export default class Repl {
 
 			if (info.errors)
 				throw new Error(
-					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+					`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 				);
 			else return info.data.deleteReplComment;
 		} else {
 			throw new Error(
-				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`
+				`${constants.initVariables.username} is not whitelisted. Please contact @RayhanADev in ReplTalk to talk about getting added to the whitelist.`,
 			);
 		}
 	}
@@ -452,7 +452,7 @@ export default class Repl {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 		else return info.data.newRepls.items;
 	}

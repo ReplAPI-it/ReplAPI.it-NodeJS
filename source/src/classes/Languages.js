@@ -26,8 +26,8 @@ async function fetchVariable() {
 		atob(
 			root.childNodes[1].childNodes[0].childNodes[1].childNodes[0].rawText
 				.split("'")[1]
-				.split("'")[0]
-		)
+				.split("'")[0],
+		),
 	);
 }
 

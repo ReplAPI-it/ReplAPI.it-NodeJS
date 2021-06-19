@@ -24,7 +24,7 @@ export default class Explore {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.featuredRepls) {
@@ -50,7 +50,7 @@ export default class Explore {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.trendingTagsFeed.tags) {
@@ -81,7 +81,7 @@ export default class Explore {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.tag) {
@@ -117,7 +117,7 @@ export default class Explore {
 
 		if (info.errors)
 			throw new Error(
-				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`
+				`Replit GraphQL Error(s): ${JSON.stringify(info.errors)}`,
 			);
 
 		if (!info.data.tag.repls.items) {
