@@ -1,12 +1,40 @@
-import fs from 'fs';
-import path from 'path';
-import { assign } from 'lodash-es';
-import stringify from 'json-stable-stringify-without-jsonify';
-import { cosmiconfig, defaultLoaders } from 'cosmiconfig';
-import { lightfetch } from 'lightfetch-node';
-import { gqlQueryCreator } from 'gql-query-creator';
+'use strict';
 
-/* eslint-disable no-dupe-keys */
+const _assign = require('lodash/assign');
+const fs = require('fs');
+const path = require('path');
+const stringify = require('json-stable-stringify-without-jsonify');
+const cosmiconfig = require('cosmiconfig');
+const lightfetchNode = require('lightfetch-node');
+const gqlQueryCreator = require('gql-query-creator');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+function _interopNamespace(e) {
+	if (e && e.__esModule) return e;
+	var n = Object.create(null);
+	if (e) {
+		Object.keys(e).forEach(function (k) {
+			if (k !== 'default') {
+				var d = Object.getOwnPropertyDescriptor(e, k);
+				Object.defineProperty(n, k, d.get ? d : {
+					enumerable: true,
+					get: function () {
+						return e[k];
+					}
+				});
+			}
+		});
+	}
+	n['default'] = e;
+	return Object.freeze(n);
+}
+
+const _assign__default = /*#__PURE__*/_interopDefaultLegacy(_assign);
+const fs__default = /*#__PURE__*/_interopDefaultLegacy(fs);
+const path__default = /*#__PURE__*/_interopDefaultLegacy(path);
+const stringify__default = /*#__PURE__*/_interopDefaultLegacy(stringify);
+
 const initVariables = {
   username: '',
   captcha: {
@@ -28,18 +56,18 @@ const initVariables = {
   createDatabaseFlag: ''
 };
 const moduleName = 'replapi';
-const explorer = cosmiconfig(moduleName, {
+const explorer = cosmiconfig.cosmiconfig(moduleName, {
   searchPlaces: ['package.json', `.${moduleName}rc`, `.${moduleName}rc.json`, `.${moduleName}rc.yaml`, `.${moduleName}rc.yml`, `.${moduleName}rc.js`, `.${moduleName}rc.cjs`, `${moduleName}.config.js`, `${moduleName}.config.cjs`, `${moduleName}.config.mjs`],
   loaders: {
-    defaultLoaders,
+    defaultLoaders: cosmiconfig.defaultLoaders,
     '.mjs': async filepath => {
-      const val = await import(filepath);
+      const val = await Promise.resolve().then(function () { return /*#__PURE__*/_interopNamespace(require(filepath)); });
       return val;
     }
   }
 });
 explorer.search().then(result => {
-  if (result !== null) assign(initVariables, result.config);
+  if (result !== null) _assign__default['default'](initVariables, result.config);
 }).catch(() => {
   throw new Error('Could not read configuration files!');
 });
@@ -303,7 +331,7 @@ async function runGraphQL({
   variables,
   items
 }, options = {}) {
-  const body = gqlQueryCreator(name, variables, items);
+  const body = gqlQueryCreator.gqlQueryCreator(name, variables, items);
 
   if (options.authRequired === true) {
     if (!global.cookies) throw new Error('ReplAPI.it Error: You are not logged in! Please use the Login class to set your login.');
@@ -315,7 +343,7 @@ async function runGraphQL({
     body.hCaptchaSiteKey = '473079ba-e99f-4e25-a635-e9b661c7dd3e';
   }
 
-  const info = await lightfetch(constants.graphql, {
+  const info = await lightfetchNode.lightfetch(constants.graphql, {
     body,
     headers,
     method: 'POST'
@@ -457,11 +485,11 @@ function sortByKey(a, b) {
 }
 
 function ReplAPI(initVariables, filetype = '.json') {
-  if (initVariables) assign(defaultInitVariables, initVariables);
+  if (initVariables) _assign__default['default'](defaultInitVariables, initVariables);
 
   switch (filetype) {
     case '.json':
-      fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, {
+      fs__default['default'].writeFileSync(path__default['default'].join(process.cwd(), '.replapirc.json'), `${stringify__default['default'](defaultInitVariables, {
         cmp: sortByKey,
         space: 4
       })}\n`, {
@@ -470,7 +498,7 @@ function ReplAPI(initVariables, filetype = '.json') {
       break;
 
     case '.mjs':
-      fs.writeFileSync(path.join(process.cwd(), 'replapi.config.mjs'), `export default ${stringify(defaultInitVariables, {
+      fs__default['default'].writeFileSync(path__default['default'].join(process.cwd(), 'replapi.config.mjs'), `export default ${stringify__default['default'](defaultInitVariables, {
         cmp: sortByKey,
         space: 4
       })}\n`, {
@@ -479,7 +507,7 @@ function ReplAPI(initVariables, filetype = '.json') {
       break;
 
     case '.cjs':
-      fs.writeFileSync(path.join(process.cwd(), 'replapi.config.cjs'), `module.exports = ${stringify(defaultInitVariables, {
+      fs__default['default'].writeFileSync(path__default['default'].join(process.cwd(), 'replapi.config.cjs'), `module.exports = ${stringify__default['default'](defaultInitVariables, {
         cmp: sortByKey,
         space: 4
       })}\n`, {
@@ -488,7 +516,7 @@ function ReplAPI(initVariables, filetype = '.json') {
       break;
 
     case '.js':
-      fs.writeFileSync(path.join(process.cwd(), 'replapi.config.js'), `module.exports = ${stringify(defaultInitVariables, {
+      fs__default['default'].writeFileSync(path__default['default'].join(process.cwd(), 'replapi.config.js'), `module.exports = ${stringify__default['default'](defaultInitVariables, {
         cmp: sortByKey,
         space: 4
       })}\n`, {
@@ -498,7 +526,7 @@ function ReplAPI(initVariables, filetype = '.json') {
 
     default:
       console.warn(`Invalid file type '${filetype}'`);
-      fs.writeFileSync(path.join(process.cwd(), '.replapirc.json'), `${stringify(defaultInitVariables, {
+      fs__default['default'].writeFileSync(path__default['default'].join(process.cwd(), '.replapirc.json'), `${stringify__default['default'](defaultInitVariables, {
         cmp: sortByKey,
         space: 4
       })}\n`, {
@@ -513,4 +541,4 @@ function ReplAPI(initVariables, filetype = '.json') {
   };
 }
 
-export default ReplAPI;
+module.exports = ReplAPI;

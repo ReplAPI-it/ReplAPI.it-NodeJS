@@ -46,7 +46,7 @@ export default class BaseClass {
 		const info = await runGraphQL(data, options);
 
 		if (info.errors)
-			throw new Error('Replit GraphQL Errors:', JSON.stringify(info.errors));
+			throw new Error(`\nReplit GraphQL Errors:${info.errors.map((error) => `\n\t- ${error.message}`)}\n`);
 		return info;
 	}
 }

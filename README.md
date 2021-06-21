@@ -16,7 +16,7 @@
     <img src="images/logo.jpg" alt="Logo" width="600" height="200">
   </a>
 
-  <h3 align="center">REPLAPI.it</h3>
+  <h3 align="center">ReplAPI.it</h3>
 
   <p align="center">
     A Simple and Complete Replit API Package

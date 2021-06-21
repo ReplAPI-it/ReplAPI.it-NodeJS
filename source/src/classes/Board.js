@@ -15,8 +15,8 @@ export default class Board extends BaseClass {
 				items: { ...constants.boardAttributes },
 			},
 		};
-
 		const variables = { slug: ['String!', slug] };
+
 		const info = await this.runGraphQL({ name: 'BoardData', variables, items });
 
 		if (!info.data.boardBySlug) {
@@ -37,29 +37,30 @@ export default class Board extends BaseClass {
 						items: {
 							items: {
 								args: [],
-								id: '',
-								title: '',
-								preview: [
-									{
-										propOverride: true,
-										length: constants.initVariables.markdown.length || 150,
-										removeMarkdown:
-											constants.initVariables.markdown.removeMarkdown || true,
-									},
-								],
+								items: {
+									id: '',
+									title: '',
+									preview: [
+										{
+											propOverride: true,
+											length: constants.initVariables.markdown.length || 150,
+											removeMarkdown: constants.initVariables.markdown.removeMarkdown || true,
+										},
+									],
+								}
 							},
 						},
 					},
 				},
 			},
 		};
-
 		const variables = {
 			slug: ['String!', slug],
 			after: ['String!', after],
 			count: ['Int!', count],
 			order: ['String!', order],
 		};
+	
 		const info = await this.runGraphQL({ name: 'BoardData', variables, items });
 
 		if (!info.data.boardBySlug) {

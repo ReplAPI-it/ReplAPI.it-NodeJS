@@ -1,5 +1,5 @@
 /* eslint-disable no-dupe-keys */
-import { assign } from 'lodash-es';
+import { assign } from 'lodash';
 import { cosmiconfig, defaultLoaders } from 'cosmiconfig';
 
 const initVariables = {

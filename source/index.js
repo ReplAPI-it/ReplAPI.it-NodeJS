@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import _ from 'lodash';
+import { assign } from 'lodash';
 import stringify from 'json-stable-stringify-without-jsonify';
 import classes from './src/loader.js';
 
@@ -30,7 +30,7 @@ function sortByKey(a, b) {
 }
 
 export default function ReplAPI(initVariables, filetype = '.json') {
-	if (initVariables) _.assign(defaultInitVariables, initVariables);
+	if (initVariables) assign(defaultInitVariables, initVariables);
 
 	switch (filetype) {
 		case '.json':
