@@ -10,7 +10,7 @@ export default class Blog {
 			title,
 			description,
 			link,
-			xmlUrl
+			xmlUrl,
 		};
 	}
 

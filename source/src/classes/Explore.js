@@ -110,7 +110,7 @@ export default class Explore extends BaseClass {
 		}
 	}
 
-async exploreTagTrendingReplsFeed() {
+	async exploreTagTrendingReplsFeed() {
 		const { tag } = this;
 
 		const items = {

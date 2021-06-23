@@ -49,7 +49,7 @@ const explorer = cosmiconfigSync(moduleName, {
 });
 
 const result = explorer.search();
-if(result !== null) assign(initVariables, result.config);
+if (result !== null) assign(initVariables, result.config);
 
 export default {
 	initVariables,

@@ -6,7 +6,7 @@ import classes from './src/loader.js';
 
 Object.prototype.sortKeys = function () {
 	return Object.fromEntries(Object.entries(this).sort());
-}
+};
 
 const defaultInitVariables = {
 	username: '',
@@ -44,21 +44,33 @@ export default function ReplAPI(initVariables, filetype = '.json') {
 		case '.mjs':
 			fs.writeFileSync(
 				path.join(process.cwd(), 'replapi.config.mjs'),
-				`export default ${JSON.stringify(defaultInitVariables.sortKeys(), null, '\t')}\n`,
+				`export default ${JSON.stringify(
+					defaultInitVariables.sortKeys(),
+					null,
+					'\t',
+				)}\n`,
 				{ encoding: 'utf8' },
 			);
 			break;
 		case '.cjs':
 			fs.writeFileSync(
 				path.join(process.cwd(), 'replapi.config.cjs'),
-				`module.exports = ${JSON.stringify(defaultInitVariables.sortKeys(), null, '\t')}\n`,
+				`module.exports = ${JSON.stringify(
+					defaultInitVariables.sortKeys(),
+					null,
+					'\t',
+				)}\n`,
 				{ encoding: 'utf8' },
 			);
 			break;
 		case '.js':
 			fs.writeFileSync(
 				path.join(process.cwd(), 'replapi.config.js'),
-				`module.exports = ${JSON.stringify(defaultInitVariables.sortKeys(), null, '\t')}\n`,
+				`module.exports = ${JSON.stringify(
+					defaultInitVariables.sortKeys(),
+					null,
+					'\t',
+				)}\n`,
 				{ encoding: 'utf8' },
 			);
 			break;
