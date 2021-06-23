@@ -1,9 +1,9 @@
 import replace from 'replace';
 
 replace({
-  regex: 'lodash',
-  replacement: 'lodash-es',
-  paths: ['./dist/replapi-it.mjs'],
+  regex: 'lodash-es',
+  replacement: 'lodash',
+  paths: ['./dist/replapi-it.cjs'],
   recursive: true,
   silent: false,
 });

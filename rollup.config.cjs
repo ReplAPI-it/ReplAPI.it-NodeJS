@@ -3,6 +3,7 @@ const { dependencies } = require('./package.json');
 
 const { babel } = require('@rollup/plugin-babel');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
+const { terser } = require('rollup-plugin-terser');
 const commonjs = require('@rollup/plugin-commonjs');
 
 module.exports = [
@@ -12,6 +13,7 @@ module.exports = [
 			file: 'dist/replapi-it.cjs',
 			format: 'cjs',
 			preferConst: true,
+			exports: 'auto',
 		},
 		plugins: [
 			nodeResolve(),
@@ -30,14 +32,14 @@ module.exports = [
 						},
 					],
 				],
-				plugins: ['lodash'],
+				plugins: ['lodash', 'tailcall-optimization'],
 			}),
+			terser(),
 		],
 		external: [
 			...builtinModules,
 			...Object.keys(dependencies),
-			'lodash/assign',
-			'lodash/findIndex',
+			/lodash/
 		],
 	},
 	{
@@ -65,13 +67,14 @@ module.exports = [
 						},
 					],
 				],
+				plugins: ['tailcall-optimization'],
 			}),
+			terser(),
 		],
 		external: [
 			...builtinModules,
 			...Object.keys(dependencies),
-			'lodash/assign',
-			'lodash/findIndex',
+			/lodash/
 		],
 	}
 ];

@@ -1,6 +1,6 @@
 /* eslint-disable no-dupe-keys */
-import { assign } from 'lodash';
-import { cosmiconfig, defaultLoaders } from 'cosmiconfig';
+import { assign } from 'lodash-es';
+import { cosmiconfigSync, defaultLoaders } from 'cosmiconfig';
 
 const initVariables = {
 	username: '',
@@ -21,11 +21,12 @@ const initVariables = {
 	},
 	experimentalFeatures: '',
 	createDatabaseFlag: '',
+	statsForNerds: '',
 };
 
 const moduleName = 'replapi';
 
-const explorer = cosmiconfig(moduleName, {
+const explorer = cosmiconfigSync(moduleName, {
 	searchPlaces: [
 		'package.json',
 		`.${moduleName}rc`,
@@ -47,14 +48,8 @@ const explorer = cosmiconfig(moduleName, {
 	},
 });
 
-explorer
-	.search()
-	.then((result) => {
-		if (result !== null) assign(initVariables, result.config);
-	})
-	.catch(() => {
-		throw new Error('Could not read configuration files!');
-	});
+const result = explorer.search();
+if(result !== null) assign(initVariables, result.config);
 
 export default {
 	initVariables,
@@ -169,13 +164,13 @@ export default {
 		ioTests: {
 			args: [],
 			items: { id: '', name: '', template: { args: [], items: { id: '' } } },
-			hasUnitTesting: '',
-			unitTests: {
-				args: [],
-				items: {
-					tests: { args: [], items: { id: '', name: '', code: '' } },
-					meta: { args: [], items: { imports: '', setup: '', tearDown: '' } },
-				},
+		},
+		hasUnitTesting: '',
+		unitTests: {
+			args: [],
+			items: {
+				tests: { args: [], items: { id: '', name: '', code: '' } },
+				meta: { args: [], items: { imports: '', setup: '', tearDown: '' } },
 			},
 		},
 	},

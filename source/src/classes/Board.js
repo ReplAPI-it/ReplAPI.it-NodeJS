@@ -20,7 +20,9 @@ export default class Board extends BaseClass {
 		const info = await this.runGraphQL({ name: 'BoardData', variables, items });
 
 		if (!info.data.boardBySlug) {
-			throw new Error(`${slug} is not a board. Please query boards on Replit.`);
+			throw new Error(
+				`UserError: ${slug} is not a board. Please query boards on Replit.`,
+			);
 		} else {
 			return info.data.boardBySlug;
 		}
@@ -44,10 +46,11 @@ export default class Board extends BaseClass {
 										{
 											propOverride: true,
 											length: constants.initVariables.markdown.length || 150,
-											removeMarkdown: constants.initVariables.markdown.removeMarkdown || true,
+											removeMarkdown:
+												constants.initVariables.markdown.removeMarkdown || true,
 										},
 									],
-								}
+								},
 							},
 						},
 					},
@@ -60,11 +63,13 @@ export default class Board extends BaseClass {
 			count: ['Int!', count],
 			order: ['String!', order],
 		};
-	
+
 		const info = await this.runGraphQL({ name: 'BoardData', variables, items });
 
 		if (!info.data.boardBySlug) {
-			throw new Error(`${slug} is not a board. Please query boards on Replit.`);
+			throw new Error(
+				`UserError: ${slug} is not a board. Please query boards on Replit.`,
+			);
 		} else {
 			return info.data.boardBySlug.posts.items;
 		}

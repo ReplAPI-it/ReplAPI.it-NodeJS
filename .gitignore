@@ -6,6 +6,7 @@ node_modules/
 replit.nix
 .replapirc.*
 replapi.config.*
+replapi-it--debug.log
 
 # developer tests
 tests/dev/

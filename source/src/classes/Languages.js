@@ -1,15 +1,14 @@
 import HTMLParser from 'node-html-parser';
-import fetch from 'node-fetch';
-import atob from 'atob';
+import { lightfetch } from 'lightfetch-node';
 
 async function fetchVariable() {
-	const html = await fetch('https://staging.replit.com/', {
+	const html = await lightfetch('https://replit.com/', {
 		method: 'GET',
 		headers: {
 			'X-Requested-With': 'ReplAPI.it',
-			Referrer: 'https://staging.replit.com/',
+			Referrer: 'https://replit.com/',
 		},
-	}).then((res) => res.text());
+	}).then((res) => res.toText());
 
 	const root = HTMLParser.parse(html, {
 		lowerCaseTagName: false,
@@ -23,11 +22,12 @@ async function fetchVariable() {
 	});
 
 	return JSON.parse(
-		atob(
+		Buffer.from(
 			root.childNodes[1].childNodes[0].childNodes[1].childNodes[0].rawText
 				.split("'")[1]
 				.split("'")[0],
-		),
+			'base64',
+		).toString(),
 	);
 }
 
