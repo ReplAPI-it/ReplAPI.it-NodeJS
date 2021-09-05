@@ -1,6 +1,4 @@
-> ⚠️ **IMPORTANT**: Documentation is broken, will fix soon ⚠️
-
-> ⚠️ **IMPORTANT**: ReplAPI.it is now in version 2.x! Any projects transitioning to 2.x should read through [this](https://github.com/ReplAPI-it/ReplAPI.it/releases/tag/v2.0.6). ⚠️
+> ⚠️ **IMPORTANT**: This project has been depreciated. Read more [here](https://dev.to/rayhanadev/depreciating-my-first-package-83g) ⚠️
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
